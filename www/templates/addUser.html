@@ -9,6 +9,42 @@
 		<div class="col">
 			<!-- <img src="img/tag.png" alt="Tag">
 			<span class="app-tag-text">at your fingertips! </span> -->
+
+        <button class="button button-full ion-qr-scanner button-dark" ng-click="scan()">
+        Scan
+        </button>
+        
+        <div class="list">
+
+            <div class="item">
+            Result
+            <span class="item-note">
+            {{result.text}}
+            </span>
+            </div>
+            
+            <div class="item">
+            Format
+            <span class="item-note">
+            {{result.format}}
+            </span>
+            </div>
+            
+            <div class="item">
+            Cancelled
+            <span class="item-note">
+            {{result.cancelled}}
+            </span>
+            </div>
+            
+            <div class="item">
+            Error
+            <span class="item-note">
+            {{error}}
+            </span>
+            </div>
+
+        </div>
 		</div>		
 	</div>
 	<div class="row">
@@ -19,7 +55,7 @@
 		  <input type="text" placeholder="Seu nome" ng-model="username" required ng-minlength="3" name="username">
 			</label>
 			<label class="">
-				<button class="button button-full button-assertive">Scanear</button>
+				<button class="button button-full button-assertive">Seguinte</button>
 			</label> 
 		</form>		
 	</div>
