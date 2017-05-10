@@ -3,12 +3,14 @@
 app
 .controller('adduserCtrl', ['$scope', '$timeout', '$state', '$ionicLoading', 
   function($scope, $timeout, $state,  $ionicLoading){
-
-     $scope.scan = function() {
+  
+  var estabelecimento = localStorage.getItem('estabelecimento');
+  $scope.scan = function(estabelecimento) {
         cordova.plugins.barcodeScanner.scan(function(result) {
             $scope.result = result;
             $scope.$apply();
-            $username = result.text;
+            estabelecimento = result.text;
+            localStorage.setItem('estabelecimento', estabelecimento);
         }, function(error) {
             $scope.error = error;
             $scope.$apply();
@@ -16,16 +18,19 @@ app
     };
 
     // clear 
-    var username = localStorage.getItem('username');
+    var estabelecimento = localStorage.getItem('estabelecimento');
+    
     // redirect if user present
-    if (username) {
+    if (estabelecimento) {
       $state.go('app.userPage');
     }
-    // else enter username
-    $scope.createUser = function(username) {
-      localStorage.setItem('username', username);
+    // else enter estabelecimento
+    $scope.createUser = function(estabelecimento) {
+      localStorage.setItem('estabelecimento', estabelecimento);
       $state.go('app.userPage');
     };
+
+    
 
     if(typeof analytics !== 'undefined') {
       window.analytics.trackView('adduserCtrl');
