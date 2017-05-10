@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.foodapp" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>Restaurant Classy</name>
+  <name>Restaurante</name>
   <description>
         Restaurant. The boostrap you need in order to build your next Ionic application.
     </description>
@@ -30,6 +30,12 @@
   <preference name="DisallowOverscroll" value="true"/>
   <preference name="BackupWebStorage" value="none"/>
   <plugin name="de.appplant.cordova.plugin.email-composer" spec="0.8.2"/>
+  <plugin name="com.phonegap.plugins.barcodescanner"/>
+  <plugin name="cordova-plugin-device"/>
+  <plugin name="cordova-plugin-inappbrowser"/>
+  <plugin name="cordova-plugin-splashscreen"/>
+  <plugin name="cordova-plugin-whitelist"/>
+  <plugin name="ionic-plugin-keyboard"/>
   <plugin name="phonegap-plugin-push" spec="~1.8.1">
     <variable name="SENDER_ID" value="228071472080" />
   </plugin>
