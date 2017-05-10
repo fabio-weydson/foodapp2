@@ -1,0 +1,83 @@
+<ion-side-menus enable-menu-with-back-views="true">
+  <ion-side-menu-content drag-content="false">
+    <ion-nav-bar class="bar-assertive">
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+      <ion-nav-buttons side="right">
+        <cartt-btn></cartt-btn>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+  <ion-side-menu side="left" class="ion-side-menu">
+    <ion-content>
+      <div class="row">
+        <div class="app-logo">
+          <a ui-sref="app.userPage" menu-toggle="left"><img src="img/logo.png"></a>
+        </div>
+      </div>
+      <ion-list>
+        <ion-item menu-close ui-sref="app.dishitems">
+          Início
+        </ion-item>
+         <ion-item menu-close ui-sref="app.dishitems">
+          Cardápio
+        </ion-item>
+          <ion-item menu-close ui-sref="app.booktable">
+          Reservar Mesa
+        </ion-item>
+        <ion-item menu-close ui-sref="app.cart">
+          Fechar Pedido
+        </ion-item>
+      
+       <!--  <ion-item menu-close ui-sref="app.packages">
+          Packages
+        </ion-item> -->
+     
+      <!--   <ion-item menu-close ui-sref="app.categories">
+          Menu Types
+        </ion-item> -->
+      <!--   <ion-item menu-close ui-sref="app.offers">
+          Offers
+        </ion-item> -->
+        <ion-item menu-close ui-sref="app.contact">
+          Informações
+        </ion-item>
+       <!--  <ion-item menu-close ui-sref="app.admob">
+          Admob
+        </ion-item> -->
+       <!--  <ion-item menu-close  ng-click="apprate()" href="#">
+          Rate Us
+        </ion-item> -->
+      <!--   <ion-item menu-close  class="item-icon-right" href="#" browse-to="{{facebookPage}}">
+          <i class="ionicon icon ion-social-facebook side-"></i> Like Us
+        </ion-item> -->
+
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+  <ion-side-menu side="right" class="ion-side-menu" >
+    <ion-content has-bouncing="false">
+      <div class="row">
+        <div class="app-logo">
+          <img src="img/logo.png">
+        </div>
+      </div>
+      <ion-list>
+
+        <ion-item
+          ng-repeat="cat in cats"
+          class="item-checkbox item-cat">
+          <label class="checkbox">
+             <input type="checkbox"
+              ng-model="filterCattest[cat.name]"
+              ng-change="filteration(cat.id)">
+          </label>
+          <span ng-bind="cat.name"></span>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

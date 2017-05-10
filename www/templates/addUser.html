@@ -1,0 +1,34 @@
+<ion-view view-title="Home" hide-nav-bar="true" class="ionview-with-patbg">
+<ion-content has-header="false" has-bouncing="false">
+	<div class="row">
+		<div class="col">
+			<img src="img/logo.png" class="app-logo" alt="Logo">
+		</div>
+	</div>	
+	<div class="app-tag-line row">
+		<div class="col">
+			<!-- <img src="img/tag.png" alt="Tag">
+			<span class="app-tag-text">at your fingertips! </span> -->
+		</div>		
+	</div>
+	<div class="row">
+	<div class="col-80 col-offset-10 add-user">
+		<form name="userForm" novalidate ng-submit="userForm.$valid && createUser(username)">				
+			<label class="item-stacked-label">
+			<span ng-show="userForm.username.$invalid && userForm.$submitted"  style="color:red;">Qual seu nome?</span>		
+		  <input type="text" placeholder="Seu nome" ng-model="username" required ng-minlength="3" name="username">
+			</label>
+			<label class="">
+				<button class="button button-full button-assertive">Scanear</button>
+			</label> 
+		</form>		
+	</div>
+	
+</div>
+	<div class="tag-food-dish row">
+		<div class="col">
+			<img src="img/food-dish-cut.png" alt="Food Dish">
+		</div>		
+	</div>
+</ion-content>
+</ion-view>

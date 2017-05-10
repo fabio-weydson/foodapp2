@@ -1,0 +1,32 @@
+<ion-view view-title="{{facebookPage}}" class="">
+<ion-nav-buttons side="right">
+  <button class="button button-icon iconic iconic-filter" menu-toggle="right">     
+  </button>
+  <cartt-btn></cartt-btn>
+</ion-nav-buttons>
+<ion-content has-bouncing="false" class="dish-list">	
+	<div class="list card dish-item" 
+			ng-repeat="dish in dishes | filterDish:dishfilter"
+			ng-class="{hascart : hasCart[dish.id]}">
+		<div class="item-title">
+	   	{{dish.name}}
+	   	<span class="cuisine">{{dish.type}}</span>
+	  </div>
+	<!--   <div class="item item-image" ng-if="dish.image">
+	  	<a ui-sref="app.dishdetails({dishid:dish.id})">
+	    <img class="item-image-full" ng-src="{{imgroot}}/foods/{{dish.image}}" alt="{{imgroot}}/foods/{{dish.image}}">
+	    </a>
+	  </div> -->
+	  <div class="item item-footer">	   
+	   <div class="item-meta">
+	   <span class="item-price">{{dish.price | currency:curSymbol.symbol2}}</span>
+	   <span class="item-likes">Curtidas: {{dish.likes}}</span>
+	   </div>
+	  <div class="item-options">	   	
+	  	<like-btn dish-id="dish.id" dish-likes="dish.likes"></like-btn>
+	  	<span cart-btn dish="dish" type="'food'"</span>
+	  </div>
+	  </div>	  
+	</div>
+</ion-content>
+</ion-view>

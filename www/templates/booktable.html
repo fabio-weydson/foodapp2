@@ -1,0 +1,87 @@
+<ion-view view-title="NomedoAPP" class="">
+<ion-nav-buttons side="right">
+      
+    </ion-nav-buttons>
+<ion-content has-bouncing="false" class="book-table">
+	<div class="padding form">
+		<h2 class="heading">Reservar Mesa</h2>		
+		<form name="booktable"
+			class="booking-form" 
+			ng-submit="booktablesubmit()"
+			ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0 } }" no-validate>
+		
+		<div class="list">	
+				<!-- Date	Picker 		 -->
+		   <ionic-datepicker idate="currentDate" disablepreviousdates="true" callback="datePickerCallback" 
+		   title="title" 
+		   mondayfirst="true" 
+		   name="date"
+		   class="datepicker-field-group">
+		    <label class="item item-input">
+		    <span class="input-label">Data</span>
+		    <input type="hidden" ng-model="book.booking_date" name="date">
+		    {{ currentDate | date:'dd - MMMM - yyyy' }}
+		    <span class="ion-ios-calendar-outline"></span>
+		  </label>		     
+		  </ionic-datepicker>
+
+		  <ionic-timepicker input-obj="slots" class="timepicker-field-group">
+		    <label class="item item-input">
+		    	<span class="input-label">Hora</span>
+	    		<input type="hidden"  ng-model="book.booking_time" name="bookingTime">
+	    		<standard-time-meridian etime='slots.inputEpochTime'></standard-time-meridian>
+	    		<span class="ion-ios-clock-outline"></span>
+	    	</label>
+		  </ionic-timepicker>
+
+		  <!-- Party Size -->
+		  <label class="item item-input item-select">
+		      <div class="input-label">
+		        Nº de Pessoas
+		      </div>
+		      <select name="person" ng-model="book.persons">
+		        <option selected>2</option>
+		        <option>4</option>
+		        <option>6</option>
+		        <option>8</option>
+		        <option>10</option>
+		        <option>12</option>
+		        <option>14</option>
+		        <option>Mais</option>
+		      </select>
+		  </label>
+		<!-- Name -->
+		  <label class="item item-input" ng-class="{'item-invalid': (booktable.fullname.$touched && booktable.fullname.$invalid)}">
+		    <span class="input-label">Nome</span>
+		    <input type="text" ng-model="book.name" name="fullname" required>
+		    <i class="icon ion-alert-circled"></i>
+		  </label>
+		  <!-- Email -->
+		  <label class="item item-input" ng-class="{'item-invalid': (booktable.email.$touched && booktable.email.$invalid)}">
+		    <span class="input-label">E-mail</span>
+		    <input type="email" ng-model="book.email" name="email" 
+		    ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required>
+		    <i class="icon ion-alert-circled"></i>
+		  </label>	
+		  <!-- Phone -->
+		  <label class="item item-input" ng-class="{'item-invalid': (booktable.phone.$touched && booktable.phone.$invalid)}">
+		    <span class="input-label">Telefone</span>
+		    <input type="number" ng-model="book.phone" name="phone" 
+		    ng-pattern="/([0-9]{10})/" required>
+		    <i class="icon ion-alert-circled"></i>
+		  </label>
+		  <input type="hidden" ng-model="book.confirmed" name="confirmed" value="No">
+		  <!-- Book now -->
+		  <div class="padding-top col-offset-50 col-50">
+		  	<button class="button button-assertive button-block" 
+		  	ng-disabled="booktable.$invalid">
+		  	Reservar
+		  	</button>
+		  </div>
+		  <div class="alert success fade" id="booktable-msg" ng-bind="message" ng-class="{active: messageShow}"></div>
+		</div>
+		</form>
+	</div>
+</ion-content>
+
+</ion-view>

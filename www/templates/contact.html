@@ -1,0 +1,47 @@
+<ion-view view-title="NOMEDOAPP" class="">
+<ion-content has-header="false" has-bouncing="false" class="contact-page">
+<div class="featured-image">
+	<img src="img/contact/banner.jpg" alt="" class="fullwidth-image">
+</div>
+<div class="content padding">
+	<h4>Informãções do estabelecimento:</h4>
+	<dl class="address">
+		<dt>Locations:</dt><dd>London</dd>
+		<dt>Email:</dt><dd>info@rococo.com</dd>
+		<dt>Phone:</dt><dd>+111255553685</dd>
+	</dl>	
+</div>
+<div class="form padding"> 
+	<h4>Entre em contato</h4>
+	<form name="contactform" ng-submit="contactRequest()">
+		<div class="list">
+		  <label class="item item-input">
+		    <span class="input-label">Nome</span>
+		    <input type="text" required name="name" ng-model="contact.name">
+		  </label>
+		  <label class="item item-input">
+		    <span class="input-label">E-mail</span>
+		    <input type="email" required name="email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" ng-model="contact.email">
+		  </label>
+		  <label class="item item-input">
+		    <span class="input-label">Telefone</span>
+		    <input type="text" required name="phone" ng-model="contact.phone">
+		  </label>
+		   <label class="item item-input">
+		    <span class="input-label">Mensagem</span>
+		    <textarea name="message" ng-model="contact.message" required></textarea>
+		  </label>
+		  <div class="padding-top col-offset-75">
+		  	<button class="button button-assertive button-block" 
+		  	ng-disabled="contactform.$invalid">
+		  	 Enviar
+		  	</button>	
+		  </div>
+		  <div class="alert success  fade" id="booktable-msg" ng-bind="message" ng-class="{active:messageShow}"></div>
+		  	  
+		</div>
+	</form>
+</div>
+
+</ion-content>
+</ion-view>

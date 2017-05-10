@@ -1,0 +1,18 @@
+<ion-nav-view>
+	<ion-view view-title="Packages">
+		<ion-content  has-header="false" has-bouncing="false" class="packages">
+
+		<a class="card" ui-sref="app.package({packageid:package.id})" ng-repeat="package in packages" ng-if="packages">
+			<div class="item item-image">
+			    <img ng-src="{{imageroot}}{{package.image}}" alt="">
+			 </div>
+			 <div class="item-header">
+					<img ng-src="img/icons/packages/{{package.name | lowercase}}.png">
+				 	<h3>{{package.name}}</h3>
+			 </div>
+			 
+		</a>		
+
+		</ion-content>
+	</ion-view>
+</ion-nav-view>

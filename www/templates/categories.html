@@ -1,0 +1,17 @@
+<ion-nav-view>
+<ion-view view-title="Rococo" class="">
+<ion-content has-header="false" has-bouncing="false" class="categories-page">
+	<div class="cat-list">
+		<div class="cat-box" ng-repeat="cat in cats">
+			<a class="cat" ui-sref="app.categorie({catid:cat.id})">
+				<span class="cat-image" style="background-image: url({{imageroot}}{{cat.image}})">
+				</span>
+				<h3 ng-bind="cat.name"></h3>
+			</a>
+		</div>
+	</div>
+</ion-content>
+</ion-view>
+</ion-nav-view>
+
+

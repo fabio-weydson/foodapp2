@@ -1,0 +1,28 @@
+@font-face {
+	font-family: 'iconic';
+	src:url('fonts/iconic.eot?erw7mt');
+	src:url('fonts/iconic.eot?#iefixerw7mt') format('embedded-opentype'),
+		url('fonts/iconic.ttf?erw7mt') format('truetype'),
+		url('fonts/iconic.woff?erw7mt') format('woff'),
+		url('fonts/iconic.svg?erw7mt#iconic') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="iconic-"], [class*=" iconic-"] {
+	font-family: 'iconic';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.iconic-filter:before {
+	content: "\e600";
+}

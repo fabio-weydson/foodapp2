@@ -1,0 +1,83 @@
+<ion-view view-title="NomedoApp" class="ionview-with-patbg">
+<ion-content  has-bouncing="false">
+	 <!-- Featured  Dish -->	   	
+	<div class="list card featured-dish" >
+	  <div class="item user-info">	    
+	    <h2>Olá {{username}}</h2>
+	  </div>
+	  <div ng-if="slideslodded && slides.length < 1">
+	  	<a ui-sref="app.dishdetails({dishid: slide.id})">
+	  		<img ng-src="{{imgroot}}foods/{{slides[0].image}}" alt="" width="640" height="360" class="slider-image">	
+	  	</a>
+     	<span class="like"> <span ng-bind="slide.likes"></span>
+				<like-btn dish-id="slide.id" dish-likes="slide.likes"></like-btn>
+    	</span>
+	  </div>
+	  <ion-slide-box
+	  show-pager="true"
+	  does-continue="true"
+	  ng-if="slideslodded && slides.length > 1">
+	    <ion-slide ng-repeat="slide in slides">
+	    <a ui-sref="app.dishdetails({dishid:slide.id})">
+	     <img ng-src="{{imgroot}}foods/{{slide.image}}" alt="" width="640" height="360" class="slider-image">	
+	     </a> 
+	     	<span class="like">
+	     		<like-btn dish-id="slide.id" dish-likes="slide.likes" clear-btn="true"></like-btn>
+	    	</span>     
+	    </ion-slide>  
+	  </ion-slide-box>
+	</div>
+	<!-- Featured  Dish // -->	   	
+	<!-- Offerd Dish -->	   	
+	<div class="list card offerd-dish" ng-if="offers">
+		<h2 class="heading padding-horizontal">Ofertas</h2>
+	  <ion-slide-box on-slide-changed="slideHasChanged($index)" 	  
+	  show-pager="true"
+	  does-continue="true" 
+	  class="slider"
+	  ng-if="offerViewloadded">
+	    <ion-slide ng-repeat="offer in offers" class="slider-slide">
+			
+	    <a ui-sref="app.offerdetails({offerid:offer.id})">
+	     <img ng-src="{{imgroot}}offers/{{offer.image}}" alt="" height="284" width="450" class="slider-image">	
+	     
+	    	<span class="offer">
+	    		<img src="img/icon/hat-1.png" alt="">
+	    		<span class="off-text" ng-bind="offer.name"></span>
+	    		<span class="off-ammount">
+	    		<span ng-if="offer.type=='Flat'">Fixo {{offer.price | currency}}</span>
+	    		<span ng-if="offer.type=='Percentage'">{{offer.price}}%</span>
+	    		<br>de desconto</span>
+	    	</span> 
+	    	</a>     
+	    </ion-slide>	         
+	  </ion-slide-box>
+	</div>	
+	<!-- Offerd  Dish // -->
+	<!-- Specials  items -->	   	
+	<div class="list card special-dish" ng-if="specials">
+		<h2 class="heading padding-horizontal">Itens especiais</h2>
+	  <ion-slide-box on-slide-changed="slideHasChanged($index)" 	  
+	  show-pager="false"
+	  does-continue="true"
+	  ng-if="specialsloded"
+	 	>
+	    <ion-slide  class="row" ng-repeat="specialGroup in specials">
+		    <div class="col-50" ng-repeat="spcl in specialGroup">
+		    	<a ui-sref="app.dishdetails({dishid:spcl.id})">
+		    	<img ng-src="{{imgroot}}foods/{{spcl.image}}" alt="" class="slider-image">
+   	     	
+		    	<span class="dish-name">
+		    		<span ng-bind="spcl.name"></span>
+		    		<span class="dish-type">{{spcl.cat}}</span>
+		    	</span>
+		    	</a>
+		    </div>
+	    </ion-slide>
+        
+	  </ion-slide-box>
+	</div>	
+	<!-- Specials  Dish // -->	 	   	
+	
+</ion-content>
+</ion-view>

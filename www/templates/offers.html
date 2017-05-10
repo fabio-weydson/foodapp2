@@ -1,0 +1,26 @@
+<ion-view view-title="NomedoAPP" class="">
+<ion-nav-buttons side="right">
+    </ion-nav-buttons>
+<ion-content has-bouncing="false" class="dish-list">
+	<div class="list card dish-item" ng-repeat="offer in offers">
+		<div class="item-title">
+	   	{{offer.name}}
+	   </div>
+	  <div class="item item-image" ng-if="offer.image">
+	  	<a ui-sref="app.offerdetails({offerid:offer.id})">
+	    <img ng-src="{{imgroot}}/offers/{{offer.image}}" alt="">
+	    </a>
+	  </div>
+	  <div class="item item-footer">
+	  <div class="item-meta">
+  	   <div class="item-price">
+  	   	<span ng-if="offer.type=='Flat'">{{offer.price | currency}} <small>flat</small></span>
+  	   	<span ng-if="offer.type=='Percentage'">{{offer.price}}%</span>
+        <small>off in your next bill</small>
+  	   </div>
+	  </div>
+
+	  </div>
+	</div>
+</ion-content>
+</ion-view>

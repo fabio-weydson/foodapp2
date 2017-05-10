@@ -1,0 +1,47 @@
+<ion-view>
+	<ion-content class="packages-bg">
+
+	<div class="packages">
+		<a class="list card dish-item">
+			<div class="item item-image dish-item">
+			    <img ng-src="{{imgroot}}/packages/{{package.image}}" alt="">
+			    <div class="item item-footer">
+			     <div class="item-meta">
+			     <span class="item-price">{{package.price | currency:curSymbol.symbol}}</span>
+			     </div>
+			     <div class="item-options">
+			     	<span cart-btn dish="package" type="'package'"></span>
+			     </div>
+			    </div>
+			 </div>
+			 <div class="item-header inner">
+					<img ng-src="img/icons/packages/{{package.name | lowercase}}.png">
+				 	<h3>{{package.name}}</h3>
+			 </div>
+
+		</a>
+	</div>
+
+
+		<div class="list card dish-item"
+				ng-repeat="dish in dishes"
+				ng-class="{hascart : hasCart[dish.id]}">
+			<div class="item-title">
+		   	{{dish.name}}
+		   	<span class="cuisine">{{dish.type}}</span>
+		   </div>
+		  <div class="item item-image" ng-if="dish.image">
+		  	<a ui-sref="app.dishdetails({dishid:dish.id})">
+		    <img class="item-image-full" ng-src="{{imgroot}}/foods/{{dish.image}}" alt="{{imgroot}}/foods/{{dish.image}}">
+		    </a>
+		  </div>
+		  <div class="item item-footer">
+		   <div class="item-meta">
+		   <span class="item-price">{{dish.price | currency:curSymbol.symbol}}</span>
+		   </div>
+
+		  </div>
+		</div>
+
+	</ion-content>
+</ion-view>

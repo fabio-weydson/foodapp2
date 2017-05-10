@@ -1,0 +1,35 @@
+<ion-view view-title="Rococo" class="" cache-view="false">
+	<ion-content has-header="false" has-bouncing="false" class="categories-page">
+
+	<div class="list card dish-item" 
+			ng-repeat="dish in dishes"
+			ng-class="{hascart : hasCart[dish.id]}">
+		<div class="item-title">
+	   	{{dish.name}}
+	   	<span class="cuisine">{{dish.type}}</span>
+	   </div>
+	  <div class="item item-image" ng-if="dish.image">
+	  	<a ui-sref="app.dishdetails({dishid:dish.id})">
+	  		<span ng-if="hasCart[dish.id] && hasCart[dish.id] > 0"
+	  		class="item-cart-info">
+	  			Item already added to cart
+	  		</span>
+	    <img class="item-image-full" ng-src="{{imageroot}}/foods/{{dish.image}}" alt="{{imageroot}}/foods/{{dish.image}}">
+	    </a>
+	  </div>
+	  <div class="item item-footer">
+	   <div class="item-meta">
+	   <span class="item-price">{{dish.price | currency}}</span>
+	   <span class="item-likes">Liked: {{dish.likes}}</span>
+	   </div>
+	   <div class="item-options">
+	   	<like-btn dish-id="dish.id" dish-likes="dish.likes"></like-btn>
+	   	<span cart-btn dish="dish" type="'food'"></span>
+	   		
+	   </div>
+	  </div>
+	</div>
+
+
+	</ion-content>
+</ion-view>
