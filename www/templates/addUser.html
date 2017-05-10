@@ -10,11 +10,11 @@
 			<!-- <img src="img/tag.png" alt="Tag">
 			<span class="app-tag-text">at your fingertips! </span> -->
 
-        <button class="button button-full ion-qr-scanner button-dark" ng-click="scan()">
-        Scan
+        <button class="ion-qr-scanner button button-full button-assertive" ng-click="scan()">
+        Escanear estabelecimento
         </button>
-        
-        <div class="list">
+        <span class="app-tag-text">{{result.text}}</span>
+      <!--   <div class="list">
 
             <div class="item">
             Result
@@ -44,18 +44,18 @@
             </span>
             </div>
 
-        </div>
+        </div> -->
 		</div>		
 	</div>
 	<div class="row">
 	<div class="col-80 col-offset-10 add-user">
-		<form name="userForm" novalidate ng-submit="userForm.$valid && createUser(username)">				
-			<label class="item-stacked-label">
-			<span ng-show="userForm.username.$invalid && userForm.$submitted"  style="color:red;">Qual seu nome?</span>		
+		<form name="userForm" novalidate ng-submit="userForm.$valid && createUser(username)">		
+		 <input type="hidden" placeholder="Seu nome" ng-model="username" required ng-minlength="3" ng-value="result.text" name="username">		
+			<!-- <label class="item-stacked-label">
 		  <input type="text" placeholder="Seu nome" ng-model="username" required ng-minlength="3" name="username">
-			</label>
+			</label> -->
 			<label class="">
-				<button class="button button-full button-assertive">Seguinte</button>
+				<button class="button button-full button-assertive">Confirmar</button>
 			</label> 
 		</form>		
 	</div>
