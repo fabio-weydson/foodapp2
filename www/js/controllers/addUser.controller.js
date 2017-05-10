@@ -8,12 +8,13 @@ app
         cordova.plugins.barcodeScanner.scan(function(result) {
             $scope.result = result;
             $scope.$apply();
+            $username = result.text;
         }, function(error) {
             $scope.error = error;
             $scope.$apply();
         });
     };
-    
+
     // clear 
     var username = localStorage.getItem('username');
     // redirect if user present
