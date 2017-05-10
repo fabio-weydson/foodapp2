@@ -3,6 +3,17 @@
 app
 .controller('adduserCtrl', ['$scope', '$timeout', '$state', '$ionicLoading', 
   function($scope, $timeout, $state,  $ionicLoading){
+
+     $scope.scan = function() {
+        cordova.plugins.barcodeScanner.scan(function(result) {
+            $scope.result = result;
+            $scope.$apply();
+        }, function(error) {
+            $scope.error = error;
+            $scope.$apply();
+        });
+    };
+    
     // clear 
     var username = localStorage.getItem('username');
     // redirect if user present
