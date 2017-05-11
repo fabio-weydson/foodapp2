@@ -12,9 +12,11 @@ app
             localStorage.setItem('estabelecimento', estabelecimento[0]);
             localStorage.setItem('id_estabelecimento', estabelecimento[1]);
             $scope.estabelecimento = estabelecimento[1];
-
+            $timeout(function(){
+              $scope.createUser($scope.estabelecimento);
+            },1000);
             $scope.$apply();
-            
+
         }, function(error) {
             $scope.error = error;
             $scope.$apply();

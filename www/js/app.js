@@ -1,9 +1,9 @@
 'use strict';
 angular.module('templates', []);
 var app = angular.module('restaurant',
-  ['ionic', 'templates', 'angularMoment', 'angular.filter', 'ionic-datepicker', 'ionic-timepicker', 'ngAnimate', 'ngCordova']);
+  ['ionic', 'templates', 'angularMoment', 'angular.filter', 'ionic-datepicker', 'ionic-timepicker', 'ngAnimate', 'ngCordova', 'scope']);
 
-  app.run(function($ionicPlatform, $rootScope, $ionicLoading, settings, $state,$ionicPopup) {
+  app.run(function($ionicPlatform, $rootScope, $ionicLoading, settings, $state,$ionicPopup,$scope) {
     $ionicPlatform.ready(function() {
       if (window.cordova && window.cordova.plugins.Keyboard) {
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
