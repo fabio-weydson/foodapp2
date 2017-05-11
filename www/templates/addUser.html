@@ -19,7 +19,7 @@
 		</div>		
 	</div>
 	<div class="row">
-	<div class="col-80 col-offset-10 add-user" ng-show="estabelecimento">
+	<div style="display:none" class="col-80 col-offset-10 add-user" >
 		<form name="userForm" novalidate ng-submit="userForm.$valid && createUser(estabelecimento)">		
 		 <input type="hidden" placeholder="Seu nome" ng-model="estabelecimento" required ng-minlength="3" name="estabelecimento">		
 			<!-- <label class="item-stacked-label">

@@ -12,7 +12,9 @@ app
             localStorage.setItem('estabelecimento', estabelecimento[0]);
             localStorage.setItem('id_estabelecimento', estabelecimento[1]);
             $scope.estabelecimento = estabelecimento[1];
-              $scope.$apply();
+
+            $scope.$apply();
+            
         }, function(error) {
             $scope.error = error;
             $scope.$apply();

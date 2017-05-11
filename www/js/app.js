@@ -236,6 +236,8 @@ var app = angular.module('restaurant',
         // if none of the above states are matched, use this as the fallback
     var appFirstRun = localStorage.getItem('appFirstRun');
 
+    $scope.estabelecimento = localStorage.getItem('estabelecimento');
+
     if(appFirstRun === 'true'){
       var username = localStorage.getItem('username');
       // redirect if user present
