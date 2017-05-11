@@ -8,9 +8,11 @@ app
   $scope.scan = function(estabelecimento) {
         cordova.plugins.barcodeScanner.scan(function(result) {
             $scope.result = result;
-            $scope.$apply();
-            $scope.estabelecimento = result.text;
-            localStorage.setItem('estabelecimento', estabelecimento);
+            var estabelecimento = $scope.result.text.split(' - ');
+            localStorage.setItem('estabelecimento', estabelecimento[0]);
+            localStorage.setItem('id_estabelecimento', estabelecimento[1]);
+            $scope.estabelecimento = estabelecimento[1];
+              $scope.$apply();
         }, function(error) {
             $scope.error = error;
             $scope.$apply();

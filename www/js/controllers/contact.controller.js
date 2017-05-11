@@ -22,6 +22,7 @@ app
 		}
 
 		// 
+		$scope.estabelecimento = localStorage.getItem('estabelecimento');
 		$scope.contact = {};
 		$scope.contactRequest = function() {
 			dataservice.contact($scope.contact)
