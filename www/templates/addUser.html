@@ -9,48 +9,19 @@
 		<div class="col">
 			<!-- <img src="img/tag.png" alt="Tag">
 			<span class="app-tag-text">at your fingertips! </span> -->
-
+            <br/>
         <button class="ion-qr-scanner button button-full button-assertive" ng-click="scan()">
         Escanear estabelecimento
         </button>
-        <span class="app-tag-text">{{result.text}}</span>
-      <!--   <div class="list">
-
-            <div class="item">
-            Result
-            <span class="item-note">
-            {{result.text}}
-            </span>
-            </div>
-            
-            <div class="item">
-            Format
-            <span class="item-note">
-            {{result.format}}
-            </span>
-            </div>
-            
-            <div class="item">
-            Cancelled
-            <span class="item-note">
-            {{result.cancelled}}
-            </span>
-            </div>
-            
-            <div class="item">
-            Error
-            <span class="item-note">
-            {{error}}
-            </span>
-            </div>
-
-        </div> -->
+        <br/>
+        <span class="app-tag-text">{{estabelecimento}}</span><br/>
+        <span class="app-tag-text" ng-show="estabelecimento">Aguarde...</span>
 		</div>		
 	</div>
 	<div class="row">
-	<div class="col-80 col-offset-10 add-user">
+	<div class="col-80 col-offset-10 add-user" ng-show="estabelecimento">
 		<form name="userForm" novalidate ng-submit="userForm.$valid && createUser(estabelecimento)">		
-		 <input type="text" placeholder="Seu nome" ng-model="estabelecimento" required ng-minlength="3" name="estabelecimento">		
+		 <input type="hidden" placeholder="Seu nome" ng-model="estabelecimento" required ng-minlength="3" name="estabelecimento">		
 			<!-- <label class="item-stacked-label">
 		  <input type="text" placeholder="Seu nome" ng-model="username" required ng-minlength="3" name="username">
 			</label> -->
