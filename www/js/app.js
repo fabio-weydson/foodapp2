@@ -1,9 +1,9 @@
 'use strict';
 angular.module('templates', []);
 var app = angular.module('restaurant',
-  ['ionic', 'templates', 'angularMoment', 'angular.filter', 'ionic-datepicker', 'ionic-timepicker', 'ngAnimate', 'ngCordova', 'scope']);
+  ['ionic', 'templates', 'angularMoment', 'angular.filter', 'ionic-datepicker', 'ionic-timepicker', 'ngAnimate', 'ngCordova']);
 
-  app.run(function($ionicPlatform, $rootScope, $ionicLoading, settings, $state,$ionicPopup,$scope) {
+  app.run(function($ionicPlatform, $rootScope, $ionicLoading, settings, $state,$ionicPopup) {
     $ionicPlatform.ready(function() {
       if (window.cordova && window.cordova.plugins.Keyboard) {
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -236,7 +236,7 @@ var app = angular.module('restaurant',
         // if none of the above states are matched, use this as the fallback
     var appFirstRun = localStorage.getItem('appFirstRun');
 
-    $scope.estabelecimento = localStorage.getItem('estabelecimento');
+    var estabelecimento = localStorage.getItem('estabelecimento');
 
     if(appFirstRun === 'true'){
       var username = localStorage.getItem('username');

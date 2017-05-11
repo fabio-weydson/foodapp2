@@ -33,7 +33,7 @@ app
     // else enter estabelecimento
     $scope.createUser = function(estabelecimento) {
       localStorage.setItem('estabelecimento', $scope.estabelecimento);
-      $state.go('app.userPage');
+      $state.go('app.dishitems');
     };
 
     
