@@ -77,7 +77,7 @@ app
 
     $scope.slots = {
       inputEpochTime: nearestTime(dateParticles.hour),
-      format: 12,
+      format: 24,
       step: 30,
       titleLabel: 'Selecionar hora',
       callback: timePickerCallback

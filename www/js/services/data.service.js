@@ -39,7 +39,7 @@ app
 
 	function _dishDetails (id) {
 		var dfd = $q.defer();
-		var url = appConfig.apiEndPoint+'foods/'+id;
+		var url = appConfig.apiEndPoint+'food/'+id;
 		$http.get(url)
 		.success(function(data){
 			dfd.resolve(data);			
@@ -211,6 +211,22 @@ app
 		return dfd.promise;		
 	}
 
+
+	function _settings (data) {
+		var dfd = $q.defer();
+		var url = appConfig.apiEndPoint+'settings';
+		$http.get(url)
+		.success(function(data){
+			dfd.resolve(data);
+		})
+		.error(function(data){
+				dfd.reject(data);
+		});
+		return dfd.promise;			
+	}
+
+
+
 	function _packages () {
 		var dfd = $q.defer();
 		var url = appConfig.apiEndPoint+'packages';
@@ -254,6 +270,7 @@ app
 		 getCategories : _getCategories,
 		 dishFilter : _dishFilter,
 		 contact : _contact,
+		 settings : _settings,
 		 packages: _packages,
 		 package : _package
 	};
@@ -265,11 +282,13 @@ app
 		var url = appConfig.apiEndPoint+'settings';
 		$http.get(url)
 		.success(function(d){
+			return d;
 			if (d.data[0].currencytype==='Real') {
 				d.data[0].currencytype = 'R$';
 			}
 			d.data[0].currencytype = d.data[0].currencytype + ' ';		
 			curSymbol.symbol = d.data[0].currencytype;
+			curSymbol.estabelecimento = 'sdsdsdsd';
 		})
 		.error(function(d){
 			dfd.reject(d);
@@ -280,4 +299,9 @@ app
 		roSettigns : _roSettigns
 	};
 
-}]);
+}])
+.service('hexafy', function() {
+    function myFunc(x) {
+        return x.toString(16);
+    }
+});

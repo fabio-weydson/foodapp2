@@ -197,6 +197,15 @@ var app = angular.module('restaurant',
           }
         }
       })
+       .state('app.pedidos',{
+        url : '/pedidos',
+        views : {
+          'menuContent': {
+            templateUrl : 'templates/pedidos.html',
+            controller : 'pedidosCtrl'
+          }
+        }
+      })
       .state('app.checkout',{
         url : '/checkout',
         views : {
@@ -258,14 +267,15 @@ var app = angular.module('restaurant',
     // configration for app rate
     document.addEventListener('deviceready', function () {
 
-      var prefs = {
-        language: 'en',
-        appName: 'Talking Tom Cat 2',
-        iosURL: '123456',
-        androidURL: 'market://details?id=com.outfit7.talkingtom2free',
-        windowsURL: 'ms-windows-store:Review?name=<...>'
-      };
 
-      $cordovaAppRateProvider.setPreferences(prefs);
+      // var prefs = {
+      //   language: 'en',
+      //   appName: 'Talking Tom Cat 2',
+      //   iosURL: '123456',
+      //   androidURL: 'market://details?id=com.outfit7.talkingtom2free',
+      //   windowsURL: 'ms-windows-store:Review?name=<...>'
+      // };
+
+     // $cordovaAppRateProvider.setPreferences(prefs);
     }, false);
   });

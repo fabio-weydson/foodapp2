@@ -1,4 +1,4 @@
-<ion-view view-title="Rococo" class="">
+<ion-view view-title="{{estabelecimento}}" class="">
 <ion-content has-header="false" has-bouncing="false" class="confirm-order">
 	<div class="row info-bar">
 		<a class="col-50 cart-item-count" ui-sref="app.cart">
@@ -8,7 +8,7 @@
 			<span>Item <br> Selecionado</span>
 		</a>
 		<div class="col-50">
-			<span class="total-amount">{{totalAmount | currency:curSymbol.symbol}}</span>
+			<span class="total-amount">{{totalAmount | currency:curSymbol.symbol2}}</span>
 			<span>Subtotal </span>
 		</div>
 	</div>

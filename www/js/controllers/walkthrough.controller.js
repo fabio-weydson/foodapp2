@@ -7,24 +7,24 @@ app.controller('walkthrough', ['$ionicSideMenuDelegate', '$scope', '$ionicSlideB
   $ionicSideMenuDelegate.canDragContent(false);
 
   $scope.slideDetails = [{
-    title: 'Bem vindo ao <b>NomedoAPP</b>',
+    title: 'Bem vindo ao <b>Easy Resto</b>',
     buttonText: 'Próximo',
     image: 'img/screen/screen-1.png'
   },
   {
     title: 'Acesse o cardápio',
     buttonText: 'Próximo',
-    image: 'img/screen/screen-2.png'
+    image: 'img/screen/screen-1.png'
   },
   {
     title: 'Reserve mesas',
     buttonText: 'Próximo',
-    image: 'img/screen/screen-3.png'
+    image: 'img/screen/screen-1.png'
   },
   {
     title: 'Pague pelo celular',
     buttonText: 'Acessar',
-    image: 'img/screen/screen-4.png'
+    image: 'img/screen/screen-1.png'
   }];
 
   $scope.slide = {

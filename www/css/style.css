@@ -1,15 +1,16 @@
 /* Empty. Add your own CSS if you like */
 .item-complex .item-content, .item-radio .item-content {
-    font-size: 16px;
-    text-transform: uppercase;
-    padding: 5px 47px 12px 16px;
+    font-size: 18px;
+    /* text-transform: uppercase; */
+    padding: 19px 47px 21px 16px;
+    text-shadow: 1px 1px 1px #000;
 }
 .card .item.item-footer {
     padding: 5px;
     background: #f8f8f8;
 }
 .button, .button-like {
-	min-height: 38px;
+  min-height: 38px;
 }
 .dish-item .item-meta .item-price {font-size: 14px;color: #ef473a;}
 
@@ -27,7 +28,7 @@
 
 .dish-item .item-title .cuisine {
     font-size:12px;
-    display:none;
+    font-style: normal;
 }
 
 .menu-right .checkbox input, .checkbox-icon {
@@ -54,12 +55,13 @@
 }
 
 .ion-side-menu {
-    background:  #601608;
+    background: #333333;
 }
 
 .scroll .item-complex .item-content {
-  background-color: #601608;
   color: white;
+  border-bottom: 2px solid #1b1b1b;
+  border-top: 1px solid #4e4e4e;
 }
 
 .item-divider {
@@ -68,3 +70,65 @@
   padding-top: 14px;
   padding-bottom: 14px;
 }
+.app-logo {
+  max-width: 250px !important;
+    margin: 5px 20px;
+    margin-bottom: 30px;
+}
+.dish-item .button .badger {
+    right: 52px;
+    padding: 9px 0;
+    color: #FFF;
+    font-size: 17px;
+    background: #6b6b6b;
+}
+.cart-list .item-thumbnail-left {
+  padding-left: 20px;
+}
+
+.button-bar_custom > .button {
+  -webkit-box-flex: initial;
+  -webkit-flex: initial;
+  -moz-box-flex: initial;
+  -moz-flex: initial;
+  -ms-flex: initial;
+  flex: initial;
+  padding: 0 10px;
+  width: auto;
+  font-size: 14px;
+}
+
+.cart-list .price {
+      top: 10px;
+}
+.cart-list h2 {
+  padding-top: 6px;
+}
+.dish-item .badger {
+      padding: 6px 10px;
+    color: #FFF;
+    font-size: 17px;
+    line-height: 36px;
+    background: #6b6b6b;
+}
+ .dish-item .button, .dish-item .button.selected {
+      background: #3fb981;
+      color:#FFF;
+ }
+ .dish-item .item-title a {
+    color: #000;
+    font-size: 14px;
+    text-decoration: none;
+}
+.ion-side-menu .item {
+    border: none;
+}
+.scroll .item-complex .item-content .icon {
+
+     margin-right: 11px;
+    font-size: 23px;
+}
+.tag-food-dish, .row + .tag-food-dish {
+    position: absolute;
+    bottom: -320px;
+  }

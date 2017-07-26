@@ -13,10 +13,10 @@ app
     $scope.imgroot = appConfig.imgserver+'/';
     
     var id = $stateParams.dishid;
-
     dataservice.dishDetails(id).then(function(d){
       $scope.dish = d.data;
       $ionicLoading.hide();
+      console.log($scope.dish);
     });
 
     $scope.$on('$ionicView.enter',function(){

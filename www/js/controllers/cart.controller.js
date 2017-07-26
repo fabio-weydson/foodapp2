@@ -7,7 +7,7 @@ app
     $scope.imgroot = appConfig.imgserver;
 
     if(typeof analytics !== 'undefined') {
-      window.analytics.trackView('cartCtrl');
+     // window.analytics.trackView('cartCtrl');
     }
 
     // get data
@@ -25,7 +25,7 @@ app
 
      // show Add
     if(window.AdMob) {
-      AdMob.showInterstitial();
+      //AdMob.showInterstitial();
     } 
 
     // remove from cart
@@ -35,6 +35,8 @@ app
     };
 
     $scope.$on('$ionicView.enter',function(){
+
+      $scope.hasCart = FCcart.hasCart();
       $ionicLoading.hide();      
     });
 }]);

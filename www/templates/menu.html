@@ -6,7 +6,7 @@
         </button>
       </ion-nav-buttons>
       <ion-nav-buttons side="right">
-        <cartt-btn></cartt-btn>
+        <cartt-btn ng-if="getTotal"></cartt-btn>
       </ion-nav-buttons>
     </ion-nav-bar>
     <ion-nav-view name="menuContent"></ion-nav-view>
@@ -15,21 +15,24 @@
     <ion-content>
       <div class="row">
         <div class="app-logo">
-          <a ui-sref="app.userPage" menu-toggle="left"><img src="img/logo.png"></a>
+          <a ui-sref="app.userPage" menu-toggle="left"><img src="http://www.mondonew.com/easyresto/assets/images/logo_er.png"></a>
         </div>
       </div>
       <ion-list>
-        <ion-item menu-close ui-sref="app.dishitems">
-          Início
+        <ion-item menu-close item-type="item-icon-left" ui-sref="app.dishitems">
+          <i class="icon ion-home"></i> Início
         </ion-item>
-         <ion-item menu-close ui-sref="app.dishitems">
-          Cardápio
+         <ion-item menu-close item-type="item-icon-left" ui-sref="app.dishitems">
+          <i class="icon ion-pizza"></i> Cardápio
         </ion-item>
-          <ion-item menu-close ui-sref="app.booktable">
-          Reservar Mesa
+          <ion-item menu-close item-type="item-icon-left" ui-sref="app.booktable">
+          <i class="icon ion-calendar"></i> Reservar Mesa
         </ion-item>
-        <ion-item menu-close ui-sref="app.cart">
-          Fechar Pedido
+        <ion-item menu-close item-type="item-icon-left" ui-sref="app.cart">
+          <i class="icon ion-card"></i> Fechar Pedido
+        </ion-item>
+        <ion-item menu-close item-type="item-icon-left" ui-sref="app.pedidos">
+          <i class="icon ion-document-text"></i> Meus Pedidos
         </ion-item>
       
        <!--  <ion-item menu-close ui-sref="app.packages">
@@ -43,7 +46,7 @@
           Offers
         </ion-item> -->
         <ion-item menu-close ui-sref="app.contact">
-          Informações
+          <i class="icon ion-information-circled"></i> Informações
         </ion-item>
        <!--  <ion-item menu-close ui-sref="app.admob">
           Admob
@@ -62,7 +65,7 @@
     <ion-content has-bouncing="false">
       <div class="row">
         <div class="app-logo">
-          <img src="img/logo.png">
+          <img src="http://www.mondonew.com/easyresto/assets/images/logo_er.png">
         </div>
       </div>
       <ion-list>

@@ -1,20 +1,21 @@
-<ion-view view-title="Rococo" class="">
+<ion-view view-title="{{estabelecimento}}" class="">
 <ion-content has-header="false" has-bouncing="false" class="dish-list dish-details">
 	<div class="list card dish-item">
-		<div class="item-title">
-	   	<span ng-bind="dish.name"></span>
-	   	<span class="cuisine">Modern Trattoria</span>
-	   </div>
+	
 	  <div class="item item-image" ng-if="dish.image">
-	    <img ng-src="{{imgroot}}foods/{{dish.image}}" alt="{{dish.image}}">
+	    <img ng-src="{{imgroot}}/{{dish.image}}" alt="{{dish.image}}">
 	  </div>
+	  	<div class="item-title">
+	   	<h4 ng-bind="dish.name">...</h4>
+<!-- 	   	<span class="cuisine" ng-bind="dish.details"></span>
+ -->	   </div>
 	  <div class="item item-footer">	   
 	   <div class="item-meta">
 	   <span class="item-price">{{dish.price | currency:curSymbol.symbol}}</span>
-	   <span class="item-likes">Liked: {{dish.likes}}</span>
-	   </div>
+<!-- 	   <span class="item-likes">Liked: {{dish.likes}}</span>
+ -->	   </div>
 	   <div class="item-options">	   	
-	   	<like-btn dish-id="dish.id" dish-likes="dish.likes"></like-btn>
+	   <!-- 	<like-btn dish-id="dish.id" dish-likes="dish.likes"></like-btn> -->
 	   	<span cart-btn dish="dish" type="'food'"></span>
 	   </div>
 	  </div>

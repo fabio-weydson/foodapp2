@@ -7,7 +7,7 @@ app
 	'$timeout',
 	'$ionicLoading', 
 	'appConfig', 
-	'dataservice', 
+	'dataservice',
 	function(
 		$scope, 
 		$stateParams, 
@@ -16,14 +16,22 @@ app
 		appConfig, 
 		dataservice
 		){
+
+		$scope.imgroot = appConfig.imgserver;
+
 		// analytics
 		if(typeof analytics !== 'undefined') {
-			window.analytics.trackView('contactCtrl');
+			//window.analytics.trackView('contactCtrl');
 		}
+		//settings.roSettigns($scope.contact);
+		//$scope.contact = dataservice.contact();
+		$scope.infos = {};
+		dataservice.settings().then(function(d){
+			 $scope.infos = d.data[0];
+		});
 
-		// 
-		$scope.estabelecimento = localStorage.getItem('estabelecimento');
-		$scope.contact = {};
+		
+				
 		$scope.contactRequest = function() {
 			dataservice.contact($scope.contact)
 			.then(function(d){

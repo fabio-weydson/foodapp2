@@ -2,10 +2,11 @@
 'use strict';
 app
 .constant('appConfig', {
-  titulo: 'Nome do APP',
-  apiEndPoint: 'http://ec2-52-21-107-249.compute-1.amazonaws.com/rococo/public/api/v1/',
-  imgserver : 'http://ec2-52-21-107-249.compute-1.amazonaws.com/rococo/public/images',
-  facebookPage : 'Nome do APP',
+  titulo: 'EasyResto',
+  //apiEndPoint: 'http://ec2-52-21-107-249.compute-1.amazonaws.com/rococo/public/api/v1/',
+  apiEndPoint: 'http://www.mondonew.com/easyresto/api/',
+  imgserver : 'http://www.mondonew.com/easyresto/media/',
+  facebookPage : 'EasyResto',
   dataServiceError: 'Algum erro aconteceu.',
   admob: {
     android: {
@@ -24,5 +25,6 @@ app
 })
 .value('curSymbol', {
 	symbol: 'R$',
-  symbol2: 'R$'
+  symbol2: 'R$',
+  estabelecimento: 'App'
 });

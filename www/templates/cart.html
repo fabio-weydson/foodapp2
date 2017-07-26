@@ -1,35 +1,35 @@
-<ion-view view-title="NomedoAPP" class="">
+<ion-view view-title="{{estabelecimento}}" class="">
 <ion-nav-buttons side="right">
   <button ng-if="cartItems.length > 0" ui-sref="app.checkout" class="button button-clear button-icon ion-card"></button>
 </ion-nav-buttons>
 <ion-content has-header="false" has-bouncing="false" class="contact-page">
 <div class="list cart-list">
     <div class="item" ng-if="cartItems.length < 1">
-      <p>Nenhum produto no pedido. <br/>Continuar <a ui-sref="app.dishitems">comprando</a></p>
+      <p>Nenhum produto no pedido. <br/>Continuar <a ui-sref="app.dishitems" ui-sref-opts="{reload: true, notify: true}">comprando</a></p>
     </div> 
     
     <div class="item item-thumbnail-left" 
           ng-repeat="item in cartItems">
-      <img ng-if="item.type=='food'"  ng-src="{{imgroot}}/foods/{{item.image}}" alt="">
-      <img ng-if="item.type=='package'" ng-src="{{imgroot}}/packages/{{item.image}}" alt="">
+    <!--   <img ng-if="item.type=='food'"  ng-src="{{imgroot}}/foods/{{item.image}}" alt="">
+      <img ng-if="item.type=='package'" ng-src="{{imgroot}}/packages/{{item.image}}" alt=""> -->
       <h2>
       <a ng-if="item.type=='food'" ui-sref="app.dishdetails({dishid:item.id})">
-      {{item.name}}
+       <b>{{item.name}}</b> ({{item.price | currency:curSymbol.symbol2}})
       </a>
       <a ng-if="item.type=='package'" ui-sref="app.package({packageid:item.id})">
-        {{item.name}}
+        {{item.name}} ({{item.price | currency:curSymbol.symbol2}})
       </a>
       </h2>
-      <p>{{item.price | currency:curSymbol.symbol}}</p>
-      <div class="item-meta">
+      <p>{{item.qty}} x {{item.qty * item.price  | currency:curSymbol.symbol2}}</p>
+   <!--    <div class="item-meta">
         <label class="item-input item-ipnut">
           <div class="input-label">
             Quantidade
           </div>
           <input type="number"  ng-model="item.qty" name="qty" class="item-qty">
         </label>
-        <label>Total : {{item.qty * item.price  | currency:curSymbol.symbol}}</label>
-      </div>      
+      
+      </div>       -->
       <div class="price">
         <button class="cart-remove-btn" ng-click="cartRemove($index,item.id)">
           <i class="ion ion-ios-close-empty"></i>
@@ -37,7 +37,9 @@
       </div>
     </div>
 </div>
-
+   <a  class="button button-block button-positive" ng-if="cartItems.length > 0"  ui-sref="app.dishitems">
+         Continuar comprando
+        </a>
 
 </ion-content>
 <footer>
@@ -45,7 +47,7 @@
 </footer>
 <ion-footer-bar align-title="left" class="footer-total">
   <!-- <div class="padding"> -->
-    <h1>Total: <span class="amount">{{totalAmount() | currency:curSymbol.symbol}}</span></h1>
+    <h1>Total: <span class="amount">{{totalAmount() | currency:curSymbol.symbol2}}</span></h1>
   <!-- </div> -->
   <div class="buttons">
     <a ng-if="cartItems.length > 0" ui-sref="app.checkout" class="button button-assertive checkout-btn">

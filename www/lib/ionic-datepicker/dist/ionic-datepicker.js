@@ -246,7 +246,7 @@ app.directive('ionicDatepicker', ['$ionicPopup', 'DatepickerService', function (
               }
             },
             {
-              text: 'Set',
+              text: 'Ok',
               type: 'button-positive',
               onTap: function (e) {
                 scope.date_selection.submitted = true;

@@ -11,6 +11,7 @@ app
             var estabelecimento = $scope.result.text.split(' - ');
             localStorage.setItem('estabelecimento', estabelecimento[0]);
             localStorage.setItem('id_estabelecimento', estabelecimento[1]);
+            localStorage.setItem('mesa_estabelecimento', estabelecimento[2]);
             $scope.estabelecimento = estabelecimento[1];
             $timeout(function(){
               $scope.createUser($scope.estabelecimento);
@@ -28,7 +29,7 @@ app
     
     // redirect if user present
     if ($scope.estabelecimento) {
-      $state.go('app.userPage');
+      $state.go('app.dishitems');
     }
     // else enter estabelecimento
     $scope.createUser = function(estabelecimento) {
@@ -42,6 +43,12 @@ app
       window.analytics.trackView('adduserCtrl');
     }
     $scope.$on('$ionicView.enter',function(){
+
+   var height =  window.screen.height-250;
+  $scope.mapheight = {
+    'bottom': "-" + height + "px"
+};
+   console.log(height);
      $ionicLoading.hide();
     });
     

@@ -26,6 +26,34 @@ app.factory('FCcart', ['dataservice', '$q', '$filter',
         return cartItems;
       },
 
+      removeCart: function (item, type) {
+        var current = $filter('filter')(cartItems, {id: item.id, type: type});
+
+        if (current.length>1) {
+          current[0].qty = parseInt(current[0].qty) - 1;
+        }
+        else {
+          // var cartItem = {
+          //   qty: 1,
+          //   id: item.id,
+          //   name: item.name,
+          //   image: item.image,
+          //   price: item.price,
+          //   type: type
+          // };
+          // cartItems.remove(cartItem);
+             angular.forEach(cartItems,function(i, v) {
+              if (v && v.id == item.id) {    
+              cartItems.splice(i, 1);    
+              }
+            });
+         
+          console.log(cartItems);
+        }
+        localStorage.setItem('cart', JSON.stringify(cartItems));
+        return cartItems;
+      },
+
       hasCart: function() {
         var hasCart = {};
         for (var i = 0; i < cartItems.length; i++) {

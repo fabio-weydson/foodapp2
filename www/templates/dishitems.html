@@ -7,10 +7,11 @@
 <ion-content has-bouncing="false" class="dish-list">	
 	<div class="list card dish-item" 
 			ng-repeat="dish in dishes | filterDish:dishfilter"
-			ng-class="{hascart : hasCart[dish.id]}">
-		<div class="item-title">
+			ng-class="{hascart : hasCart[dish.id]}" >
+
+		<div class="item-title">  <a ui-sref="app.dishdetails({dishid:dish.id})">
 	   	{{dish.name}}
-	   	<span class="cuisine">{{dish.type}}</span>
+	   	<span class="cuisine">Serve 2 pessoas{{dish.type}}</span></a>
 	  </div>
 	<!--   <div class="item item-image" ng-if="dish.image">
 	  	<a ui-sref="app.dishdetails({dishid:dish.id})">
@@ -20,11 +21,11 @@
 	  <div class="item item-footer">	   
 	   <div class="item-meta">
 	   <span class="item-price">{{dish.price | currency:curSymbol.symbol2}}</span>
-	   <span class="item-likes">Curtidas: {{dish.likes}}</span>
+	   <!-- <span class="item-likes">Curtidas: {{dish.likes}}</span> -->
 	   </div>
 	  <div class="item-options">	   	
-	  	<like-btn dish-id="dish.id" dish-likes="dish.likes"></like-btn>
-	  	<span cart-btn dish="dish" type="'food'"</span>
+	  	<!-- <like-btn dish-id="dish.id" dish-likes="dish.likes"></like-btn> -->
+	  	<span cart-btn dish="dish" type="'food'" ></span>
 	  </div>
 	  </div>	  
 	</div>

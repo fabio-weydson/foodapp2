@@ -1,14 +1,15 @@
-<ion-view view-title="NOMEDOAPP" class="">
+<ion-view view-title="{{estabelecimento}}" class="">
 <ion-content has-header="false" has-bouncing="false" class="contact-page">
 <div class="featured-image">
-	<img src="img/contact/banner.jpg" alt="" class="fullwidth-image">
+	<img ng-src="{{imgroot + infos.image}}" alt="" class="fullwidth-image">
 </div>
 <div class="content padding">
-	<h4>{{estabelecimento}}</h4>
+	<h4>{{infos.name}}</h4>
 	<dl class="address">
-		<dt>Endereço:</dt><dd>London</dd>
-		<dt>E-mail:</dt><dd>info@rococo.com</dd>
-		<dt>Telefone:</dt><dd>+111255553685</dd>
+		<dt>Endereço:</dt><dd>{{infos.address}}</dd>
+		<dt>E-mail:</dt><dd>{{infos.email}}</dd>
+		<dt>Telefone:</dt><dd><a ng-href="tel:{{infos.website}}" >{{infos.phone}}</a></dd>
+		<dt>Site:</dt><dd><a ng-href="{{infos.website}}" target="_blank">{{infos.website}}</a></dd>
 	</dl>	
 </div>
 <div class="form padding"> 

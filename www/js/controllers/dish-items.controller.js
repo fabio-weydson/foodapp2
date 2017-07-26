@@ -1,8 +1,8 @@
 /*global app */
 'use strict';
 app
-.controller('dishitemsCtrl', ['$scope', '$stateParams', '$ionicLoading', 'appConfig', 'dataservice', '$filter', 'FCcart', '$rootScope', '$ionicScrollDelegate', 'curSymbol',
-	function($scope, $stateParams, $ionicLoading, appConfig, dataservice, $filter, FCcart, $rootScope, $ionicScrollDelegate, curSymbol){
+.controller('dishitemsCtrl', ['$scope', '$stateParams', '$ionicLoading', 'appConfig', 'dataservice', '$filter', 'FCcart', '$rootScope', '$ionicScrollDelegate', 'curSymbol', '$interval',
+	function($scope, $stateParams, $ionicLoading, appConfig, dataservice, $filter, FCcart, $rootScope, $ionicScrollDelegate, curSymbol, $interval){
 
 		$scope.curSymbol = curSymbol;
 
@@ -11,6 +11,7 @@ app
 		}
 
 		$scope.imgroot = appConfig.imgserver;
+
 		dataservice.dishItems().then(function(d){
 			$scope.dishes = d.data;
 			$ionicLoading.hide();
@@ -52,6 +53,10 @@ app
 			localStorage.setItem('dishlike', likeddishes.toString());		
 		};
 		$scope.$on('$ionicView.enter',function(){
+			$interval(function() {	$scope.hasCart = FCcart.hasCart();
+			//console.log($scope.hasCart)
+		}, 3000);
+		
 			if($scope.cats) {
 				$ionicLoading.hide();
 			}			        
