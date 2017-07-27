@@ -1,7 +1,7 @@
 'use strict';
 angular.module('templates', []);
 var app = angular.module('restaurant',
-  ['ionic', 'templates', 'angularMoment', 'angular.filter', 'ionic-datepicker', 'ionic-timepicker', 'ngAnimate', 'ngCordova', 'ngCordova.plugins.push', 'AirBopClient']);
+  ['ionic', 'templates', 'angularMoment', 'angular.filter', 'ionic-datepicker', 'ionic-timepicker', 'ngAnimate', 'ngCordova']);
 
   app.run(function($ionicPlatform, $rootScope, $ionicLoading, settings, $state,$ionicPopup) {
     $ionicPlatform.ready(function() {
@@ -14,16 +14,6 @@ var app = angular.module('restaurant',
         StatusBar.styleDefault();
       }
 
-
-     var push = new Ionic.Push({
-      "debug": false
-    });
-
-    push.register(function(token) {
-      console.log("Device token:",token.token);
-       push.saveToken(token);  // persist the token in the Ionic Platform
-    });
-
       // google analytic integration
       if(typeof analytics !== 'undefined') {
           window.analytics.startTrackerWithId('UA-XXXXX-1');
@@ -33,7 +23,6 @@ var app = angular.module('restaurant',
     });
 
     settings.roSettigns();
-
 
     // loader event
     $rootScope.$on('$stateChangeStart',
