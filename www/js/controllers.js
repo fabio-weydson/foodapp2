@@ -31,14 +31,6 @@ app
 		$cordovaAppRate.navigateToAppStore();
 	};
 	
-	}, false);
-
-	$scope.$on('$ionicView.beforeEnter',function(){
-		$scope.cats = FCcart.dishCats().then(function(d){
-			$scope.cats= d;
-		});
-	});
-
 	  var googleSenderId = GOOGLE_SENDER_ID;
 
     var airbopClientParams = {
@@ -134,6 +126,16 @@ app
 
     $scope.$on('$cordovaPush:notificationReceived', notificationHandler);
 
+
+	}, false);
+
+	$scope.$on('$ionicView.beforeEnter',function(){
+		$scope.cats = FCcart.dishCats().then(function(d){
+			$scope.cats= d;
+		});
+	});
+
+	
 
 
 
