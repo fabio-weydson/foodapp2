@@ -85,12 +85,12 @@ app
 
     $scope.app.register = function() {
       if (typeof device === 'undefined') {
-        log('warn', 'No device plugin found. Install `cordova-plugin-device`.');
+        alert('No device plugin found. Install `cordova-plugin-device`.');
         return;
       }
 
       if ( $window.device.platform === 'Android' ){
-        log('info', 'Register android device');
+        alert('Register android device');
         $cordovaPush.register(androidConfig).then(successHandler, errorHandler);
       }
     };
