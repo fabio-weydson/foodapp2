@@ -15,13 +15,13 @@ app
  function(
  	$scope, 
  	$ionicModal, 
- 	$timeout, 
+ 	$timeout,  $window, 
  	$ionicTabsDelegate, 
  	$cordovaAppRate, 
  	FCcart, 
  	dataservice, 
  	$rootScope, 
- 	appConfig, $window, $cordovaPush, $airbopClient,
+ 	appConfig, $cordovaPush, $airbopClient,
       GOOGLE_SENDER_ID, AIRBOP_APP_KEY, AIRBOP_APP_SECRET
  	) {
 
@@ -33,6 +33,11 @@ app
 	
 	}, false);
 
+	$scope.$on('$ionicView.beforeEnter',function(){
+		$scope.cats = FCcart.dishCats().then(function(d){
+			$scope.cats= d;
+		});
+	});
 
 	  var googleSenderId = GOOGLE_SENDER_ID;
 
@@ -131,11 +136,7 @@ app
 
 
 
-	$scope.$on('$ionicView.beforeEnter',function(){
-		$scope.cats = FCcart.dishCats().then(function(d){
-			$scope.cats= d;
-		});
-	});
+
 
 	$scope.filterCat = [];
 	$scope.filterCattest = {};
