@@ -1,11 +1,8 @@
 'use strict';
 angular.module('templates', []);
-
 var app = angular.module('restaurant',
-  ['ionic', 'templates', 'angularMoment', 'angular.filter', 'ionic-datepicker', 'ionic-timepicker', 'ngAnimate', 'ngCordova', 'ngCordova.plugins.push', 'AirBopClient']);
-app.constant('GOOGLE_SENDER_ID', '127473960407')
-  .constant('AIRBOP_APP_KEY', 'eefdae5c-9554-46f4-a3de-9973901dce62')
-  .constant('AIRBOP_APP_SECRET', '47e1be1e6c4aab49da335343746cec2390cc08ca4bf22749b0b19b43f3173a67');
+  ['ionic', 'templates', 'angularMoment', 'angular.filter', 'ionic-datepicker', 'ionic-timepicker', 'ngAnimate', 'ngCordova']);
+
   app.run(function($ionicPlatform, $rootScope, $ionicLoading, settings, $state,$ionicPopup) {
     $ionicPlatform.ready(function() {
       if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -16,6 +13,40 @@ app.constant('GOOGLE_SENDER_ID', '127473960407')
         // org.apache.cordova.statusbar required
         StatusBar.styleDefault();
       }
+
+
+//FCMPlugin.getToken( successCallback(token), errorCallback(err) );
+//Keep in mind the function will return null if the token has not been established yet.
+FCMPlugin.getToken(
+    function (token) {
+        alert('Token: ' + token);
+        console.log('Token: ' + token);
+    },
+    function (err) {
+        alert('error retrieving token: ' + token);
+        console.log('error retrieving token: ' + err);
+    }
+);
+
+FCMPlugin.onNotification(
+    function(data){
+        if(data.wasTapped){
+//Notification was received on device tray and tapped by the user.
+            alert("Tapped: " +  JSON.stringify(data) );
+        }else{
+//Notification was received in foreground. Maybe the user needs to be notified.
+            alert("Not tapped: " + JSON.stringify(data) );
+        }
+    },
+    function(msg){
+        alert('onNotification callback successfully registered: ' + msg);
+        console.log('onNotification callback successfully registered: ' + msg);
+    },
+    function(err){
+        alert('Error registering onNotification callback: ' + err);
+        console.log('Error registering onNotification callback: ' + err);
+    }
+);
 
       // google analytic integration
       if(typeof analytics !== 'undefined') {
