@@ -67,11 +67,11 @@ app
 
 
     function successHandler(result) {
-      log('info', result);
+      alert(result);
     }
 
     function errorHandler(error) {
-      log('error', error);
+      alert(error);
     }
 
 
@@ -98,7 +98,7 @@ app
         }
       */
       if (notification.event === 'registered') {
-        log('debug', 'GCM REGISTRATION ID: ' + notification.regid);
+        alert('GCM REGISTRATION ID: ' + notification.regid);
         airbopClientParams.regid = notification.regid;
         $airbopClient.register(airbopClientParams).then(successHandler, errorHandler);
       }
