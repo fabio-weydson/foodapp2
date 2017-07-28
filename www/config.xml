@@ -38,6 +38,5 @@
   <plugin name="cordova-plugin-splashscreen"/>
   <plugin name="cordova-plugin-whitelist"/>
   <plugin name="ionic-plugin-keyboard"/>
-  <plugin name="cordova-plugin-firebase-messaging" />
 
 </widget>

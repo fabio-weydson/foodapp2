@@ -1,8 +1,8 @@
 /*global app */
 'use strict';
 app
-.controller('adduserCtrl', ['$scope', '$timeout', '$state', '$ionicLoading',  '$http',
-  function($scope, $timeout, $state,  $ionicLoading,$http){
+.controller('adduserCtrl', ['$scope', '$timeout', '$state', '$ionicLoading', 
+  function($scope, $timeout, $state,  $ionicLoading){
   
   $scope.estabelecimento = localStorage.getItem('estabelecimento');
   $scope.scan = function(estabelecimento) {
@@ -38,44 +38,6 @@ app
     };
 
     
-
-     $scope.formData = {};
-  $scope.send = function(){
-    //FCMPlugin.subscribeToTopic( topic, successCallback(msg), errorCallback(err) );
-    //All devices are subscribed automatically to 'all' and 'ios' or 'android' topic respectively.
-    //Must match the following regular expression: "[a-zA-Z0-9-_.~%]{1,900}".
-    FCMPlugin.subscribeToTopic('all');
-
-    $http({
-      method: "POST",
-      dataType: 'jsonp',
-      headers: {'Content-Type': 'application/json', 'Authorization': 'key=AIzaSyD9v1rbmMMAj3_KJv6woQvgOF2fSW22Ljs'},
-      url: "https://fcm.googleapis.com/fcm/send",
-      data: JSON.stringify(
-          {
-            "notification":{
-              "title":"Ionic FCM Starter",  //Any value
-              "body": $scope.formData.message,  //Any value
-              "sound": "default", //If you want notification sound
-              "click_action": "FCM_PLUGIN_ACTIVITY",  //Must be present for Android
-              "icon": "fcm_push_icon"  //White icon Android resource
-            },
-            "data":{
-              "param1":"value1",  //Any data to be retrieved in the notification callback
-              "param2": $scope.formData.message
-            },
-            "to":"/topics/all", //Topic or single device
-            "priority":"high", //If not set, notification won't be delivered on completely closed iOS app
-            "restricted_package_name":"" //Optional. Set for application filtering
-          }
-        )
-    }).success(function(data){
-      $scope.reply = $scope.formData.message;
-      alert("Success: " + JSON.stringify(data));
-    }).error(function(data){
-      alert("Error: " + JSON.stringify(data));
-    });
-  }
 
     if(typeof analytics !== 'undefined') {
       window.analytics.trackView('adduserCtrl');
