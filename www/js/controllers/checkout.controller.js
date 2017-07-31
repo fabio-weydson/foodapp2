@@ -32,7 +32,8 @@ app
 		$scope.$on('$ionicView.enter',function(){
 			$scope.cartItems = FCcart.getCartItems();
 			$scope.totalAmount = FCcart.getTotal();			
-			$scope.checkout.name = localStorage.getItem('username');
+			$scope.checkout.id_estabelecimento = localStorage.getItem('id_estabelecimento');
+			// $scope.checkout.name = localStorage.getItem('username');
 			$scope.checkout.cupon = localStorage.getItem('cupponCode');
 	     $scope.checkout.price = $scope.totalAmount;
 	     $scope.checkout.package_ids = [];

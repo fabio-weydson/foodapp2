@@ -14,6 +14,14 @@
 	</div>
 	<div class="padding">
 		<form name="checkoutform" no-validate ng-submit="actionOrder()">
+			  <label class="item item-input">
+		      <div class="input-label">
+		        CPF
+		      </div>
+		     <input type="text" name="cpf" 
+		     ng-model="checkout.cpf"
+		     required>
+		  </label>
 		  <label class="item item-input">
 		      <div class="input-label">
 		        Nome
@@ -38,26 +46,27 @@
 		     ng-pattern="/([0-9]{10})/"
 		     required>
 		  </label>
-		  <label class="item item-input">
+		<!--   <label class="item item-input">
 		      <div class="input-label">
 		        Cupon
 		      </div>
 		     <input type="text" name="cupon" 
 		     ng-model="checkout.cupon"
 		     >
-		  </label>
+		  </label> -->
+		
 		  <label class="item item-input">
 		      <div class="input-label">
-		        Endereço
+		        Observações
 		      </div>
-		     <input type="text" name="address" 
-		     ng-model="checkout.address"
-		     required>
+		     <textarea  name="observacoes" 
+		     ng-model="checkout.observacoes"
+		     required rows="4"></textarea>
 		  </label>
 		  <div class="padding">
 		  	<button 
 		  	class="button button-assertive" 		  	
-		  	ng-disabled="checkoutform.$invalid">Confirmar compra</button>
+		  	ng-disabled="checkoutform.$invalid">Confirmar pedido</button>
 		  	<div class="alert success  fade checkout-alert"  ng-bind="message" ng-class="{active:messageShow}"></div>
 		  </div>
 		 

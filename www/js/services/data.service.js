@@ -147,9 +147,13 @@ app
 
 	function _requestOrder (data) {
 		var dfd = $q.defer();
-		var url = appConfig.apiEndPoint+'carts';
-		$http.post(url, data)
+		var url = appConfig.apiEndPoint+'order_post';
+		$http.post(url, data, {
+    headers : {
+        'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
+    }})
 		.success(function(data){
+			console.log(data)
 			dfd.resolve(data);
 		})
 		.error(function(data){
