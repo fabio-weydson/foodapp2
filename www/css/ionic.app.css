@@ -9196,7 +9196,7 @@ img {
   position: absolute;
   bottom: 0;
   width: 100%;
-  background: #23262d;
+
   padding: 10px 0; }
 
 .walkthrough-title,
@@ -9211,9 +9211,9 @@ h1.walkthrough-title {
   margin-bottom: 20px; }
 
 .button-walkthrough {
-  background:#ff6d00;
-  border-color: #ff6d00;
-  color: #fff; }
+  background:#FFF;
+  border-color: #FFF;
+  color: #e26100; }
   .button-walkthrough:hover, .button-walkthrough:focus, .button-walkthrough.activated {
     background-color: #ff6d00;
     border-color: #ff6d00;
