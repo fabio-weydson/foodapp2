@@ -8000,15 +8000,15 @@ progress {
         box-shadow: none;
         color: #fff; }
   .button.button-positive, .button-positive.button-like {
-    border-color: #0c60ee;
-    background-color: #387ef5;
+      border-color: #5db9a4;
+    background-color: #5db9a4;
     color: #fff; }
     .button.button-positive:hover, .button-positive.button-like:hover {
       color: #fff;
       text-decoration: none; }
     .button.button-positive.active, .button-positive.active.button-like, .button.button-positive.activated, .button-positive.activated.button-like {
-      border-color: #0c60ee;
-      background-color: #0c60ee;
+      border-color: #50a08e;
+    background-color: #50a08e;
       box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
     .button.button-positive.button-clear, .button-positive.button-clear.button-like, .button-positive.button-like.button-like--clean, .button.button-positive.button-like--clean {
       border-color: transparent;
@@ -8054,15 +8054,15 @@ progress {
         box-shadow: none;
         color: #fff; }
   .button.button-assertive, .button-assertive.button-like {
-    border-color: #e42112;
-    background-color: #ef473a;
+    border-color: #ff6d00;
+    background-color: #ff6d00;
     color: #fff; }
     .button.button-assertive:hover, .button-assertive.button-like:hover {
       color: #fff;
       text-decoration: none; }
     .button.button-assertive.active, .button-assertive.active.button-like, .button.button-assertive.activated, .button-assertive.activated.button-like {
-      border-color: #e42112;
-      background-color: #e42112;
+      border-color: #ff6d00;
+      background-color: #ff6d00;
       box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
     .button.button-assertive.button-clear, .button-assertive.button-clear.button-like, .button-assertive.button-like.button-like--clean, .button.button-assertive.button-like--clean {
       border-color: transparent;
@@ -9167,7 +9167,7 @@ img {
     text-align: center; }
 
 .ion-walkthrough {
-  background: #23262d; }
+  background: #e26100; }
   .ion-walkthrough .scroll {
     position: absolute;
     left: 0;
@@ -9211,12 +9211,12 @@ h1.walkthrough-title {
   margin-bottom: 20px; }
 
 .button-walkthrough {
-  background: #f15142;
-  border-color: #f15142;
+  background:#ff6d00;
+  border-color: #ff6d00;
   color: #fff; }
   .button-walkthrough:hover, .button-walkthrough:focus, .button-walkthrough.activated {
-    background-color: #f66558;
-    border-color: #f66558;
+    background-color: #ff6d00;
+    border-color: #ff6d00;
     color: #fff; }
 
 .walkthrough-wrap .slider-slide {
@@ -9224,12 +9224,12 @@ h1.walkthrough-title {
 
 .walkthrough-wrap .slider-pager {
   z-index: 150;
-  bottom: 15%; }
+  bottom: 20%; }
   .walkthrough-wrap .slider-pager .slider-pager-page {
     color: #f15142; }
 
 .ionview-with-patbg {
-  background: url(../img/app-back.jpg) center top no-repeat;
+  background:#F8F8F8;
   background-size: cover; }
 
 .app-logo {
@@ -9248,7 +9248,7 @@ h1.walkthrough-title {
 
 .app-tag-text {
   font-size: 25px;
-  color: #cacaca;
+  color: #666;
   display: block;
   margin-top: 10px; }
 
@@ -9367,7 +9367,7 @@ h1.walkthrough-title {
     font-style: italic; }
 
 .dish-list {
-  background: #f0f0f0; }
+  background: #f3f3f3; }
 
 .dish-details,
 .offer-details {
@@ -9687,7 +9687,7 @@ h1.walkthrough-title {
 
 .footer-total {
   padding: 0;
-  background: #ef473a;
+  background: #ff6d00;
   justify-content: space-between; }
   .footer-total h1 {
     font-size: 20px;
@@ -9700,7 +9700,7 @@ h1.walkthrough-title {
     margin: 0;
     border: 0;
     line-height: 45px;
-    background: #D42F23; }
+    background:#FF9800; }
 
 .timepicker-field-group .ion-ios-clock-outline {
   position: absolute;

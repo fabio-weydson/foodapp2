@@ -15,12 +15,12 @@ var app = angular.module('restaurant',
       }
 
           // Enable to debug issues.
-  window.plugins.OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
+  //window.plugins.OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
 
   var notificationOpenedCallback = function(jsonData) {
     console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
   };
-
+  
   window.plugins.OneSignal
     .startInit("bd5c8c99-d161-45be-b48a-a62ff4ffb408")
     .handleNotificationOpened(notificationOpenedCallback)
@@ -31,6 +31,8 @@ var app = angular.module('restaurant',
         } else {
           console.log('Google Analytics Unavailable');
       }
+    
+
     });
 
     settings.roSettigns();

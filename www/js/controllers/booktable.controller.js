@@ -15,23 +15,23 @@ app
       return param;
     }
 
-    function epochParser(val, opType) {
-      if (val === null) {
-        return '00:00';
-      } else {
-        var meridian = ['AM', 'PM'];
+ function epochParser(val, opType) {
+        if (val === null) {
+          return '00:00';
+        } else {
+          var meridian = ['AM', 'PM'];
 
-        if (opType === 'time') {
-          var hours = parseInt(val / 3600);
-          var minutes = (val / 60) % 60;
-          var hoursRes = hours > 12 ? (hours - 12) : hours;
+          if (opType === 'time') {
+            var hours = parseInt(val / 3600);
+            var minutes = (val / 60) % 60;
+            var hoursRes = hours;
 
-          var currentMeridian = meridian[parseInt(hours / 12)];
+            var currentMeridian = meridian[parseInt(hours / 12)];
 
-          return (prependZero(hoursRes) + ':' + prependZero(minutes) + ' ' + currentMeridian);
+            return (prependZero(hoursRes) + ':' + prependZero(minutes));
+          }
         }
       }
-    }
 
     // Nearest half an slot.
     function nearestTime(hour, min){
@@ -64,10 +64,12 @@ app
     $scope.datePickerCallback = function (val) {
       if(typeof(val) !== 'undefined'){      
         $scope.book.booking_date = val.getFullYear() + '-' + val.getMonth() + '-' + val.getDate();
+        console.log($scope.book.booking_date)
       }
     };
 
-    var timePickerCallback = function (val) {     
+    var timePickerCallback = function (val) {  
+    console.log(epochParser(val,'time'))
       if (typeof (val) !== 'undefined') {
         $scope.book.booking_time = epochParser(val, 'time');
         $scope.slots.inputEpochTime = val;
@@ -91,14 +93,15 @@ app
     };
 
     $scope.booktablesubmit = function() {
-      $scope.book.confirmed= 'Não';
+      $scope.book.confirmed= '0';
       console.log($scope.book);
       dataservice.bookTable($scope.book)
         .then(function(data){
+         
           $scope.book.email = '';
           $scope.book.phone = '';
           $scope.messageShow = true;
-          $scope.message = 'Olá ' + data.data.name + ' ' + data.message;    
+          $scope.message = 'Olá ' + data.name + ' ' + data.message;    
           $timeout(function(){
             $scope.messageShow = false;
           },5000);    

@@ -133,6 +133,7 @@ app
 	}
 
 	function _bookTable (data) {
+
 		var dfd = $q.defer();
 		var url = appConfig.apiEndPoint+'bookings';
 		$http.post(url,data)

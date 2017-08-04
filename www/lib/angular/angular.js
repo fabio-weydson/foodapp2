@@ -10466,7 +10466,7 @@ function $LocaleProvider() {
 
       DATETIME_FORMATS: {
         MONTH:
-            'Janeiro,February,March,April,Maio,June,July,August,September,October,November,December'
+            'Janeiro,February,March,April,Maio,June,July,Agosto,September,October,November,December'
             .split(','),
         SHORTMONTH:  'Jan,Feb,Mar,Apr,Mai,Jun,Jul,Aug,Sep,Oct,Nov,Dec'.split(','),
         DAY: 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday'.split(','),

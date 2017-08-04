@@ -26,11 +26,11 @@ app.directive('standardTimeMeridian', function() {
           if (opType === 'time') {
             var hours = parseInt(val / 3600);
             var minutes = (val / 60) % 60;
-            var hoursRes = hours > 12 ? (hours - 12) : hours;
+            var hoursRes = hours;
 
             var currentMeridian = meridian[parseInt(hours / 12)];
 
-            return (prependZero(hoursRes) + ':' + prependZero(minutes) + ' ' + currentMeridian);
+            return (prependZero(hoursRes) + ':' + prependZero(minutes));
           }
         }
       }

@@ -19288,25 +19288,25 @@ function $LocaleProvider() {
             lgSize: 3
           }
         ],
-        CURRENCY_SYM: '$'
+        CURRENCY_SYM: 'R$'
       },
 
       DATETIME_FORMATS: {
         MONTH:
-            'January,February,March,April,May,June,July,August,September,October,November,December'
+            'Janeiro,Fevereiro,Março,Abril,Maio,Junho,Julho,Agosto,Setembro,Outubro,Novembro,Dezembro'
             .split(','),
-        SHORTMONTH:  'Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec'.split(','),
-        DAY: 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday'.split(','),
-        SHORTDAY: 'Sun,Mon,Tue,Wed,Thu,Fri,Sat'.split(','),
+        SHORTMONTH:  'Jan,Fev,Mar,Abr,Mai,Jun,Jul,Ago,Set,Out,Nov,Dez'.split(','),
+        DAY: 'Domingo,Segunda,Terça,Quarta,Quinta,Sexta,Sabado'.split(','),
+        SHORTDAY: 'Dom,Seg,Ter,Qua,Qui,Sex,Sab'.split(','),
         AMPMS: ['AM','PM'],
-        medium: 'MMM d, y h:mm:ss a',
-        'short': 'M/d/yy h:mm a',
-        fullDate: 'EEEE, MMMM d, y',
-        longDate: 'MMMM d, y',
-        mediumDate: 'MMM d, y',
-        shortDate: 'M/d/yy',
-        mediumTime: 'h:mm:ss a',
-        shortTime: 'h:mm a'
+        "fullDate": "EEEE, d 'de' MMMM 'de' y",
+    "longDate": "d 'de' MMMM 'de' y",
+    "medium": "d 'de' MMM 'de' y HH:mm:ss",
+    "mediumDate": "d 'de' MMM 'de' y",
+    "mediumTime": "HH:mm:ss",
+    "short": "dd/MM/yy HH:mm",
+    "shortDate": "dd/MM/yy",
+    "shortTime": "HH:mm"
       },
 
       pluralCat: function(num) {

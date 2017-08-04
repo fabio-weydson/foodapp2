@@ -249,6 +249,7 @@ app.directive('ionicDatepicker', ['$ionicPopup', 'DatepickerService', function (
               text: 'Set',
               type: 'button-positive',
               onTap: function (e) {
+                console.log('sadsd');
                 scope.date_selection.submitted = true;
 
                 if (scope.date_selection.selected === true) {

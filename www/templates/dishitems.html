@@ -4,14 +4,16 @@
   </button>
   <cartt-btn></cartt-btn>
 </ion-nav-buttons>
-<ion-content has-bouncing="false" class="dish-list">	
-	<div class="list card dish-item" 
+<ion-content has-bouncing="true" class="dish-list">
+
+	<div class="list card dish-item item-icon-right animated fadeInUp" 
 			ng-repeat="dish in dishes | filterDish:dishfilter"
 			ng-class="{hascart : hasCart[dish.id]}" >
 
 		<div class="item-title">  <a ui-sref="app.dishdetails({dishid:dish.id})">
 	   	{{dish.name}}
 	   	<span class="cuisine">Serve 2 pessoas{{dish.type}}</span></a>
+
 	  </div>
 	<!--   <div class="item item-image" ng-if="dish.image">
 	  	<a ui-sref="app.dishdetails({dishid:dish.id})">
@@ -27,7 +29,8 @@
 	  	<!-- <like-btn dish-id="dish.id" dish-likes="dish.likes"></like-btn> -->
 	  	<span cart-btn dish="dish" type="'food'" ></span>
 	  </div>
-	  </div>	  
+	  </div>	
+	    <i class="icon ion-ios-arrow-right"></i>  
 	</div>
 </ion-content>
 </ion-view>
