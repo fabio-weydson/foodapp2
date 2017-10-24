@@ -1,0 +1,25 @@
+<ion-nav-view>
+<ion-view view-title="Reservas" class="">
+<ion-nav-title>Reservas</ion-nav-title>
+<ion-nav-buttons side="right">
+  <button class="button button-icon iconic iconic-filter" menu-toggle="right">     
+  </button>
+</ion-nav-buttons>
+<ion-content ng-init="search = ''" has-header="true" has-bouncing="true" class="scroll-content ionic-scroll  has-header" >
+	<div class="reservas-list">
+<div class="item item-thumbnail-left item-text-wrap" ng-repeat="reserva in reservas">
+<a  ui-sref="app.reserva({reservaid:reserva.id})">
+
+   <div class="item item-image" >
+      <img src="http://www.freeiconspng.com/uploads/actions-ok-icon-26.png">
+    </div>
+    <h2>{{reserva.id}} - {{reserva.created_at}}</h2>
+   
+	   <p>{{reserva.created_at}}</p>
+ 
+</a>
+</div>
+</div>
+</ion-content>
+</ion-view>
+</ion-nav-view>

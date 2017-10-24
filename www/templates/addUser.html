@@ -9,12 +9,14 @@
 		<div class="col">
 			<!-- <img src="img/tag.png" alt="Tag">
 			<span class="app-tag-text">at your fingertips! </span> -->
-            <br/>  <br/>  <br/>
+            <br/>  <br/> 
         <button class="ion-qr-scanner button button-full button-assertive" ng-click="scan()">
         Escanear estabelecimento
         </button>
-        <br/>
-          <br/>  <br/>  <br/>
+       
+     <!--    <button ui-sref="app.booktable" class="button button-full button-assertive ion-ios-calendar-outline"> Reservar mesa</button> -->
+           <button ui-sref="app.estabelecimentos" class="button button-full button-assertive ion-ios-location"> Todos os restaurantes</button> 
+          <br/>
         <span class="app-tag-text">{{estabelecimento}}</span><br/>
         <span class="app-tag-text" ng-show="estabelecimento">Aguarde...</span>
 		</div>		

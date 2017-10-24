@@ -1,0 +1,29 @@
+<ion-nav-view>
+<ion-view view-title="Estabelecimentos" class="">
+<ion-nav-title>Estabelecimentos</ion-nav-title>
+<ion-nav-buttons side="right">
+  <button class="button button-icon iconic iconic-filter" menu-toggle="right">     
+  </button>
+</ion-nav-buttons>
+<ion-content ng-init="search = ''" has-header="true" has-bouncing="true" class="scroll-content ionic-scroll  has-header" >
+	<div class="estabelecimentos-list">
+		<div class="item search-box">
+			<input type="text" placeholder="Buscar/Filtrar" ng-model="search" />
+			<button class="button button-clear icon ion-android-search"></button>
+		</div>
+<div class="item item-thumbnail-left item-text-wrap" ng-repeat="estabelecimento in estabelecimentos | filter: { name: search }">
+<a  ui-sref="app.estabelecimento({estabelecimentoid:estabelecimento.id})">
+
+   <div class="item item-image" ng-if="estabelecimento.image">
+      <img src="{{imageroot}}{{estabelecimento.image}}">
+    </div>
+    <h2>{{estabelecimento.name}}</h2>
+   
+	   <p>{{estabelecimento.address}}</p>
+ 
+</a>
+</div>
+</div>
+</ion-content>
+</ion-view>
+</ion-nav-view>

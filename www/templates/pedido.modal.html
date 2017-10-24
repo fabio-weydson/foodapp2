@@ -1,0 +1,25 @@
+<ion-modal-view>
+        <ion-header-bar class="bar bar-header">
+          <h1 class="title">Pedido: 00009</h1>
+          <button class="button button-clear button-primary" ng-click="modal.hide()">Fechar</button>
+        </ion-header-bar>
+
+        <ion-content class="padding">
+        <h4>Detalhes do pedido</h4>
+          <div class="list">
+            <label class="item item-input">
+              <span class="input-label">First Name</span>
+              <input ng-model="newUser.firstName" type="text">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Last Name</span>
+              <input ng-model="newUser.lastName" type="text">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Email</span>
+              <input ng-model="newUser.email" type="text">
+            </label>
+            <button class="button button-full button-assertive" ng-click="createContact(newUser)">Cancelar este pedido</button>
+          </div>
+        </ion-content>
+      </ion-modal-view>

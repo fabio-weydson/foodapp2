@@ -1,10 +1,11 @@
+
 <ion-view view-title="{{estabelecimento}}" class="">
 <ion-nav-buttons side="right">
   <button class="button button-icon iconic iconic-filter" menu-toggle="right">     
   </button>
   <cartt-btn></cartt-btn>
 </ion-nav-buttons>
-<ion-content has-bouncing="true" class="dish-list">
+<ion-content has-bouncing="true"  has-header="true" has-bouncing="true" class="dish-list   has-header">
 
 	<div class="list card dish-item item-icon-right animated fadeInUp" 
 			ng-repeat="dish in dishes | filterDish:dishfilter"

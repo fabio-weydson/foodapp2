@@ -1,40 +1,35 @@
 /*global app */
 'use strict';
-app
-.controller('pedidosCtrl', ['$scope', 'appConfig', 'FCcart', '$ionicLoading', 'curSymbol',
-  function($scope, appConfig, FCcart, $ionicLoading, curSymbol){
-    $scope.curSymbol = curSymbol;
-    $scope.imgroot = appConfig.imgserver;
+app.controller('pedidosCtrl', [
+  '$scope', 
+  '$ionicLoading',
+  'dataservice', 
+  'appConfig', 
+  '$ionicModal',
+function(
+  $scope, 
+  $ionicLoading,
+  dataservice, 
+  appConfig,
+  $ionicModal
+  ){
+  dataservice.pedidos(1)
+  .then(function(d){
+    $scope.pedidos = d.data;
+    $ionicLoading.hide();
+  });
 
-    if(typeof analytics !== 'undefined') {
-      window.analytics.trackView('pedidosCtrl');
-    }
+ $ionicModal.fromTemplateUrl('templates/pedido.modal.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
 
-    // get data
-    $scope.$on('$ionicView.enter', function() {
-      $scope.cartItems = FCcart.getCartItems();
-    });
+  $scope.$on('$ionicView.enter',function(){
+    if($scope.pedidos) {
+      $ionicLoading.hide();
+    }             
+  }); 
 
-    $scope.totalAmount = function() {
-      return FCcart.getTotal();
-    };
-
-    $scope.$on('$ionicView.leave',function(){
-      FCcart.setCartItems($scope.cartItems);
-    });
-
-     // show Add
-    if(window.AdMob) {
-      //AdMob.showInterstitial();
-    } 
-
-    // remove from cart
-    $scope.cartRemove = function(index) {
-       $scope.cartItems.splice(index, 1);
-       FCcart.setCartItems($scope.cartItems);
-    };
-
-    $scope.$on('$ionicView.enter',function(){
-      $ionicLoading.hide();      
-    });
 }]);
+

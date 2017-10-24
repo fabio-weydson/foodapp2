@@ -50,6 +50,19 @@ app
 		return dfd.promise;		
 	}
 
+	function _estabelecimento (id) {
+		var dfd = $q.defer();
+		var url = appConfig.apiEndPoint+'setting_get/'+id;
+		$http.get(url)
+		.success(function(data){
+			dfd.resolve(data);			
+		})
+		.error(function(data){					
+					dfd.reject(data);
+		});
+		return dfd.promise;		
+	}
+
 	function _pageDetails (id) {
 		var dfd = $q.defer();
 		var url = appConfig.apiEndPoint+'/pages/'+id;
@@ -66,6 +79,19 @@ app
 	function _dishItems () {
 		var dfd = $q.defer();
 		var url = appConfig.apiEndPoint+'foods';
+		$http.get(url)
+		.success(function(data){
+			dfd.resolve(data);			
+		})
+		.error(function(data){					
+					dfd.reject(data);
+		});
+		return dfd.promise;		
+	}
+
+	function _pedidos (id) {
+		var dfd = $q.defer();
+		var url = appConfig.apiEndPoint+'order_get_all/'+id;
 		$http.get(url)
 		.success(function(data){
 			dfd.resolve(data);			
@@ -266,6 +292,7 @@ app
 		 specials : _specials,
 		 dishDetails : _dishDetails,
 		 dishItems : _dishItems,
+		 estabelecimento : _estabelecimento,
 		 pageDetails : _pageDetails,
 		 offerItems : _offerItems,
 		 offerDetails : _offerDetails,
@@ -276,6 +303,7 @@ app
 		 dishFilter : _dishFilter,
 		 contact : _contact,
 		 settings : _settings,
+		 pedidos : _pedidos,
 		 packages: _packages,
 		 package : _package
 	};

@@ -2,7 +2,8 @@
 angular.module('templates', []);
 var app = angular.module('restaurant',
   ['ionic', 'templates', 'angularMoment', 'angular.filter', 'ionic-datepicker', 'ionic-timepicker', 'ngAnimate', 'ngCordova']);
-
+app.value('convert', window.convert)
+app.value('geolib', window.geolib)
   app.run(function($ionicPlatform, $rootScope, $ionicLoading, settings, $state,$ionicPopup) {
     $ionicPlatform.ready(function() {
        navigator.splashscreen.hide();
@@ -100,6 +101,24 @@ var app = angular.module('restaurant',
           'menuContent': {
             templateUrl : 'templates/addUser.html',
             controller:'adduserCtrl'
+          }
+        }
+      })
+       .state('app.estabelecimentos', {
+        url: '/estabelecimentos',
+        views: {
+          'menuContent': {
+            templateUrl : 'templates/estabelecimentos.html',
+            controller:'estabelecimentosCtrl'
+          }
+        }
+      })
+       .state('app.estabelecimento', {
+        url: '/estabelecimento/:estabelecimentoid',
+        views: {
+          'menuContent': {
+            templateUrl : 'templates/estabelecimento.html',
+            controller:'estabelecimentoCtrl'
           }
         }
       })
