@@ -9,18 +9,19 @@
     </div> 
     
     <div class="item item-thumbnail-left" 
-          ng-repeat="item in cartItems">
+          ng-repeat="(key,item) in cartItems">
     <!--   <img ng-if="item.type=='food'"  ng-src="{{imgroot}}/foods/{{item.image}}" alt="">
       <img ng-if="item.type=='package'" ng-src="{{imgroot}}/packages/{{item.image}}" alt=""> -->
       <h2>
       <a ng-if="item.type=='food'" ui-sref="app.dishdetails({dishid:item.id})">
-       <b>{{item.name}}</b> ({{item.price | currency:curSymbol.symbol2}})
+       <b>{{item.PRA_Nome}} </b> ({{item.PRA_Preco | currency:curSymbol.symbol2}})
       </a>
       <a ng-if="item.type=='package'" ui-sref="app.package({packageid:item.id})">
-        {{item.name}} ({{item.price | currency:curSymbol.symbol2}})
+        {{item.name}} ({{item.PRA_Preco | currency:curSymbol.symbol2}})
       </a>
       </h2>
-      <p>{{item.qty}} x {{item.qty * item.price  | currency:curSymbol.symbol2}}</p>
+      <p>{{item.qty}} x {{item.qty * item.PRA_Preco  | currency:curSymbol.symbol2}}</p>
+      <input class="dish_obs" value="" ng-model="item.PRA_Observacao" ng-click="showPopup(item,key)"><i>Observações</i><!-- <input type="text" value="Observações" ng-change="update_obs(item)" ng-model="item.PRA_Observacao"> --></input>
    <!--    <div class="item-meta">
         <label class="item-input item-ipnut">
           <div class="input-label">
@@ -37,7 +38,7 @@
       </div>
     </div>
 </div>
-   <a  class="button button-block button-positive" ng-if="cartItems.length > 0"  ui-sref="app.dishitems">
+   <a  class="button button-block button-assertive" ng-if="cartItems.length > 0"  ui-sref="app.dishitems">
          Continuar comprando
         </a>
 
@@ -50,7 +51,7 @@
     <h1>Total: <span class="amount">{{totalAmount() | currency:curSymbol.symbol2}}</span></h1>
   <!-- </div> -->
   <div class="buttons">
-    <a ng-if="cartItems.length > 0" ui-sref="app.checkout" class="button button-assertive checkout-btn">
+    <a ng-if="cartItems.length > 0" ui-sref="app.checkout" class="button button-balanced checkout-btn button-with-icon ion-card">
       Fechar Pedido
     </a>
   </div>

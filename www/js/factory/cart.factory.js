@@ -1,23 +1,25 @@
 /*global app */
 'use strict';
-app.factory('FCcart', ['dataservice', '$q', '$filter', 
-  function(dataservice, $q, $filter){
+app.factory('FCcart', ['dataservice', '$q', '$filter',
+  function(dataservice, $q, $filter, FCcart){
     var cartItems = JSON.parse(localStorage.getItem('cart')) || [];
     var totalAmount = 0;
     return {
       addCart: function (item, type) {
-        var current = $filter('filter')(cartItems, {id: item.id, type: type});
+        var current = $filter('filter')(cartItems, {id: item.PRA_CodigoPrato, type: type});
 
         if (current.length) {
+
           current[0].qty = parseInt(current[0].qty) + 1;
         }
         else {
           var cartItem = {
             qty: 1,
-            id: item.id,
-            name: item.name,
-            image: item.image,
-            price: item.price,
+            id: item.PRA_CodigoPrato,
+            PRA_Nome: item.PRA_Nome,
+            PRA_Imagem: item.PRA_Imagem,
+            PRA_Preco: item.PRA_Preco,
+            PRA_Observacao: '',
             type: type
           };
           cartItems.push(cartItem);
@@ -27,30 +29,25 @@ app.factory('FCcart', ['dataservice', '$q', '$filter',
       },
 
       removeCart: function (item, type) {
-        var current = $filter('filter')(cartItems, {id: item.id, type: type});
-
-        if (current.length>1) {
-          current[0].qty = parseInt(current[0].qty) - 1;
-        }
-        else {
-          // var cartItem = {
-          //   qty: 1,
-          //   id: item.id,
-          //   name: item.name,
-          //   image: item.image,
-          //   price: item.price,
-          //   type: type
-          // };
-          // cartItems.remove(cartItem);
+        var current = $filter('filter')(cartItems, {id: item.PRA_CodigoPrato, type: type});
+        if (parseInt(current[0].qty)>=1) {
+            current[0].qty = parseInt(current[0].qty) - 1;
+            if(current[0].qty==0) {
+               angular.forEach(cartItems,function(i, v) {
+              if (i && i.id == item.PRA_CodigoPrato) {    
+                  cartItems.splice(v, 1);
+                }
+              });
+            }
+        } else {
              angular.forEach(cartItems,function(i, v) {
-              if (v && v.id == item.id) {    
-              cartItems.splice(i, 1);    
+              if (i && i.id == item.PRA_CodigoPrato) {    
+              cartItems.remove(v); 
               }
             });
-         
-          console.log(cartItems);
-        }
-        localStorage.setItem('cart', JSON.stringify(cartItems));
+                 }
+                 this.setCartItems(cartItems);
+        //localStorage.setItem('cart', JSON.stringify(cartItems));
         return cartItems;
       },
 
@@ -65,7 +62,7 @@ app.factory('FCcart', ['dataservice', '$q', '$filter',
       getTotal: function() {
         totalAmount = 0;
         angular.forEach(cartItems, function(item){
-          totalAmount += (item.price * item.qty);
+          totalAmount += (item.PRA_Preco * item.qty);
         });
         return totalAmount;
       },

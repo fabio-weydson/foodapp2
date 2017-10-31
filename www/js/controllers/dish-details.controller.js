@@ -14,9 +14,8 @@ app
     
     var id = $stateParams.dishid;
     dataservice.dishDetails(id).then(function(d){
-      $scope.dish = d.data;
+      $scope.dish = d.cardapio;
       $ionicLoading.hide();
-      console.log($scope.dish);
     });
 
     $scope.$on('$ionicView.enter',function(){

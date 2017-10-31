@@ -1,5 +1,4 @@
-
-<ion-view view-title="{{estabelecimento}}" class="">
+<ion-view view-title="{{appConfig.titulo}}" class="">
 <ion-nav-buttons side="right">
   <button class="button button-icon iconic iconic-filter" menu-toggle="right">     
   </button>
@@ -9,10 +8,10 @@
 
 	<div class="list card dish-item item-icon-right animated fadeInUp" 
 			ng-repeat="dish in dishes | filterDish:dishfilter"
-			ng-class="{hascart : hasCart[dish.id]}" >
+			ng-class="{hascart : hasCart[dish.PRA_CodigoPrato]}" >
 
-		<div class="item-title">  <a ui-sref="app.dishdetails({dishid:dish.id})">
-	   	{{dish.name}}
+		<div class="item-title">  <a ui-sref="app.dishdetails({dishid:dish.PRA_CodigoPrato})">
+	   	{{dish.PRA_Nome}} 
 	   	<span class="cuisine">Serve 2 pessoas{{dish.type}}</span></a>
 
 	  </div>
@@ -23,7 +22,7 @@
 	  </div> -->
 	  <div class="item item-footer">	   
 	   <div class="item-meta">
-	   <span class="item-price">{{dish.price | currency:curSymbol.symbol2}}</span>
+	   <span class="item-price">{{dish.PRA_Preco | currency:curSymbol.symbol2}}</span>
 	   <!-- <span class="item-likes">Curtidas: {{dish.likes}}</span> -->
 	   </div>
 	  <div class="item-options">	   	

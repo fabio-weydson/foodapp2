@@ -39,7 +39,7 @@ app
 
 	function _dishDetails (id) {
 		var dfd = $q.defer();
-		var url = appConfig.apiEndPoint+'food/'+id;
+		var url = appConfig.apiEndPoint+'getCardapios/?id_cardapio='+id;
 		$http.get(url)
 		.success(function(data){
 			dfd.resolve(data);			
@@ -78,7 +78,7 @@ app
 
 	function _dishItems () {
 		var dfd = $q.defer();
-		var url = appConfig.apiEndPoint+'foods';
+		var url = appConfig.apiEndPoint+'getCardapios/?id_empresa=1';
 		$http.get(url)
 		.success(function(data){
 			dfd.resolve(data);			
@@ -190,11 +190,12 @@ app
 	}
 
 	function _dishCategories () {
-		var url = appConfig.apiEndPoint+'categories';
+		var url = appConfig.apiEndPoint+'getCategorias/?id_empresa=1';
 		var dfd = $q.defer();
 		
 		$http.get(url)
 		.success(function(data){
+			
 			dfd.resolve(data);
 		})
 		.error(function(data){

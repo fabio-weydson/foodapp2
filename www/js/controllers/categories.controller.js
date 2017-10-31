@@ -14,7 +14,8 @@ function(
 	$scope.imageroot = appConfig.imgserver+'/categories/';
 	dataservice.dishCategories()
 	.then(function(d){
-		$scope.cats = d.data;
+		$scope.cats = d;
+		console.log(cats)
 		$ionicLoading.hide();
 	});
 

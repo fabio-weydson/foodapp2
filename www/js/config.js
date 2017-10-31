@@ -4,8 +4,8 @@ app
 .constant('appConfig', {
   titulo: 'EasyResto',
   //apiEndPoint: 'http://ec2-52-21-107-249.compute-1.amazonaws.com/rococo/public/api/v1/',
-  apiEndPoint: 'http://www.mondonew.com/easyresto/api/',
-  imgserver : 'http://www.mondonew.com/easyresto/media/',
+  apiEndPoint: 'http://easyresto.esy.es/api2/',
+  imgserver : 'http://easyresto.esy.es/media/',
   facebookPage : 'EasyResto',
   dataServiceError: 'Algum erro aconteceu.',
   admob: {

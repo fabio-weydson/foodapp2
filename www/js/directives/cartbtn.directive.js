@@ -4,10 +4,10 @@ app.directive('cartBtn', ['FCcart',
   function(FCcart){
     return {
       restrict: 'AE',
-      template: '<button class="button button-with-icon ion-android-remove-circle remove cart-btn" ng-click="removeItem()"'+
-       'ng-class="{\'selected\' : hasCart[dish.id] && hasCart[dish.id] > 0}"></button><span class="badger" ng-if="hasCart[dish.id] && hasCart[dish.id]">{{hasCart[dish.id]}}</span>'+
+      template: '<button class="button button-with-icon ion-android-remove-circle remove cart-btn" ng-show="hasCart[dish.PRA_CodigoPrato]" ng-click="removeItem()"'+
+       'ng-class="{\'selected\' : hasCart[dish.PRA_CodigoPrato] && hasCart[dish.PRA_CodigoPrato] > 0}"></button><span class="badger" ng-if="hasCart[dish.PRA_CodigoPrato]">{{hasCart[dish.PRA_CodigoPrato]}}</span>'+
        '<button class="button button-with-icon ion-android-add-circle cart-btn" ng-click="addItem()"'+
-       'ng-class="{\'selected\' : hasCart[dish.id] && hasCart[dish.id] > 0}"></button>',
+       'ng-class="{\'selected\' : hasCart[dish.PRA_CodigoPrato] && hasCart[dish.PRA_CodigoPrato] > 0}"></button>',
       scope: {
         dish: '=',
         type: '='

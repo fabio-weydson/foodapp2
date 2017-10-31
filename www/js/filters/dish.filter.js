@@ -2,7 +2,7 @@
 'use strict';
 app.filter('filterDish', function () {
   return function (items, cat) {
-
+    
     var filtered = [];
     if(typeof cat === 'undefined' || cat.length < 1){
       filtered = items;

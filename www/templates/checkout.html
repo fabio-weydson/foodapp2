@@ -5,7 +5,8 @@
 			<span class="badge badge-assertive">
 				{{cartItems.length}}
 			</span>
-			<span>Item <br> Selecionado</span>
+			<span ng-if="cartItems.length == 1">Item <br> Selecionado</span>
+			<span ng-if="cartItems.length > 1">Itens <br> Selecionados</span>
 		</a>
 		<div class="col-50">
 			<span class="total-amount">{{totalAmount | currency:curSymbol.symbol2}}</span>

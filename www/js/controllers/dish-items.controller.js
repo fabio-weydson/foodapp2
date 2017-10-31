@@ -13,19 +13,23 @@ app
 		$scope.imgroot = appConfig.imgserver;
 
 		dataservice.dishItems().then(function(d){
-			$scope.dishes = d.data;
-			$ionicLoading.hide();
+
+			$scope.dishes = d.cardapios;
+
+			//$ionicLoading.hide();
 		});
 
 		$scope.filterdata = {};
 		$scope.filterdata.catids = [];
+
 		$rootScope.$on('filter', function(e, f){
 			$scope.dishfilter = f;
-      $ionicScrollDelegate.scrollTop();
+      		$ionicScrollDelegate.scrollTop();
 		});
 
 		$scope.$on('$ionicView.beforeEnter',function(){
 			$scope.hasCart = FCcart.hasCart(); 
+			$ionicLoading.hide();
 		});
 
 		$scope.dishLike = function (foodid) {
@@ -57,8 +61,8 @@ app
 			//console.log($scope.hasCart)
 		}, 3000);
 		
-			if($scope.cats) {
-				$ionicLoading.hide();
-			}			        
+			// if($scope.cats) {
+			// 	$ionicLoading.hide();
+			// }			        
 		});	
 }]);

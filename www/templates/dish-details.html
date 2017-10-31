@@ -2,16 +2,17 @@
 <ion-content has-header="false" has-bouncing="false" class="dish-list dish-details">
 	<div class="list card dish-item">
 	
-	  <div class="item item-image" ng-if="dish.image">
-	    <img ng-src="{{imgroot}}/{{dish.image}}" alt="{{dish.image}}">
+	  <div class="item item-image" ng-if="dish.PRA_Imagem">
+	    <!-- <img ng-src="{{imgroot}}/{{dish.PRA_Imagem}}" alt="{{dish.PRA_Imagem}}"> -->
+	    <img ng-src="img/dishitems/dish-1.jpg">
 	  </div>
 	  	<div class="item-title">
-	   	<h4 ng-bind="dish.name">...</h4>
+	   	<h4 ng-bind="dish.PRA_Nome">...</h4>
 <!-- 	   	<span class="cuisine" ng-bind="dish.details"></span>
  -->	   </div>
 	  <div class="item item-footer">	   
 	   <div class="item-meta">
-	   <span class="item-price">{{dish.price | currency:curSymbol.symbol}}</span>
+	   <span class="item-price">{{dish.PRA_Preco | currency:curSymbol.symbol}}</span>
 <!-- 	   <span class="item-likes">Liked: {{dish.likes}}</span>
  -->	   </div>
 	   <div class="item-options">	   	
@@ -20,7 +21,7 @@
 	   </div>
 	  </div>
 	</div>
-	<div class="dish-content padding" ng-bind-html="dish.details">
+	<div class="dish-content padding" ng-bind-html="dish.PRA_Descricao">
 	</div>	
 </ion-content>
 </ion-view>
