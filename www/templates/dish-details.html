@@ -1,4 +1,7 @@
 <ion-view view-title="{{estabelecimento}}" class="">
+<ion-nav-buttons side="right">
+  <a href="#" ng-click="share()" class="button button-icon ion-android-share-alt"></a>
+</ion-nav-buttons>
 <ion-content has-header="false" has-bouncing="false" class="dish-list dish-details">
 	<div class="list card dish-item">
 	
@@ -22,6 +25,8 @@
 	  </div>
 	</div>
 	<div class="dish-content padding" ng-bind-html="dish.PRA_Descricao">
+	</div>	
+	<div class="dish-content padding"><em>Ultima atualização: {{dish.PRA_DataAtualizacao}}</em>
 	</div>	
 </ion-content>
 </ion-view>

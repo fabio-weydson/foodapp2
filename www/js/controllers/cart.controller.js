@@ -76,8 +76,18 @@ app
          buttons: [
            { text: 'Cancelar' },
            {
-             text: '<b>Adicionar</b>',
+             text: 'Nenhuma',
              type: 'button-assertive',
+             onTap: function(e) {
+                  $scope.data.nova_obs = null;
+                  $scope.update_obs(item,key);
+                  myPopup.close();
+                  e.preventDefault();
+             }
+           },
+           {
+             text: '<b>Adicionar</b>',
+             type: 'button-positive',
              onTap: function(e) {
               
                  $scope.update_obs(item,key);
