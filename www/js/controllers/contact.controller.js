@@ -27,7 +27,7 @@ app
 		//$scope.contact = dataservice.contact();
 		$scope.infos = {};
 		dataservice.settings().then(function(d){
-			 $scope.infos = d.data[0];
+			 $scope.infos = d.empresa;
 		});
 
 		

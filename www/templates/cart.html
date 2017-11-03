@@ -21,7 +21,7 @@
       </a>
       </h2>
       <p>{{item.qty}} x {{item.qty * item.PRA_Preco  | currency:curSymbol.symbol2}}</p>
-      <input class="dish_obs" value="" ng-model="item.PRA_Observacao" ng-click="showPopup(item,key)"><i>Observações</i><!-- <input type="text" value="Observações" ng-change="update_obs(item)" ng-model="item.PRA_Observacao"> --></input>
+      <a href="" class="dish_obs" ng-click="showPopup(item,key)"><i class="ion ion-edit"></i> <em ng-if="item.PRA_Observacao">{{item.PRA_Observacao | limitTo:20 }}...</em><em ng-hide="item.PRA_Observacao">Observações</em></a>
    <!--    <div class="item-meta">
         <label class="item-input item-ipnut">
           <div class="input-label">
@@ -43,6 +43,7 @@
         </a>
 
 </ion-content>
+
 <footer>
   
 </footer>

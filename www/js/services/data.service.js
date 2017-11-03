@@ -52,7 +52,7 @@ app
 
 	function _estabelecimento (id) {
 		var dfd = $q.defer();
-		var url = appConfig.apiEndPoint+'setting_get/'+id;
+		var url = appConfig.apiEndPoint+'getEstabelecimentos/'+id;
 		$http.get(url)
 		.success(function(data){
 			dfd.resolve(data);			
@@ -232,7 +232,7 @@ app
 
 	function _contact (data) {
 		var dfd = $q.defer();
-		var url = appConfig.apiEndPoint+'contacts';
+		var url = appConfig.apiEndPoint+'getEstabelecimentos/1';
 		$http.post(url,data)
 		.success(function(data){
 			dfd.resolve(data);
@@ -246,7 +246,7 @@ app
 
 	function _settings (data) {
 		var dfd = $q.defer();
-		var url = appConfig.apiEndPoint+'settings';
+		var url = appConfig.apiEndPoint+'getEstabelecimentos/1';
 		$http.get(url)
 		.success(function(data){
 			dfd.resolve(data);
