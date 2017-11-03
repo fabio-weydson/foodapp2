@@ -50,7 +50,6 @@ app
     };
 
     $scope.update_obs = function(item,key) {
-      console.log(item,key);
       item.PRA_Observacao = $scope.data.nova_obs;
       var cartItems = JSON.parse(localStorage.getItem('cart')) || [];
        angular.forEach(cartItems,function(i, v) {
