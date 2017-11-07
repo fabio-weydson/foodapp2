@@ -7,17 +7,18 @@
 </ion-nav-buttons>
 <ion-content ng-init="search = ''" has-header="true" has-bouncing="true" class="scroll-content ionic-scroll  has-header" >
 	<div class="pedidos-list">
-<div class="item item-thumbnail-left item-text-wrap" ng-repeat="pedido in pedidos">
-<a  ng-click="modal.show()">
+<div class="item card dish-item item-thumbnail-left item-text-wrap" ng-repeat="pedido in pedidos" >
 
-   <div class="item item-image" >
-      <img src="http://www.freeiconspng.com/uploads/actions-ok-icon-26.png">
+
+   <div class="item-image"  ng-click="open(pedido)">
+      <img src="img/icons/{{pedido.PED_Status}}.png">
     </div>
-    <h2>Pedido: {{pedido.id}} - {{pedido.estabelecimento}}</h2>
-   
-	   <p>Data: {{pedido.created_at}}</p>
+    <div class="item-title"><a href="#"  ng-click="open(pedido)">Pedido: {{pedido.PED_CodigoPedido}} - {{pedido.EMP_Nome}}</a>
+   	<div class="item item-footer"  ng-click="mopen(pedido)">
+	   <p><b>Situação: </b> {{statusPedidos[pedido.PED_Status]}}</p></div>
+	   <p><b>Data:</b> {{pedido.PED_DataCriacao | mydate | date:"MM/dd/yyyy 'às' H:mm'h' " }}</p>
+</div>
 
-</a>
 </div>
 </div>
 </ion-content>

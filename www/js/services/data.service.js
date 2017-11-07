@@ -91,7 +91,7 @@ app
 
 	function _pedidos (id) {
 		var dfd = $q.defer();
-		var url = appConfig.apiEndPoint+'order_get_all/'+id;
+		var url = appConfig.apiEndPoint+'getPedido/?id_cliente='+id;
 		$http.get(url)
 		.success(function(data){
 			dfd.resolve(data);			

@@ -16,6 +16,7 @@ app
 
     dataservice.dishDetails(id).then(function(d){
       $scope.dish = d.cardapio;
+      $scope.dish.PRA_DataAtualizacao = new Date($scope.dish.PRA_DataAtualizacao.replace(/-/g,"/"));
       $ionicLoading.hide();
     });
 

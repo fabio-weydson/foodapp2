@@ -26,7 +26,7 @@
 	</div>
 	<div class="dish-content padding" ng-bind-html="dish.PRA_Descricao">
 	</div>	
-	<div class="dish-content padding"><em>Ultima atualização: {{dish.PRA_DataAtualizacao |  date:'dd/MM/yyyy @ H:mm'}}</em>
+	<div class="dish-content padding"><small>Ultima atualização: {{dish.PRA_DataAtualizacao | date:"MM/dd/yyyy 'às' H:mm'h' " }}</small>
 	</div>	
 </ion-content>
 </ion-view>

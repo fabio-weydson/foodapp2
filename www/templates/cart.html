@@ -3,10 +3,13 @@
   <button ng-if="cartItems.length > 0" ui-sref="app.checkout" class="button button-clear button-icon ion-card"></button>
 </ion-nav-buttons>
 <ion-content has-header="false" has-bouncing="false" class="contact-page">
-<div class="list cart-list">
-    <div class="item" ng-if="cartItems.length < 1">
-      <p>Nenhum produto no pedido. <br/>Continuar <a ui-sref="app.dishitems" ui-sref-opts="{reload: true, notify: true}">comprando</a></p>
+  <div style="text-align:center" class="padding" ng-if="cartItems.length < 1">  <br/>  <br/>
+      <h3>Não existem itens no seu pedido.</h3>
+      <br/>
+      <a ui-sref="app.dishitems" class="button button-block button-assertive checkout-btn button-with-icon ion-android-list" ui-sref-opts="{reload: true, notify: true}"> Ir para o cardápio</a>
     </div> 
+<div class="list cart-list" ng-if="cartItems.length >= 1">
+
     
     <div class="item item-thumbnail-left" 
           ng-repeat="(key,item) in cartItems">
@@ -39,7 +42,7 @@
     </div>
 </div>
    <a  class="button button-block button-assertive" ng-if="cartItems.length > 0"  ui-sref="app.dishitems">
-         Continuar comprando
+         Voltar para o cardápio
         </a>
 
 </ion-content>

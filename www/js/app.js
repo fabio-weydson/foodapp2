@@ -11,10 +11,13 @@ app.value('geolib', window.geolib)
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
         cordova.plugins.Keyboard.disableScroll(true);
       }
+
       if (window.StatusBar) {
         // org.apache.cordova.statusbar required
         StatusBar.styleDefault();
       }
+
+      
 
           // Enable to debug issues.
   //window.plugins.OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});

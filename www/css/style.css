@@ -4887,3 +4887,11 @@ a.dish_obs {
 a.dish_obs i {
     color: #f9a955;
 }
+.pedidos-list .item-image {
+    width: 58px;
+    height: 58px;
+    border: 0;
+}
+.pedidos-list .item {
+    padding-left: 70px;
+}
