@@ -76,9 +76,7 @@
     </gap:config-file>
 
     <gap:config-file platform="android" parent="/manifest/application">
-     <uses-permission android:name="android.permission.CAMERA"/>
-      <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-      <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <activity android:launchMode="singleInstance" />
     </gap:config-file>
 
 </widget>
