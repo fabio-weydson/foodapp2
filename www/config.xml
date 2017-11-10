@@ -57,13 +57,7 @@
     <preference name="SplashScreenDelay" value="10000"/>
 
  <preference name="phonegap-version" value="cli-6.5.0" />
-    <platform name="android">
-      <config-file target="AndroidManifest.xml" parent="/*" mode="merge">
-        <uses-permission android:name="android.permission.CAMERA" />
-        <uses-feature android:name="android.hardware.camera" />
-        <uses-feature android:name="android.hardware.camera.autofocus" />
-    </config-file>
-    </platform>
+
 
 
   <plugin name="cordova-plugin-network-information" source="npm"/>
@@ -82,7 +76,9 @@
     </gap:config-file>
 
     <gap:config-file platform="android" parent="/manifest/application">
-    <activity android:launchMode="singleInstance" />
+     <uses-permission android:name="android.permission.CAMERA"/>
+      <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+      <uses-feature android:name="android.hardware.camera" android:required="false"/>
     </gap:config-file>
 
 </widget>
