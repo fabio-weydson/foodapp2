@@ -55,9 +55,14 @@
     <h1>Total: <span class="amount">{{totalAmount() | currency:curSymbol.symbol2}}</span></h1>
   <!-- </div> -->
   <div class="buttons">
-    <a ng-if="cartItems.length > 0" ui-sref="app.checkout" class="button button-balanced checkout-btn button-with-icon ion-card">
+
+    <a ng-if="cartItems.length > 0" ng-show="isRegistered" ui-sref="app.checkout" class="button button-balanced checkout-btn button-with-icon ion-card">
       Fechar Pedido
     </a>
+   <a ng-if="cartItems.length > 0" ng-show="!isRegistered" ui-sref="app.register" class="button button-balanced checkout-btn button-with-icon ion-card">
+      Fechar Pedido
+    </a>
+
   </div>
 </ion-footer-bar>
 </ion-view>

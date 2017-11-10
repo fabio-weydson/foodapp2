@@ -257,6 +257,19 @@ app
 		return dfd.promise;			
 	}
 
+	function _cliente (data) {
+		var dfd = $q.defer();
+		var url = appConfig.apiEndPoint+'getCliente/?id_cliente=1';
+		$http.get(url)
+		.success(function(data){
+			dfd.resolve(data);
+		})
+		.error(function(data){
+				dfd.reject(data);
+		});
+		return dfd.promise;			
+	}
+
 
 
 	function _packages () {
@@ -303,6 +316,7 @@ app
 		 getCategories : _getCategories,
 		 dishFilter : _dishFilter,
 		 contact : _contact,
+		 cliente : _cliente,
 		 settings : _settings,
 		 pedidos : _pedidos,
 		 packages: _packages,

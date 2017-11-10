@@ -17,7 +17,7 @@ app.value('geolib', window.geolib)
         StatusBar.styleDefault();
       }
 
-      
+
 
           // Enable to debug issues.
   //window.plugins.OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
@@ -248,6 +248,15 @@ app.value('geolib', window.geolib)
           'menuContent': {
             templateUrl : 'templates/checkout.html',
             controller : 'checkoutCtrl'
+          }
+        }
+      })
+       .state('app.register',{
+        url : '/register',
+        views : {
+          'menuContent': {
+            templateUrl : 'templates/register.html',
+            controller : 'registerCtrl'
           }
         }
       })

@@ -27,6 +27,8 @@ app
     if(window.AdMob) {
       //AdMob.showInterstitial();
     } 
+
+    $scope.isRegistered =  localStorage.getItem('id_cliente');
  
     // remove from cart
     $scope.cartRemove = function(index) {

@@ -1,5 +1,6 @@
 <ion-view view-title="{{estabelecimento}}" class="">
 <ion-content has-header="false" has-bouncing="false" class="confirm-order">
+
 	<div class="row info-bar">
 		<a class="col-50 cart-item-count" ui-sref="app.cart">
 			<span class="badge badge-assertive">
@@ -13,6 +14,10 @@
 			<span>Subtotal </span>
 		</div>
 	</div>
+	  <div style="text-align:center" class="padding" ng-if="!user" >  <br/>  <br/>
+      <b>Como este é o seu primeiro pedido. Por favor realize seu cadastro em nossa plataforma, é rapidinho :) </b>
+      <br/>
+    </div> 
 	<div class="padding">
 		<form name="checkoutform" no-validate ng-submit="actionOrder()">
 			  <label class="item item-input">
@@ -55,19 +60,11 @@
 		     ng-model="checkout.cupon"
 		     >
 		  </label> -->
-		
-		  <label class="item item-input">
-		      <div class="input-label">
-		        Observações
-		      </div>
-		     <textarea  name="observacoes" 
-		     ng-model="checkout.observacoes"
-		     required rows="4"></textarea>
-		  </label>
+	
 		  <div class="padding">
 		  	<button 
 		  	class="button button-assertive" 		  	
-		  	ng-disabled="checkoutform.$invalid">Confirmar pedido</button>
+		  	ng-disabled="checkoutform.$invalid">Realizar cadastro</button>
 		  	<div class="alert success  fade checkout-alert"  ng-bind="message" ng-class="{active:messageShow}"></div>
 		  </div>
 		 
