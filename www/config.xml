@@ -55,7 +55,7 @@
     <preference name="AutoHideSplashScreen" value="false" />
     <!-- Do not auto hide splash on Android -->
     <preference name="SplashScreenDelay" value="10000"/>
-    
+
  <preference name="phonegap-version" value="cli-6.5.0" />
     <platform name="android">
       <config-file target="AndroidManifest.xml" parent="/*" mode="merge">
@@ -64,7 +64,7 @@
         <uses-feature android:name="android.hardware.camera.autofocus" />
     </config-file>
     </platform>
-`
+
 
   <plugin name="cordova-plugin-network-information" source="npm"/>
   <plugin name="cordova-plugin-email" source="npm"/>
