@@ -26,6 +26,7 @@
 
 <icon src="icon.png" />
 <splash src="splash.png" /> 
+  <preference name="android-build-tool" value="gradle" />
 
   <preference name="SplashScreen" value="screen"/>
   <preference name="SplashScreenDelay" value="3000"/>
@@ -55,16 +56,24 @@
     <!-- Do not auto hide splash on Android -->
     <preference name="SplashScreenDelay" value="10000"/>
 
+    <platform name="android">
+      <config-file target="AndroidManifest.xml" parent="/*" mode="merge">
+        <uses-permission android:name="android.permission.CAMERA" />
+        <uses-feature android:name="android.hardware.camera" />
+        <uses-feature android:name="android.hardware.camera.autofocus" />
+    </config-file>
+    </platform>
+`
 
-  <plugin name="cordova-plugin-network-information"/>
-  <plugin name="cordova-plugin-email"/>
-  <plugin name="cordova-plugin-camera"/>
-  <plugin name="cordova-plugin-barcodescanner"/>
+  <plugin name="cordova-plugin-network-information" source="npm"/>
+  <plugin name="cordova-plugin-email" source="npm"/>
+  <plugin name="cordova-plugin-camera" source="npm"/>
+  <plugin name="cordova-plugin-barcodescanner" source="npm"/>
   <plugin name="cordova-plugin-device"/>
-  <plugin name="cordova-plugin-inappbrowser"/>
-  <plugin name="cordova-plugin-splashscreen"/>
-  <plugin name="cordova-plugin-whitelist"/>
-  <plugin name="ionic-plugin-keyboard"/>
+  <plugin name="cordova-plugin-inappbrowser" source="npm"/>
+  <plugin name="cordova-plugin-splashscreen" source="npm"/>
+  <plugin name="cordova-plugin-whitelist" source="npm"/>
+  <plugin name="ionic-plugin-keyboard" source="npm"/>
   <plugin name="onesignal-cordova-plugin"  source="npm" />
 
 </widget>
