@@ -14,8 +14,8 @@
   <access launch-external="yes" origin="maps:*"/>
   <access launch-external="yes" origin="geo:*"/>
   <platform name="android">
-    <preference name="android-minSdkVersion" value="26" />
-    <preference name="android-targetSdkVersion" value="26" />
+    <preference name="android-minSdkVersion" value="14" />
+    <preference name="android-targetSdkVersion" value="23" />
   </platform>
   <feature name="InAppBrowser">
     <param name="ios-package" value="CDVInAppBrowser"/>
@@ -56,27 +56,16 @@
     <!-- Do not auto hide splash on Android -->
     <preference name="SplashScreenDelay" value="10000"/>
 
- <preference name="phonegap-version" value="cli-6.5.0" />
 
-
-
-  <plugin name="cordova-plugin-network-information" source="npm"/>
-  <plugin name="cordova-plugin-email" source="npm"/>
-  <plugin name="cordova-plugin-camera" source="npm"/>
-  <plugin name="cordova-plugin-barcodescanner" source="npm"/>
+  <plugin name="cordova-plugin-network-information"/>
+  <plugin name="cordova-plugin-email"/>
+  <plugin name="cordova-plugin-camera"/>
+  <plugin name="cordova-plugin-barcodescanner"/>
   <plugin name="cordova-plugin-device"/>
-  <plugin name="cordova-plugin-inappbrowser" source="npm"/>
-  <plugin name="cordova-plugin-splashscreen" source="npm"/>
-  <plugin name="cordova-plugin-whitelist" />
-  <plugin name="ionic-plugin-keyboard" />
+  <plugin name="cordova-plugin-inappbrowser"/>
+  <plugin name="cordova-plugin-splashscreen"/>
+  <plugin name="cordova-plugin-whitelist"/>
+  <plugin name="ionic-plugin-keyboard"/>
   <plugin name="onesignal-cordova-plugin"  source="npm" />
-
-   <gap:config-file platform="ios" parent="CFBundleShortVersionString">
-    <string>1007</string>
-    </gap:config-file>
-
-    <gap:config-file platform="android" parent="/manifest/application">
-    <activity android:launchMode="singleInstance" />
-    </gap:config-file>
 
 </widget>
