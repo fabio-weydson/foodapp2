@@ -64,6 +64,7 @@
 
     <gap:plugin name="cordova-plugin-whitelist" source="npm" version="1.0.0" />
     <gap:plugin name="cordova-plugin-camera" source="npm"/>
+    <gap:plugin name="cordova-plugin-barcodescanner" source="npm"/>
     <gap:plugin name="cordova-plugin-device" source="npm"/> 
     <gap:plugin name="cordova-plugin-file" source="npm" /> 
     <gap:plugin name="cordova-plugin-x-toast" source="npm" /> 
