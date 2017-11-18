@@ -23,7 +23,7 @@
   <feature name="NetworkStatus">
     <param name="android-package" value="org.apache.cordova.NetworkManager" />
   </feature>
-
+ <preference name="phonegap-version" value="cli-6.5.0"  />
 <icon src="icon.png" />
 <splash src="splash.png" /> 
 
