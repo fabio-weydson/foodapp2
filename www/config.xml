@@ -23,9 +23,11 @@
   <feature name="NetworkStatus">
     <param name="android-package" value="org.apache.cordova.NetworkManager" />
   </feature>
- <preference name="phonegap-version" value="cli-6.5.0"  />
+
 <icon src="icon.png" />
 <splash src="splash.png" /> 
+ <preference name="phonegap-version" value="cli-6.5.0"  />
+  <preference name="android-build-tool" value="gradle" />
 
   <preference name="SplashScreen" value="screen"/>
   <preference name="SplashScreenDelay" value="3000"/>
