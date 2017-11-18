@@ -60,11 +60,17 @@
   <plugin name="cordova-plugin-network-information"/>
   <plugin name="cordova-plugin-email"/>
   <plugin name="cordova-plugin-camera"/>
-  <plugin name="cordova-plugin-barcodescanner"/>
+  <plugin name="cordova-plugin-barcodescanner" version="0.7.1"/>
   <plugin name="cordova-plugin-device"/>
   <plugin name="cordova-plugin-inappbrowser"/>
   <plugin name="cordova-plugin-splashscreen"/>
   <plugin name="cordova-plugin-whitelist"/>
   <plugin name="ionic-plugin-keyboard"/>
+
+  <config-file mode="merge" parent="/*" target="AndroidManifest.xml">
+    <uses-permission android:name="android.permission.CAMERA" xmlns:android="http://schemas.android.com/apk/res/android" />
+    <uses-feature android:name="android.hardware.camera" xmlns:android="http://schemas.android.com/apk/res/android" />
+    <uses-feature android:name="android.hardware.camera.autofocus" xmlns:android="http://schemas.android.com/apk/res/android" />
+</config-file>
 
 </widget>
