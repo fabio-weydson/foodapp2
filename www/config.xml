@@ -66,6 +66,6 @@
   <plugin name="cordova-plugin-splashscreen"/>
   <plugin name="cordova-plugin-whitelist"/>
   <plugin name="ionic-plugin-keyboard"/>
-  <plugin name="onesignal-cordova-plugin"  source="npm" />
+  <plugin name="onesignal-cordova-plugin" version="2.1.2" source="npm" />
 
 </widget>
