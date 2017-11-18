@@ -5,7 +5,7 @@ app
   titulo: 'EasyResto',
   //apiEndPoint: 'http://ec2-52-21-107-249.compute-1.amazonaws.com/rococo/public/api/v1/',
   apiEndPoint: 'http://easyresto.esy.es/api2/',
-  imgserver : 'http://easyresto.esy.es/media/',
+  imgroot : 'http://easyresto.esy.es/assets/media',
   facebookPage : 'EasyResto',
   dataServiceError: 'Algum erro aconteceu.',
   admob: {

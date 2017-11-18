@@ -5,25 +5,33 @@
   <button class="button button-icon iconic iconic-filter" menu-toggle="right">     
   </button>
 </ion-nav-buttons>
-<ion-content ng-init="search = ''" has-header="true" has-bouncing="true" class="scroll-content ionic-scroll  has-header" >
-	<div class="estabelecimentos-list">
+<ion-content ng-init="search = ''" has-header="true" has-bouncing="true" class="estabelecimento-list scroll-content ionic-scroll  has-header" >
+	
 		<div class="item search-box">
 			<input type="text" placeholder="Buscar/Filtrar" ng-model="search" />
 			<button class="button button-clear icon ion-android-search"></button>
 		</div>
-<div class="item item-thumbnail-left item-text-wrap" ng-repeat="estabelecimento in estabelecimentos | filter: { name: search }">
-<a  ui-sref="app.estabelecimento({estabelecimentoid:estabelecimento.id})">
 
-   <div class="item item-image" ng-if="estabelecimento.image">
-      <img src="{{imageroot}}{{estabelecimento.image}}">
-    </div>
-    <h2>{{estabelecimento.name}}</h2>
-   
-	   <p>{{estabelecimento.address}}</p>
- 
-</a>
-</div>
-</div>
+
+
+<div class="list card estabelecimento-item item-thumbnail-left item-icon-right animated fadeInUp" ng-repeat="estabelecimento in estabelecimentos | filter: { EMP_Nome: search }">
+
+
+		<div class="item-title">  <a ui-sref="app.estabelecimento({estabelecimentoid:estabelecimento.EMP_CodigoEmpresa})">
+	   {{estabelecimento.EMP_Nome}}</a>
+
+	  </div>
+	<div class="item item-image" ng-if="estabelecimento.EMP_Logo">
+	  	<a ui-sref="app.estabelecimento({estabelecimentoid:estabelecimento.EMP_CodigoEmpresa})">
+	    <img class="item-image-full" ng-src="http://easyresto.esy.es/assets/media/{{estabelecimento.EMP_Logo}}" alt="http://easyresto.esy.es/assets/media/{{estabelecimento.EMP_Logo}}">
+	    </a>
+	  </div>
+	  <div class="item item-footer">	   
+	   <div class="item-meta">
+{{estabelecimento.EMP_Rua}}, {{estabelecimento.EMP_Bairro}}<br/>{{estabelecimento.EMP_Cidade}}	   </div>
+	  </div>	
+	    <i class="icon ion-ios-arrow-right"></i>  
+	</div>
 </ion-content>
 </ion-view>
 </ion-nav-view>

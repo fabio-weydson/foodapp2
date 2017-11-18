@@ -11,13 +11,13 @@ function(
 	dataservice, 
 	appConfig
 	){
-	console.log('sdsds');
 	$scope.imageroot = appConfig.imgserver;
-	dataservice.settings()
+	dataservice.estabelecimento()
 
 	.then(function(d){
-		$scope.estabelecimentos = d.data;
+		$scope.estabelecimentos = d.empresa;
 		$ionicLoading.hide();
+		console.log($scope.estabelecimentos)
 		//getDistances($scope.estabelecimentos);
 	})
 

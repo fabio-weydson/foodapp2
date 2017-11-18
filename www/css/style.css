@@ -4895,3 +4895,24 @@ a.dish_obs i {
 .pedidos-list .item {
     padding-left: 70px;
 }
+.estabelecimento-item {
+    position: relative;
+    margin: 0;
+    box-shadow: 2px 2px 2px #ccc;
+    border-radius: 0;
+    min-height: 100px;
+    border-bottom: 1px solid #f4f4f4;
+}
+.estabelecimento-item .item-title a {
+    color: #000;
+    margin: 13px 0px 5px 0;
+    display: block;
+}
+
+.estabelecimento-item .item.item-footer {
+    background: none;
+    border: 0;
+    font-size: 11px;
+    line-height: initial;
+    padding: 0;
+}

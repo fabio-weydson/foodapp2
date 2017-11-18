@@ -11,7 +11,7 @@ app
 
     dataservice.estabelecimento(id).then(function(d){
    
-      $scope.estabelecimento = d.data;
+      $scope.estabelecimento = d.empresa;
       $ionicLoading.hide();
     
     });

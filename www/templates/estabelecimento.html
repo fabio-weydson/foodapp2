@@ -2,11 +2,11 @@
 <ion-content has-header="false" has-bouncing="false" class="dish-list dish-details">
 	<div class="list card dish-item">
 	
-	  <div class="item item-image" ng-if="estabelecimento.image">
-	    <img ng-src="{{imgroot}}/{{estabelecimento.image}}" alt="{{estabelecimento.image}}">
+	  <div class="item item-image" ng-if="estabelecimento.EMP_Logo">
+	    <img ng-src="http://easyresto.esy.es/assets/media/{{estabelecimento.EMP_Logo}}" alt="http://easyresto.esy.es/assets/media/{{estabelecimento.EMP_Logo}}">
 	  </div>
 	  	<div class="item-title">
-	   	<h4 ng-bind="estabelecimento.name">...</h4>
+	   	<h4 ng-bind="estabelecimento.EMP_Nome">...</h4>
 <!-- 	   	<span class="cuisine" ng-bind="dish.details"></span>
  -->	   </div>
 	  <div class="item item-footer">	   
@@ -22,10 +22,10 @@
 	</div>
 	<div class="content padding">
 	<dl class="address">
-		<dt>Endereço:</dt><dd>{{estabelecimento.address}}</dd>
-		<dt>E-mail:</dt><dd>{{estabelecimento.email}}</dd>
-		<dt>Telefone:</dt><dd><a ng-href="tel:{{estabelecimento.website}}" >{{estabelecimento.phone}}</a></dd>
-		<dt>Site:</dt><dd><a ng-href="{{estabelecimento.website}}" target="_blank">{{estabelecimento.website}}</a></dd>
+		<dt>Endereço:</dt><dd>{{estabelecimento.EMP_Rua}}, {{estabelecimento.EMP_Bairro}} - {{estabelecimento.EMP_Cidade}}/{{estabelecimento.EMP_UF}}	  </dd>
+		<dt>E-mail:</dt><dd>{{estabelecimento.EMP_Email}}</dd>
+		<dt>Telefone:</dt><dd><a ng-href="tel:{{estabelecimento.EMP_Telefone}}" >{{estabelecimento.EMP_Telefone}}</a></dd>
+		<dt>Site:</dt><dd><a ng-href="{{estabelecimento.EMP_Site}}" target="_blank">{{estabelecimento.EMP_Site}}</a></dd>
 	</dl>	
 </div>
 </ion-content>

@@ -51,6 +51,9 @@ app
 	}
 
 	function _estabelecimento (id) {
+		if(!id) {
+			id = "";
+		}
 		var dfd = $q.defer();
 		var url = appConfig.apiEndPoint+'getEstabelecimentos/'+id;
 		$http.get(url)
