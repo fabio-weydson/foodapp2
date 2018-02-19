@@ -22,7 +22,8 @@ app
 	){
 		
 		$scope.curSymbol = curSymbol;
-
+		$scope.desejoRegistrar = false;
+		$scope.desejoLogar = true;
 		//
 		if(typeof analytics !== 'undefined') {
 			window.analytics.trackView('checkoutCtrl');

@@ -9,15 +9,11 @@ app
 		if(typeof analytics !== 'undefined') {
 			window.analytics.trackView('dishitemsCtrl');
 		}
-
+		$scope.categoria_atual = 99;
 		$scope.imgroot = appConfig.imgserver;
 
-		dataservice.dishItems().then(function(d){
 
-			$scope.dishes = d.cardapios;
 
-			//$ionicLoading.hide();
-		});
 
 		$scope.filterdata = {};
 		$scope.filterdata.catids = [];
@@ -28,9 +24,39 @@ app
 		});
 
 		$scope.$on('$ionicView.beforeEnter',function(){
-			$scope.hasCart = FCcart.hasCart(); 
+
+			$interval(function() {	
+				$scope.hasCart = null;
+				$scope.hasCart = FCcart.hasCart();
+			
+		}, 3000);
+		dataservice.dishItems().then(function(d){
+			$scope.dishes = d.cardapios;
+
+		}, function(){
+			console.log('dei ruim')
+		});
+
+		dataservice.dishCategories()
+		.then(function(d){
+			$scope.cats = d.categorias;
+		});
 			$ionicLoading.hide();
 		});
+
+		
+		$scope.categoria_titulo = function(cat){
+			console.log(cat)
+			// var categ  = cat-1;
+			// if($scope.categoria_atual!=categ) {
+			// 	var nomecat = $scope.cats[categ].CATP_Nome + $scope.categoria_atual + '_' + categ;
+			// 	$scope.categoria_atual=categ;
+			// 	return nomecat;
+			// } else {
+			// 	return $scope.categoria_atual + '_' + categ;
+			// }
+		}
+
 
 		$scope.dishLike = function (foodid) {
 
@@ -56,13 +82,10 @@ app
 			}			
 			localStorage.setItem('dishlike', likeddishes.toString());		
 		};
-		$scope.$on('$ionicView.enter',function(){
-			$interval(function() {	$scope.hasCart = FCcart.hasCart();
-			//console.log($scope.hasCart)
-		}, 3000);
-		
-			// if($scope.cats) {
-			// 	$ionicLoading.hide();
-			// }			        
-		});	
+
+		$scope.getImage = function(obj){
+		    return 'http://easyresto.esy.es/assets/media/'+obj.replace('.jpg', '_thumb.jpg')
+		  };
+
+
 }]);

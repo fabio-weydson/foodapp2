@@ -17,7 +17,11 @@ app
     });
 
     $scope.$on('$ionicView.enter',function(){
+      $scope.$on('$ionicView.enter',function(){
+    if($scope.estabelecimento) {
       $ionicLoading.hide();
+    }             
+  }); 
     });
 
 }]);

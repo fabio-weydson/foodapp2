@@ -1,31 +1,33 @@
-<ion-view view-title="{{estabelecimento}}" class="">
+<ion-view view-title="{{dish.PRA_Nome}}" class="">
 <ion-nav-buttons side="right">
-  <a href="#" ng-click="share()" class="button button-icon ion-android-share-alt"></a>
+ <cartt-btn></cartt-btn>
 </ion-nav-buttons>
-<ion-content has-header="false" has-bouncing="false" class="dish-list dish-details">
+<ion-content has-bouncing="false" class="dish-list dish-details">
 	<div class="list card dish-item">
 	
-	  <div class="item item-image" ng-if="dish.PRA_Imagem">
-	    <!-- <img ng-src="{{imgroot}}/{{dish.PRA_Imagem}}" alt="{{dish.PRA_Imagem}}"> -->
-	    <img ng-src="img/dishitems/dish-1.jpg">
+	    <ion-slide-box loop="true" ng-if="dish.Imagens[0]">
+		  <ion-slide ng-repeat="imagem in dish.Imagens">
+		     <img ng-src="{{getImage(imagem.PRAI_Imagem)}}">
+		  </ion-slide>
+		</ion-slide-box>
+  <div class="dish-options">	
+  <button>Compartilhar</button>   	
+	  	<span cart-btn dish="dish" type="'food'" ></span>
 	  </div>
-	  	<div class="item-title">
-	   	<h4 ng-bind="dish.PRA_Nome">...</h4>
-<!-- 	   	<span class="cuisine" ng-bind="dish.details"></span>
- -->	   </div>
+	  <ul class="props">
+	  	<li class="fisrt"><label>Preço</label>{{dish.PRA_Preco | currency:curSymbol.symbol}}</li>
+	  	<li class="second"><label>Rendimento</label><span ng-if="dish.PRA_Rendimento == 1 || dish.PRA_Rendimento == 0">{{dish.PRA_Peso}} {{dish.MED_Sigla}}</span>
+	   	<span ng-if="dish.PRA_Rendimento > 1">Serve {{dish.PRA_Rendimento}} Pessoas ({{dish.PRA_Peso}}{{dish.MED_Sigla}})</span></li>
+	  	<li class="third"><label>Estimativa</label>10~20 min</li>
+	  	<li class="fourth"><label>Preço</label></li>
+	  </ul>
+	 <div class="separator"><span>Mais informações</span></div>
 	  <div class="item item-footer">	   
-	   <div class="item-meta">
-	   <span class="item-price">{{dish.PRA_Preco | currency:curSymbol.symbol}}</span>
-<!-- 	   <span class="item-likes">Liked: {{dish.likes}}</span>
- -->	   </div>
-	   <div class="item-options">	   	
-	   <!-- 	<like-btn dish-id="dish.id" dish-likes="dish.likes"></like-btn> -->
-	   	<span cart-btn dish="dish" type="'food'"></span>
-	   </div>
+		<div class="dish-content padding" ng-bind-html="dish.PRA_Descricao">
+	</div>
 	  </div>
 	</div>
-	<div class="dish-content padding" ng-bind-html="dish.PRA_Descricao">
-	</div>	
+	
 	<div class="dish-content padding"><small>Ultima atualização: {{dish.PRA_DataAtualizacao | date:"MM/dd/yyyy 'às' H:mm'h' " }}</small>
 	</div>	
 </ion-content>

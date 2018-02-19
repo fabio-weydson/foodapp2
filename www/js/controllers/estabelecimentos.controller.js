@@ -5,11 +5,15 @@ app.controller('estabelecimentosCtrl', [
 	'$ionicLoading',
 	'dataservice', 
 	'appConfig', 
+	'distanceService',
+	'_',
 function(
 	$scope, 
 	$ionicLoading,
 	dataservice, 
-	appConfig
+	appConfig,
+	distanceService,
+	_
 	){
 	$scope.imageroot = appConfig.imgserver;
 	dataservice.estabelecimento()
@@ -17,22 +21,17 @@ function(
 	.then(function(d){
 		$scope.estabelecimentos = d.empresa;
 		$ionicLoading.hide();
-		console.log($scope.estabelecimentos)
-		//getDistances($scope.estabelecimentos);
+		$scope.getDistances($scope.estabelecimentos)		
 	})
 
-	function getDistances(businesses) {
-
-			var origins = _.map(businesses, function(business) {
-				console.log(business.latlong)
-				return business.latlong;
-			})
-			distanceService.getDistancesToOrigins(origins).then(function(distances) {
-				for (var i = 0; i < businesses.length; i++) {
-					businesses[i].distance = distances[i];
-				}
+	$scope.getDistances = function(businesses) {
+			distanceService.getDistancesToOrigins(businesses).then(function(distances) {
+				for (var i = businesses.length - 1; i >= 0; i--) {
+					$scope.estabelecimentos[i].EMP_Distancia = distances[i];
+				};
 			});
-		}
+
+	}
 
 	$scope.$on('$ionicView.enter',function(){
 		if($scope.estabelecimentos) {

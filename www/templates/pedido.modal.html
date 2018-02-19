@@ -1,25 +1,38 @@
-<ion-modal-view>
-        <ion-header-bar class="bar bar-header">
-          <h1 class="title">Pedido: 00009</h1>
-          <button class="button button-clear button-primary" ng-click="modal.hide()">Fechar</button>
+<ion-modal-view class="modalpedido">
+        <ion-header-bar class="bar bar-assertive">
+          <h1 class="title">Detalhes do pedido</h1>
+         
+          <button class="button button-icon iconic ion-android-close" ng-click="modal.hide()"></button>
+        
         </ion-header-bar>
 
-        <ion-content class="padding">
-        <h4>Detalhes do pedido s{{scope.modal.pedido.PED_CodigoPedido}}</h4>
-          <div class="list">
-            <label class="item item-input">
-              <span class="input-label">First Name</span>
-              <input ng-model="newUser.firstName" type="text">
+        <ion-content class="padding" has-bouncing="false">
+        <span class="pedidoid">Pedido Número: {{modal.pedido.PED_CodigoPedido}}</span><br>
+          <div class="list itens">
+            <label class="item" ng-repeat="item in modal.pedido.pratos" >
+              <span class="titulo">{{item.PEDD_Quantidade}} x {{item.PRA_Nome}}</span> 
+              <span class="preco">{{item.PEDD_Quantidade * item.PRA_Preco | currency : "R$" : 2}}</span></label>
+          </div>
+           <div class="list total">
+            <label class="item" >
+              <span class="total">Total</span> 
+              <span class="total2">R${{modal.pedido.PED_Preco}}</span>
             </label>
-            <label class="item item-input">
-              <span class="input-label">Last Name</span>
-              <input ng-model="newUser.lastName" type="text">
+            <label class="item" >
+              <span class="total">Status</span> 
+              <span class="total2">{{statusPedidos[modal.pedido.PED_Status]}}</span>
             </label>
-            <label class="item item-input">
-              <span class="input-label">Email</span>
-              <input ng-model="newUser.email" type="text">
-            </label>
-            <button class="button button-full button-assertive" ng-click="createContact(newUser)">Cancelar este pedido</button>
+          </div>
+          <div class="text-center">
+          <button ng-if="modal.pedido.PED_Status == 0" class="button button-assertive"  ng-click="cancelaPedido(modal.pedido.PED_CodigoPedido)">Cancelar este pedido</button>
+            <button ng-if="modal.pedido.PED_Status != 4" class="button button-positive" ng-click="modal.hide()" ui-sref="app.pagamento({pedidoid:modal.pedido.PED_CodigoPedido})"><i class="iconic ion-card"></i> Realizar pagamento</button>
           </div>
         </ion-content>
       </ion-modal-view>
+<!--
+0 - Pedido Recebido
+1 - Pedido em Preparo
+2 - Pedido Pronto
+3 - Pedido Cancelado 
+4 - Pedido Finalizado 
+-->

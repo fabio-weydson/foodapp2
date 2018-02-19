@@ -40,10 +40,10 @@
         </button>
       </div>
     </div>
-</div>
-   <a  class="button button-block button-assertive" ng-if="cartItems.length > 0"  ui-sref="app.dishitems">
+</div>  <br><br><div class="text-center">
+   <button  class="button  button-assertive" ng-if="cartItems.length > 0"  ui-sref="app.dishitems">
          Voltar para o cardápio
-        </a>
+        </button></div>
 
 </ion-content>
 
@@ -56,12 +56,10 @@
   <!-- </div> -->
   <div class="buttons">
 
-    <a ng-if="cartItems.length > 0" ng-show="isRegistered" ui-sref="app.checkout" class="button button-balanced checkout-btn button-with-icon ion-card">
-      Fechar Pedido
+    <a ng-if="cartItems.length > 0" ng-click="FecharPedido()" class="button button-balanced checkout-btn button-with-icon ion-card">
+      Enviar Pedido
     </a>
-   <a ng-if="cartItems.length > 0" ng-show="!isRegistered" ui-sref="app.register" class="button button-balanced checkout-btn button-with-icon ion-card">
-      Fechar Pedido
-    </a>
+
 
   </div>
 </ion-footer-bar>

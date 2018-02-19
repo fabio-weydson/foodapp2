@@ -1,9 +1,10 @@
 /*global app */
 'use strict';
-app.factory('FCcart', ['dataservice', '$q', '$filter',
-  function(dataservice, $q, $filter, FCcart){
+app.factory('FCcart', ['dataservice', '$q', '$state', '$filter', 'FCUser', '$ionicLoading', 
+  function(dataservice, $q, $state, $filter, FCUser, $ionicLoading, FCcart){
     var cartItems = JSON.parse(localStorage.getItem('cart')) || [];
     var totalAmount = 0;
+    var ms = this;
     return {
       addCart: function (item, type) {
         var current = $filter('filter')(cartItems, {id: item.PRA_CodigoPrato, type: type});
@@ -52,6 +53,7 @@ app.factory('FCcart', ['dataservice', '$q', '$filter',
       },
 
       hasCart: function() {
+
         var hasCart = {};
         for (var i = 0; i < cartItems.length; i++) {
           hasCart[cartItems[i].id] = cartItems[i].qty;
@@ -85,9 +87,36 @@ app.factory('FCcart', ['dataservice', '$q', '$filter',
       dishCats: function() {
         var dfd = $q.defer();
         dataservice.dishCategories().then(function(d){
-          dfd.resolve(d.data);
+          dfd.resolve(d.categorias);
         });
         return dfd.promise;
-      }
+      },
+      
+      FecharPedido: function() {
+        var pedido = {};
+        var cartItems = this.getCartItems();
+        var UserData =  FCUser.isLogged();
+      
+          $ionicLoading.show(); 
+          pedido['CLI_CodigoCliente'] = UserData[0].CLI_CodigoCliente; 
+          pedido['CLI_CodigoEmpresa'] = 1;
+          pedido['CodigoMesa'] = 3;
+          pedido['Subtotal'] = this.getTotal();
+          pedido['cartItems'] = cartItems; 
+          dataservice.requestOrder(pedido).then(function(d){
+            if(d.result==true) {
+              var pedidorealizado = d;
+              localStorage.setItem('last_order', JSON.stringify(pedidorealizado.dados));
+              localStorage.setItem('cart',null);
+              $state.go('app.pedidorealizado');
+              $ionicLoading.hide(); 
+            } else {
+              alert("Falha na requisicao");
+              $ionicLoading.hide(); 
+            }
+           
+          });
+      
+    }
     };
 }]);

@@ -19,7 +19,10 @@ app
       $scope.dish.PRA_DataAtualizacao = new Date($scope.dish.PRA_DataAtualizacao.replace(/-/g,"/"));
       $ionicLoading.hide();
     });
-
+    
+    $scope.getImage = function(obj){
+        return 'http://easyresto.esy.es/assets/media/'+obj.replace('.jpg', '_thumb.jpg')
+      };
     $scope.share = function() {
         var options = {
             subject : '',

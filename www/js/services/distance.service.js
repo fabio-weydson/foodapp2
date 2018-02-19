@@ -2,7 +2,7 @@
 	'use strict';
 
 	angular
-		.module('restaurant', [])
+		.module('restaurant')
 		.factory('distanceService', distanceService);
 
 	distanceService.$inject = ['$cordovaGeolocation', 'convert', 'geolib', '_'];
@@ -38,10 +38,10 @@
 				origin = '37.798297,-122.417951';
 			}
 
-			origin = origin.split(',');
+			// origin = origin.split(',');
 			origin = {
-				latitude: origin[0],
-				longitude: origin[1]
+				latitude: origin.EMP_Lat,
+				longitude: origin.EMP_Long
 			};
 
 			var distance = geolib.getDistance({

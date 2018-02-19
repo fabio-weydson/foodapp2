@@ -1,9 +1,11 @@
 'use strict';
 angular.module('templates', []);
 var app = angular.module('restaurant',
-  ['ionic', 'templates', 'angularMoment', 'angular.filter', 'ionic-datepicker', 'ionic-timepicker', 'ngAnimate', 'ngCordova']);
+  ['ionic', 'underscore', 'templates', 'angularMoment', 'angular.filter', 'ionic-datepicker', 'ionic-timepicker', 'ngAnimate', 'ngCordova', 'angular-cache']);
 app.value('convert', window.convert)
 app.value('geolib', window.geolib)
+app.value('_', window._)
+
   app.run(function($ionicPlatform, $rootScope, $ionicLoading, settings, $state,$ionicPopup) {
     $ionicPlatform.ready(function() {
        navigator.splashscreen.hide();
@@ -252,12 +254,15 @@ app.value('geolib', window.geolib)
         }
       })
        .state('app.register',{
-        url : '/register',
+        url : '/register:checkout',
         views : {
           'menuContent': {
             templateUrl : 'templates/register.html',
             controller : 'registerCtrl'
           }
+          ,params: {
+        checkout: null
+    }
         }
       })
       .state('app.thankyou',{
@@ -265,6 +270,24 @@ app.value('geolib', window.geolib)
         views : {
           'menuContent': {
             templateUrl : 'templates/thank-you.html'
+          }
+        }
+      })
+       .state('app.pedidorealizado',{
+        url : '/pedidorealizado',
+        views : {
+          'menuContent': {
+            templateUrl : 'templates/pedido-realizado.html',
+            controller : 'pedidorealizadoCtrl'
+          }
+        }
+      })
+       .state('app.pagamento', {
+        url: '/pagamento/:pedidoid',
+        views: {
+          'menuContent': {
+            templateUrl : 'templates/pagamento.html',
+            controller : 'pagamentoCtrl'
           }
         }
       })
@@ -276,16 +299,7 @@ app.value('geolib', window.geolib)
               controller : 'walkthrough'
             }
           }
-        })
-  .state('app.admob', {
-    url: '/admob',
-    views: {
-      'menuContent': {
-        templateUrl : 'templates/admob.html',
-        controller : 'AdCtrl'
-      }
-    }
-  });
+        } );
 
         // if none of the above states are matched, use this as the fallback
     var appFirstRun = localStorage.getItem('appFirstRun');
@@ -293,10 +307,9 @@ app.value('geolib', window.geolib)
     var estabelecimento = localStorage.getItem('estabelecimento');
 
     if(appFirstRun === 'true'){
-      var username = localStorage.getItem('username');
+      var user =  JSON.parse(localStorage.getItem('user')) || [];
       // redirect if user present
-      if (username) {
-        // $state.go('app.userPage');
+      if (user[0]['CLI_CodigoCliente']) {
         $urlRouterProvider.otherwise('/app/dishitems');
       }
       else {
@@ -312,15 +325,14 @@ app.value('geolib', window.geolib)
     // configration for app rate
     document.addEventListener('deviceready', function () {
 
-
-      // var prefs = {
-      //   language: 'en',
-      //   appName: 'Talking Tom Cat 2',
-      //   iosURL: '123456',
-      //   androidURL: 'market://details?id=com.outfit7.talkingtom2free',
-      //   windowsURL: 'ms-windows-store:Review?name=<...>'
-      // };
-
-     // $cordovaAppRateProvider.setPreferences(prefs);
     }, false);
-  });
+  })
+
+var underscore = angular.module('underscore', []);
+underscore.factory('_', ['$window', function($window) {
+  return $window._; // assumes underscore has already been loaded on the page
+}]);
+
+  //  .config(function (CacheFactoryProvider) {
+  //   angular.extend(CacheFactoryProvider.defaults, { maxAge: 24 * 60 * 60 * 1000,  storageMode: 'localStorage'  });
+  // })

@@ -7,28 +7,38 @@ app.controller('pedidosCtrl', [
   'appConfig', 
   '$ionicModal',
   '$filter',
+  '$state', 
 function(
   $scope, 
   $ionicLoading,
   dataservice, 
   appConfig,
   $ionicModal,
-  $filter
+  $filter,
+  $state
   ){
-  dataservice.pedidos(1)
+  dataservice.pedidos(2)
   .then(function(d){
     $scope.pedidos = d.pedidos;
-    $scope.statusPedidos = ["Pendente", "Em preparação", "Concluído", "Saiu para entrega"];
+    $scope.statusPedidos = ["Pendente", "Em preparação", "Pronto", "Cancelado", "Finalizado"];
     $ionicLoading.hide();
   });
 
-  $scope.converteData = function(data){
-    console.log(data)
-    var novadata = new Date(data.replace(/-/g,"/"));
-    return $filter('date')(novadata, "dd/MM/yyyy");
+  $ionicModal.fromTemplateUrl('templates/pedido.modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+  }).then(function(modal) {
+      $scope.modal = modal;
+  });
+
+  $scope.open = function(item) { 
+    $scope.modal.pedido = item;
+    $scope.modal.show();
   }
 
-  $scope.open = function(item) { $scope.modal=$ionicModal.fromTemplate(''+item.PED_CodigoPedido+' ',{ animation: 'slide-in-up'}); $scope.modal.open(); }
+  $scope.pagarPedido = function(id){
+     $state.go('app.pagamento', {id: id});
+  }
 
   $scope.$on('$ionicView.enter',function(){
     if($scope.pedidos) {
@@ -37,4 +47,12 @@ function(
   }); 
 
 }]);
+/*
+0 - Pedido Recebido
+1 - Pedido em Preparo
+2 - Pedido Pronto
+3 - Pedido Cancelado 
+4 - Pedido Finalizado 
+*/
+
 

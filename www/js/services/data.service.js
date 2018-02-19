@@ -5,11 +5,17 @@ app
 	'$http', 
 	'$q', 
 	'appConfig', 
+	'CacheFactory',
 	function(
 	$http, 
 	$q, 
-	appConfig
+	appConfig,
+	CacheFactory
 	){
+			 var appCache;
+		  if (!CacheFactory.get('appCache')) {
+		    appCache = CacheFactory('appCache');
+		  }
 	function _slideView () {
 		var dfd = $q.defer();
 		var url = appConfig.apiEndPoint+'foods/sliders';
@@ -80,11 +86,14 @@ app
 	}
 
 	function _dishItems () {
+		 // Check to make sure the cache doesn't already exist
+	
 		var dfd = $q.defer();
 		var url = appConfig.apiEndPoint+'getCardapios/?id_empresa=1';
 		$http.get(url)
 		.success(function(data){
-			dfd.resolve(data);			
+			dfd.resolve(data);		
+			 appCache.put('/empresas/2/cardapio', data.cardapios);	
 		})
 		.error(function(data){					
 					dfd.reject(data);
@@ -177,17 +186,32 @@ app
 
 	function _requestOrder (data) {
 		var dfd = $q.defer();
-		var url = appConfig.apiEndPoint+'order_post';
+		var url = appConfig.apiEndPoint+'adicionarPedido';
 		$http.post(url, data, {
     headers : {
-        'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
+        'Content-Type' : 'multipart/form-data-encoded'
     }})
 		.success(function(data){
-			console.log(data)
 			dfd.resolve(data);
 		})
 		.error(function(data){
-					dfd.reject(data);
+			dfd.reject(data);
+		});
+		return dfd.promise;		
+	}
+
+	function _login (data) {
+		var dfd = $q.defer();
+		var url = appConfig.apiEndPoint+'logon';
+		$http.post(url, data,{
+    headers : {
+        'Content-Type' : 'multipart/form-data-encoded'
+    }})
+		.success(function(data){
+			dfd.resolve(data);
+		})
+		.error(function(data){
+			dfd.reject(data);
 		});
 		return dfd.promise;		
 	}
@@ -198,7 +222,6 @@ app
 		
 		$http.get(url)
 		.success(function(data){
-			
 			dfd.resolve(data);
 		})
 		.error(function(data){
@@ -315,6 +338,7 @@ app
 		 offerDetails : _offerDetails,
 		 bookTable : _bookTable,
 		 requestOrder : _requestOrder,
+		 login : _login,
 		 dishCategories : _dishCategories,
 		 getCategories : _getCategories,
 		 dishFilter : _dishFilter,
@@ -330,16 +354,17 @@ app
 .service('settings', ['$http', '$q', 'appConfig', 'curSymbol', function($http, $q, appConfig, curSymbol){
 	function _roSettigns() {
 		var dfd = $q.defer();
-		var url = appConfig.apiEndPoint+'settings';
+		var url = appConfig.apiEndPoint+'getEstabelecimentos/1';
 		$http.get(url)
 		.success(function(d){
+			// if (d.data[0].currencytype==='Real') {
+			// 	d.data[0].currencytype = 'R$';
+			// }
+			// d.data[0].currencytype = d.data[0].currencytype + ' ';		
+			// curSymbol.symbol = d.data[0].currencytype;
+			// curSymbol.estabelecimento = 'sdsdsdsd';
 			return d;
-			if (d.data[0].currencytype==='Real') {
-				d.data[0].currencytype = 'R$';
-			}
-			d.data[0].currencytype = d.data[0].currencytype + ' ';		
-			curSymbol.symbol = d.data[0].currencytype;
-			curSymbol.estabelecimento = 'sdsdsdsd';
+			
 		})
 		.error(function(d){
 			dfd.reject(d);

@@ -1,26 +1,31 @@
-<ion-nav-view>
+
 <ion-view view-title="Meus Pedidos" class="">
 <ion-nav-title>Meus Pedidos</ion-nav-title>
-<ion-nav-buttons side="right">
-  <button class="button button-icon iconic iconic-filter" menu-toggle="right">     
-  </button>
-</ion-nav-buttons>
 <ion-content ng-init="search = ''" has-header="true" has-bouncing="true" class="scroll-content ionic-scroll  has-header" >
 	<div class="pedidos-list">
-<div class="item card dish-item item-thumbnail-left item-text-wrap" ng-repeat="pedido in pedidos" >
-
+<div class="item card dish-item item-thumbnail-left item-text-wrap" ng-repeat="pedido in pedidos | orderBy:'+':true" >
 
    <div class="item-image"  ng-click="open(pedido)">
-      <img src="img/icons/{{pedido.PED_Status}}.png">
+      <!-- <img src="img/icons/{{pedido.PED_Status}}.png"> -->
+      <i ng-if="pedido.PED_Status==0" class="pedidostatus iconic ion-more" style="color:#82bdea"></i>
+      <i ng-if="pedido.PED_Status==1" class="pedidostatus iconic ion-ios-timer" style="color:#ffac51"></i>
+      <i ng-if="pedido.PED_Status==2" class="pedidostatus iconic ion-checkmark-circled" style="color:#7ab43a"></i>
+      <i ng-if="pedido.PED_Status==3" class="pedidostatus iconic ion-close-circled" style="color:#ff6451"></i>
+      <i ng-if="pedido.PED_Status==4" class="pedidostatus iconic ion-checkmark-round" style="color:#7ab43a"></i>
     </div>
-    <div class="item-title"><a href="#"  ng-click="open(pedido)">Pedido: {{pedido.PED_CodigoPedido}} - {{pedido.EMP_Nome}}</a>
-   	<div class="item item-footer"  ng-click="mopen(pedido)">
-	   <p><b>Situação: </b> {{statusPedidos[pedido.PED_Status]}}</p></div>
-	   <p><b>Data:</b> {{pedido.PED_DataCriacao | mydate | date:"MM/dd/yyyy 'às' H:mm'h' " }}</p>
-</div>
-
-</div>
+    <div class="item-title"><a ng-click="open(pedido)">Pedido: {{pedido.PED_CodigoPedido}} - {{pedido.EMP_Nome}}</a>
+     	<div class="item item-footer"  ng-click="mopen(pedido)">
+  	     <p><b>Situação: </b> {{statusPedidos[pedido.PED_Status]}}<br/>
+  	     <p><b>Data:</b> {{pedido.PED_DataCriacao | date:"dd/MM 'às' H:mm " }}</p>
+      </div>
+    </div>
 </div>
 </ion-content>
 </ion-view>
-</ion-nav-view>
+<!--
+0 - Pedido Recebido
+1 - Pedido em Preparo
+2 - Pedido Pronto
+3 - Pedido Cancelado 
+4 - Pedido Finalizado 
+-->

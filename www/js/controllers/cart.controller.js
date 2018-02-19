@@ -1,34 +1,43 @@
 /*global app */
 'use strict';
 app
-.controller('cartCtrl', ['$scope', 'appConfig', 'FCcart', '$ionicLoading', 'curSymbol', '$filter', '$ionicPopup', 
-  function($scope, appConfig, FCcart, $ionicLoading, curSymbol, $filter,$ionicPopup){
+.controller('cartCtrl', ['$scope',  'appConfig',  '$state', 'dataservice', 'FCcart', 'FCUser', '$ionicLoading', 'curSymbol', '$filter', '$ionicPopup', 
+  function($scope, appConfig, $state, dataservice, FCcart, FCUser, $ionicLoading, curSymbol, $filter,$ionicPopup){
     $scope.curSymbol = curSymbol;
     $scope.imgroot = appConfig.imgserver;
-
+    $scope.pedido = {};
     if(typeof analytics !== 'undefined') {
      // window.analytics.trackView('cartCtrl');
     }
 
     // get data
     $scope.$on('$ionicView.enter', function() {
+      $scope.hasCart = FCcart.hasCart();
       $scope.cartItems = FCcart.getCartItems();
+      $scope.UserData =  FCUser.isLogged();
+      $scope.isRegistered =  $scope.UserData.length;
+       $ionicLoading.hide(); 
     });
+    $scope.$watch('cartItems', function () {
+          console.log($scope.cartItems);
+        }, true);
+    $scope.FecharPedido = function() {
+      if($scope.UserData.length){
+          FCcart.FecharPedido();
+      } else {
+          $state.go('app.register', {checkout:true});
+      }
+    }
 
     $scope.totalAmount = function() {
       return FCcart.getTotal();
     };
 
-    $scope.$on('$ionicView.leave',function(){
-      FCcart.setCartItems($scope.cartItems);
-    });
+    // $scope.$on('$ionicView.leave',function(){
+    //   FCcart.setCartItems($scope.cartItems);
+    // });
 
-     // show Add
-    if(window.AdMob) {
-      //AdMob.showInterstitial();
-    } 
-
-    $scope.isRegistered =  localStorage.getItem('id_cliente');
+    
  
     // remove from cart
     $scope.cartRemove = function(index) {
@@ -42,8 +51,8 @@ app
          });
          confirmPopup.then(function(res) {
            if(res) {
-             $scope.cartItems.splice(index, 1);
-       FCcart.setCartItems($scope.cartItems);
+              $scope.cartItems.splice(index, 1);
+              FCcart.setCartItems($scope.cartItems);
            } else {
             return false
            }
@@ -77,16 +86,16 @@ app
       
          buttons: [
            { text: 'Cancelar' },
-           {
-             text: 'Nenhuma',
-             type: 'button-assertive',
-             onTap: function(e) {
-                  $scope.data.nova_obs = null;
-                  $scope.update_obs(item,key);
-                  myPopup.close();
-                  e.preventDefault();
-             }
-           },
+           // {
+           //   text: 'Nenhuma',
+           //   type: 'button-assertive',
+           //   onTap: function(e) {
+           //        $scope.data.nova_obs = null;
+           //        $scope.update_obs(item,key);
+           //        myPopup.close();
+           //        e.preventDefault();
+           //   }
+           // },
            {
              text: '<b>Adicionar</b>',
              type: 'button-positive',
@@ -103,9 +112,4 @@ app
 
     };
 
-    $scope.$on('$ionicView.enter',function(){
-
-      $scope.hasCart = FCcart.hasCart();
-      $ionicLoading.hide();      
-    });
 }]);

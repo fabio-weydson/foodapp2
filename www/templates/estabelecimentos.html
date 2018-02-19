@@ -1,20 +1,19 @@
-<ion-nav-view>
 <ion-view view-title="Estabelecimentos" class="">
 <ion-nav-title>Estabelecimentos</ion-nav-title>
-<ion-nav-buttons side="right">
+<!-- <ion-nav-buttons side="right">
   <button class="button button-icon iconic iconic-filter" menu-toggle="right">     
   </button>
-</ion-nav-buttons>
-<ion-content ng-init="search = ''" has-header="true" has-bouncing="true" class="estabelecimento-list scroll-content ionic-scroll  has-header" >
+</ion-nav-buttons> -->
+<ion-content ng-init="search = ''"  has-header="false"  has-bouncing="true" class="estabelecimento-list scroll-content ionic-scroll" >
 	
 		<div class="item search-box">
-			<input type="text" placeholder="Buscar/Filtrar" ng-model="search" />
+			<input type="text" placeholder="Buscar" ng-model="search" />
 			<button class="button button-clear icon ion-android-search"></button>
 		</div>
 
 
 
-<div class="list card estabelecimento-item item-thumbnail-left item-icon-right animated fadeInUp" ng-repeat="estabelecimento in estabelecimentos | filter: { EMP_Nome: search }">
+<div class="list card estabelecimento-item item-thumbnail-left item-icon-right animated fadeInUp" ng-repeat="estabelecimento in estabelecimentos | filter: { EMP_Nome: search } | orderBy : estabelecimento.EMP_Distancia">
 
 
 		<div class="item-title">  <a ui-sref="app.estabelecimento({estabelecimentoid:estabelecimento.EMP_CodigoEmpresa})">
@@ -28,10 +27,9 @@
 	  </div>
 	  <div class="item item-footer">	   
 	   <div class="item-meta">
-{{estabelecimento.EMP_Rua}}, {{estabelecimento.EMP_Bairro}}<br/>{{estabelecimento.EMP_Cidade}}	   </div>
+{{estabelecimento.EMP_Rua}}, {{estabelecimento.EMP_Bairro}}<br/>{{estabelecimento.EMP_Cidade}} <br> <b>Distância:</b> {{estabelecimento.EMP_Distancia}}<span ng-if="!estabelecimento.EMP_Distancia">Calculando...</span>  </div>
 	  </div>	
 	    <i class="icon ion-ios-arrow-right"></i>  
 	</div>
 </ion-content>
 </ion-view>
-</ion-nav-view>

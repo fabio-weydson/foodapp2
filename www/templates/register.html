@@ -14,54 +14,36 @@
 			<span>Subtotal </span>
 		</div>
 	</div>
-	  <div style="text-align:center" class="padding" ng-if="!user" >  <br/>  
-      <b>Parece que este é o seu primeiro pedido em nossa plataforma. Por favor realize seu cadastro, é rapidinho :) </b>
+	 <div style="text-align:center" class="padding" ng-if="desejoLogar">  <br/>  
+      <b>Informe seu telefone para continuar com seu pedido.</b>
       <br/>
     </div> 
-      		<div class="row info-bar">
-		  	<div class=" col-50">
-		  	<button 
-		  	class="button button-block button-balanced" ng-click="desejoLogar = true;desejoRegistrar = false " 		  	
-		  	>Já tenho conta</button>
-		  </div>
-		  <div class=" col-50">
-		  	<button type="submit"
-		  	class="button button-block button-assertive" 		  	
-		   ng-click="desejoRegistrar = true;desejoLogar = false">Quero Cadastrar</button>
-		  	</div>
-		  			  	<div class="alert success  fade checkout-alert"  ng-bind="message" ng-class="{active:messageShow}"></div>
-	
-		  </div>
-	<div class="padding"  ng-if="desejoLogar">
-		<form name="loginForm" no-validate ng-submit="actionLogin()">
-			  <label class="item item-input">
-		      <div class="input-label">
-		        CPF
-		      </div>
-		     <input type="text" name="cpf" 
-		     ng-model="login.cpf"
-		     required>
-		  </label>
+	  <div style="text-align:center" class="padding" ng-if="desejoRegistrar">  <br/>  
+      <b>Parece que este é o seu primeiro pedido em nossa plataforma. <br>Por favor realize seu cadastro, é rapidinho :) </b>
+      <br/>
+    </div> 
+
+	<div class="padding" ng-if="desejoLogar">
+		<form name="loginForm" no-validate ng-submit="actionRegister(nextCheckout)">
+			
 		  <label class="item item-input">
 		      <div class="input-label">
 		        Telefone
 		      </div>
-		     <input type="text" name="phone" 
-		     ng-model="login.phone"
+		     <input type="text" name="telefone" 
+		     ng-model="register.telefone"
 		     ng-pattern="/([0-9]{10})/"
 		     required>
 		  </label>
-		
 		  	<div class="row">
 	   	<button
 		  	class="button button-block button-balanced" ng-disabled="loginForm.$invalid"		  	
 		  	>Prosseguir</button></div>
-
-		 
 	</form>
+	
 	</div>
 	<div class="padding" ng-if="desejoRegistrar">
-		<form name="registerform" no-validate ng-submit="actionLogin()">
+		<form name="registerform" no-validate ng-submit="actionRegister(nextCheckout)">
 			  <label class="item item-input">
 		      <div class="input-label">
 		        CPF
@@ -90,7 +72,7 @@
 		        Telefone
 		      </div>
 		     <input type="text" name="phone" 
-		     ng-model="register.phone"
+		     ng-model="register.telefone"
 		     ng-pattern="/([0-9]{10})/"
 		     required>
 		  </label>
@@ -100,7 +82,7 @@
 		  	<div class="row">
 		<button type="submit"
 		  	class="button button-block button-balanced" 		  	
-		  	ng-disabled="registerform.$invalid">Prosseguir</button></div>
+		  	ng-disabled="registerform.$invalid" >Prosseguir</button></div>
 
 		 
 	</form>

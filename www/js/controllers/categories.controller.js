@@ -11,7 +11,6 @@ function(
 	dataservice, 
 	appConfig
 	){
-	$scope.imageroot = appConfig.imgserver+'/categories/';
 	dataservice.dishCategories()
 	.then(function(d){
 		$scope.cats = d;

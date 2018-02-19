@@ -11,22 +11,23 @@ app.filter('filterDish', function () {
       for (var i = 0; i < items.length; i++) {
         var item = items[i];
         var flag = true;
+        
         for(var j = 0; j < cat.length; j++){
-          if(item.categories.length > 1){
-            for(var k = 0; k < item.categories.length; k++){
-              if(flag && item.categories[k].id === cat[j]){
-                filtered.push(item);
-                flag = false;
-                break;
-              }
-            }
-          }else{
-            if(flag && item.categories.length && item.categories[0].id === cat[j]){
+          // if(item.PRA_CategoriaPrato.length > 1){
+          //   for(var k = 0; k < item.categories.length; k++){
+          //     if(flag && item.categories[k].id === cat[j]){
+          //       filtered.push(item);
+          //       flag = false;
+          //       break;
+          //     }
+          //   }
+          // }else{
+            if(flag && item.PRA_CategoriaPrato === cat[j]){
               filtered.push(item);
               flag = false;
               break;
             }
-          }
+          // }
         }
       }
     }
@@ -39,5 +40,10 @@ app.filter("mydate", function() {
         var m = x.match(re);
         if( m ) return new Date(parseInt(m[1]));
         else return null;
+    };
+});
+app.filter('commaToDecimal', function(){
+    return function(value) {
+        return value ? parseFloat(value).toFixed(2).toString().replace('.', ',') : null;
     };
 });
