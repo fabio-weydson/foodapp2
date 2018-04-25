@@ -3,7 +3,7 @@
 <ion-nav-title>Meus Pedidos</ion-nav-title>
 <ion-content ng-init="search = ''" has-header="true" has-bouncing="true" class="scroll-content ionic-scroll  has-header" >
 	<div class="pedidos-list">
-<div class="item card dish-item item-thumbnail-left item-text-wrap" ng-repeat="pedido in pedidos | orderBy:'+':true" >
+<div class="item card dish-item item-thumbnail-left item-text-wrap" ng-repeat="pedido in pedidos | orderBy:'+':true" ng-click="open(pedido)" >
 
    <div class="item-image"  ng-click="open(pedido)">
       <!-- <img src="img/icons/{{pedido.PED_Status}}.png"> -->
@@ -14,7 +14,7 @@
       <i ng-if="pedido.PED_Status==4" class="pedidostatus iconic ion-checkmark-round" style="color:#7ab43a"></i>
     </div>
     <div class="item-title"><a ng-click="open(pedido)">Pedido: {{pedido.PED_CodigoPedido}} - {{pedido.EMP_Nome}}</a>
-     	<div class="item item-footer"  ng-click="mopen(pedido)">
+     	<div class="item item-footer" >
   	     <p><b>Situação: </b> {{statusPedidos[pedido.PED_Status]}}<br/>
   	     <p><b>Data:</b> {{pedido.PED_DataCriacao | date:"dd/MM 'às' H:mm " }}</p>
       </div>

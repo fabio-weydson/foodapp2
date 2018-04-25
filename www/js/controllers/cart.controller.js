@@ -6,9 +6,6 @@ app
     $scope.curSymbol = curSymbol;
     $scope.imgroot = appConfig.imgserver;
     $scope.pedido = {};
-    if(typeof analytics !== 'undefined') {
-     // window.analytics.trackView('cartCtrl');
-    }
 
     // get data
     $scope.$on('$ionicView.enter', function() {
@@ -18,9 +15,7 @@ app
       $scope.isRegistered =  $scope.UserData.length;
        $ionicLoading.hide(); 
     });
-    $scope.$watch('cartItems', function () {
-          console.log($scope.cartItems);
-        }, true);
+
     $scope.FecharPedido = function() {
       if($scope.UserData.length){
           FCcart.FecharPedido();
@@ -38,8 +33,6 @@ app
     // });
 
     
- 
-    // remove from cart
     $scope.cartRemove = function(index) {
          var confirmPopup = $ionicPopup.confirm({
            title: 'Remover item',
@@ -86,16 +79,6 @@ app
       
          buttons: [
            { text: 'Cancelar' },
-           // {
-           //   text: 'Nenhuma',
-           //   type: 'button-assertive',
-           //   onTap: function(e) {
-           //        $scope.data.nova_obs = null;
-           //        $scope.update_obs(item,key);
-           //        myPopup.close();
-           //        e.preventDefault();
-           //   }
-           // },
            {
              text: '<b>Adicionar</b>',
              type: 'button-positive',

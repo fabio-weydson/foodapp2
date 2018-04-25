@@ -6,7 +6,7 @@ app.value('convert', window.convert)
 app.value('geolib', window.geolib)
 app.value('_', window._)
 
-  app.run(function($ionicPlatform, $rootScope, $ionicLoading, settings, $state,$ionicPopup) {
+  app.run(function($ionicPlatform, $rootScope, $ionicLoading, settings, dataservice, $state,$ionicPopup) {
     $ionicPlatform.ready(function() {
        navigator.splashscreen.hide();
       if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -19,15 +19,10 @@ app.value('_', window._)
         StatusBar.styleDefault();
       }
 
-
-
-          // Enable to debug issues.
-  //window.plugins.OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
-
   var notificationOpenedCallback = function(jsonData) {
     console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
   };
-  
+
   window.plugins.OneSignal
     .startInit("bd5c8c99-d161-45be-b48a-a62ff4ffb408")
     .handleNotificationOpened(notificationOpenedCallback)
@@ -42,11 +37,11 @@ app.value('_', window._)
 
     });
 
-    settings.roSettigns();
 
     // loader event
     $rootScope.$on('$stateChangeStart',
       function(event, toState ){
+
         $rootScope.$broadcast('showloader');
         if (toState.name==='app.thankyou') {
           $ionicLoading.hide();

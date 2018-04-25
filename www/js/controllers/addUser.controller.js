@@ -1,15 +1,18 @@
 /*global app */
 'use strict';
 app
-.controller('adduserCtrl', ['$scope', '$timeout', '$state', '$ionicLoading', 
-  function($scope, $timeout, $state,  $ionicLoading){
+.controller('adduserCtrl', ['$scope', '$timeout', '$state', '$ionicLoading', 'dataservice',
+  function($scope, $timeout, $state,  $ionicLoading, dataservice){
   
   $scope.estabelecimento = localStorage.getItem('estabelecimento');
   $scope.scan = function(estabelecimento) {
         cordova.plugins.barcodeScanner.scan(function(result) {
             $scope.result = result;
             var estabelecimento = $scope.result.text.split(' - ');
-            localStorage.setItem('estabelecimento', estabelecimento[0]);
+            dataservice.estabelecimento(estabelecimento[1]).then(function(d){
+              console.log(d.empresa)
+              localStorage.setItem('estabelecimento', d.empresa)
+            });
             localStorage.setItem('id_estabelecimento', estabelecimento[1]);
             localStorage.setItem('mesa_estabelecimento', estabelecimento[2]);
             $scope.estabelecimento = estabelecimento[1];

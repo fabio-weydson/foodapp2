@@ -35,7 +35,7 @@ app.directive('cartBtn', ['FCcart',
 ])
 .directive('carttBtn',  ['FCcart', function(FCcart){
     return {
-      template : '<button ng-if="cartItems.length" class="button button-icon iconic ion-bag" ui-sref="app.cart"></button>',
+      template : '<button ng-if="cartItems.length" class="button button-icon iconic ion-android-cart btncart" ui-sref="app.cart"><i>{{cartItems.length}}</i></button>',
       
       link : function(scope) {
         scope.cartItems = FCcart.getCartItems();

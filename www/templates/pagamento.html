@@ -1,6 +1,50 @@
 <ion-view view-title="Pagamento" class="">
-<ion-content has-bouncing="false" class="has-header" >
-{{pedidoid}}
+ <ion-nav-buttons side="left"> 
+           <a ui-sref="app.pedidos" class="button button-icon icon ion-ios-arrow-back"></a>
+      </ion-nav-buttons>
+<ion-content class="padding text-center" has-bouncing="false">
+{{empresa}}
+        <span class="pedidoid ">Pedido Número: {{pedidoid}}</span><br>
+      	<ul class="steps">
+      		<li ng-class="{'active': $parent.step_active == 1}" ng-click="$parent.step_active = 1"><a>Método</a></li>
+      		<li ng-class="{'active': $parent.step_active == 2}" ng-click="$parent.step_active = 2"><a>Pagamento</a></li>
+      		<li ng-class="{'active': $parent.step_active == 3}" ng-click="$parent.step_active = 3"><a>Conclusão</a></li>
+      	</ul>
+      	<div class="step" ng-if="$parent.step_active == 1">
+      		<br>
+	        	<h4>Selecione um método de pagamento</h4>
+	          	<div class="list select">
+	            <label class="item" ng-repeat="metodo in metodos">
+	              <button  class="button button-block button-calm  button-with-icon ion-android-card" ng-click="changeMetodo(metodo.MEP_CodigoMetodo)">{{metodo.MEP_Nome}}</button>
+	          	</label>
+	          
+	          	</div>
+		</div>
+         
+        <div class="step" ng-if="$parent.step_active == 2">
+
+        	<div ng-if="$parent.selected_method == 1">
+        		<br><br>
+        		<img src="img/icons/cash.png">
+        		<h3>Por favor aguarde. <br>Em instantes um atendente recolherá o pagamento.</h3>
+        	</div>
+        	<div ng-if="(($parent.selected_method == 2) || ($parent.selected_method == 3))">
+        		<br><br>
+        		<img src="img/icons/pos.png">
+        		<h3>Por favor aguarde. <br>Em instantes um atendente levará uma máquina até você.</h3>
+        	</div>
+        	
+
+        </div>
+        <div class="step" ng-if="$parent.step_active == 3">
+        	<br>
+        		<img src="img/icons/success.png">
+        		<h3>Pagamento aprovado! <br>Obrigado pela visita.</h3><br>
+        		 <a ui-sref="app.dishitems" class="button button-block button-positive checkout-btn button-with-icon ion-android-list" ui-sref-opts="{reload: true, notify: true}"> Voltar ao cardápio</a>
+        </div>
+
+
+  
 </ion-content>
 </ion-view>
 

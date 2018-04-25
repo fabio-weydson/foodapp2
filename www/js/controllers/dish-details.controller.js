@@ -1,10 +1,10 @@
 /*global app */
 'use strict';
 app
-.controller('dishDetailsCtrl', ['$scope', '$stateParams', '$filter', 'dataservice', 'appConfig', '$ionicLoading', 'curSymbol',
-  function($scope, $stateParams, $filter, dataservice, appConfig , $ionicLoading, curSymbol){
+.controller('dishDetailsCtrl', ['$scope', '$rootScope', '$stateParams', '$filter', '$ionicViewSwitcher', '$ionicHistory', 'FCcart', 'dataservice', 'appConfig', '$ionicLoading', 'curSymbol',
+  function($scope, $rootScope, $stateParams, $filter, $ionicViewSwitcher, $ionicHistory, FCcart, dataservice, appConfig , $ionicLoading, curSymbol){
     $scope.curSymbol = curSymbol;
-
+    $scope.dish = {};
   	// analytic event
     if(typeof analytics !== 'undefined') {
       window.analytics.trackView('dishDetailsCtrl');
@@ -15,9 +15,14 @@ app
     var id = $stateParams.dishid;
 
     dataservice.dishDetails(id).then(function(d){
-      $scope.dish = d.cardapio;
-      $scope.dish.PRA_DataAtualizacao = new Date($scope.dish.PRA_DataAtualizacao.replace(/-/g,"/"));
-      $ionicLoading.hide();
+      if(d.cardapio) {
+        $scope.dish = d.cardapio;
+        $scope.dish.PRA_DataAtualizacao = new Date($scope.dish.PRA_DataAtualizacao.replace(/-/g,"/"));
+      } else {
+        alert("Produto não encontrado.")
+        $state.go('app.dishitems');
+      }
+      // $ionicLoading.hide();
     });
     
     $scope.getImage = function(obj){
@@ -33,7 +38,7 @@ app
         window.plugins.socialsharing.share(options,onSuccess, onError);
 
         var onSuccess = function(result) {
-          console.log("Compartilhadoo com sucesso!"); // On Android result.app is currently empty. On iOS it's empty when sharing is cancelled (result.completed=false)
+          console.log("Compartilhadoo com sucesso!"); 
         }
 
         var onError = function(msg) {
@@ -42,9 +47,23 @@ app
 
       }
 
+    $scope.$on('$ionicView.beforeEnter', function (event, viewData) {
+      viewData.enableBack = true;
+    }); 
 
+    $scope.$watch("dish", function (value) {//I change here
+      if(value) {
+        $ionicLoading.hide();
+      }
+    });
+
+    $rootScope.goBackState = function(){
+      $ionicViewSwitcher.nextDirection('back');
+      $ionicHistory.goBack(); 
+    }
 
     $scope.$on('$ionicView.enter',function(){
+
       $ionicLoading.hide();
     });
 

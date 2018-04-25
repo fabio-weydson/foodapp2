@@ -4,16 +4,7 @@ app
 .controller('dishitemsCtrl', ['$scope', '$stateParams', '$ionicLoading', 'appConfig', 'dataservice', '$filter', 'FCcart', '$rootScope', '$ionicScrollDelegate', 'curSymbol', '$interval',
 	function($scope, $stateParams, $ionicLoading, appConfig, dataservice, $filter, FCcart, $rootScope, $ionicScrollDelegate, curSymbol, $interval){
 
-		$scope.curSymbol = curSymbol;
-
-		if(typeof analytics !== 'undefined') {
-			window.analytics.trackView('dishitemsCtrl');
-		}
-		$scope.categoria_atual = 99;
 		$scope.imgroot = appConfig.imgserver;
-
-
-
 
 		$scope.filterdata = {};
 		$scope.filterdata.catids = [];
@@ -24,37 +15,20 @@ app
 		});
 
 		$scope.$on('$ionicView.beforeEnter',function(){
-
+			$scope.doRefresh();
+			$ionicLoading.hide();
 			$interval(function() {	
 				$scope.hasCart = null;
 				$scope.hasCart = FCcart.hasCart();
+			}, 3000);
 			
-		}, 3000);
-		dataservice.dishItems().then(function(d){
-			$scope.dishes = d.cardapios;
-
-		}, function(){
-			console.log('dei ruim')
 		});
 
-		dataservice.dishCategories()
-		.then(function(d){
-			$scope.cats = d.categorias;
-		});
-			$ionicLoading.hide();
-		});
-
-		
-		$scope.categoria_titulo = function(cat){
-			console.log(cat)
-			// var categ  = cat-1;
-			// if($scope.categoria_atual!=categ) {
-			// 	var nomecat = $scope.cats[categ].CATP_Nome + $scope.categoria_atual + '_' + categ;
-			// 	$scope.categoria_atual=categ;
-			// 	return nomecat;
-			// } else {
-			// 	return $scope.categoria_atual + '_' + categ;
-			// }
+		$scope.doRefresh = function(){
+			dataservice.dishItems().then(function(d){
+				$scope.cats = d.cardapios;
+				$scope.$broadcast('scroll.refreshComplete');
+			});
 		}
 
 

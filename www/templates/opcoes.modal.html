@@ -1,0 +1,28 @@
+<ion-modal-view class="modalopcoes">
+        <ion-header-bar class="bar bar-assertive">
+          <h1 class="title">Selecione as opções</h1>
+          <button class="button button-icon iconic ion-android-close" ng-click="modal.hide()"></button>
+        </ion-header-bar>
+
+        <ion-content class="padding" has-bouncing="false">
+        <span class="pedidoid">{{modal.opcoes.PED_CodigoPedido}}</span><br>
+          <div class="list itens">
+            <label class="item" ng-repeat="item in modal.opcoes.pratos" >
+              <span class="titulo">{{item.PRA_Nome}}</span> 
+              <span class="preco">
+                <select><option>1</option></select>
+              </span>
+              </label>
+          </div>
+           <div class="list total">
+            <label class="item" >
+              <span class="total">Total</span> 
+              <span class="total2">R${{modal.opcoes.PED_Preco}}</span>
+            </label>
+          </div>
+          <div class="text-center">
+          <button ng-if="modal.opcoes.PED_Status == 0" class="button button-assertive"  ng-click="cancelaPedido(modal.opcoes.PED_CodigoPedido)">Cancela</button>
+            <button ng-if="modal.opcoes.PED_Status != 4" class="button button-positive" ng-click="modal.hide()" ui-sref="app.pagamento({pedidoid:modal.opcoes.PED_CodigoPedido})"><i class="iconic ion-card"></i> Continuar</button>
+          </div>
+        </ion-content>
+      </ion-modal-view>

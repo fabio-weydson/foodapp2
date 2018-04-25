@@ -73,6 +73,15 @@ app.factory('FCcart', ['dataservice', '$q', '$state', '$filter', 'FCUser', '$ion
         return cartItems;
       },
 
+      getCartItemsTotal: function() {
+        var totalitems = 0;
+        angular.forEach(cartItems, function(item){
+          totalitems =  totalitems+item.qty;
+        });
+        console.log(totalitems)
+        return totalitems;
+      },
+
       clearCart: function() {
         cartItems = [];
         localStorage.setItem('cart', JSON.stringify(cartItems));

@@ -1,34 +1,34 @@
 <ion-view view-title="{{dish.PRA_Nome}}" class="">
+ <ion-nav-buttons side="left"> 
+           <a ng-click="goBackState()" class="button button-icon icon ion-ios-arrow-back"></a>
+      </ion-nav-buttons>
 <ion-nav-buttons side="right">
  <cartt-btn></cartt-btn>
 </ion-nav-buttons>
-<ion-content has-bouncing="false" class="dish-list dish-details">
+<ion-content has-bouncing="false" class="dish-details">
 	<div class="list card dish-item">
-	
 	    <ion-slide-box loop="true" ng-if="dish.Imagens[0]">
 		  <ion-slide ng-repeat="imagem in dish.Imagens">
 		     <img ng-src="{{getImage(imagem.PRAI_Imagem)}}">
 		  </ion-slide>
 		</ion-slide-box>
-  <div class="dish-options">	
-  <button>Compartilhar</button>   	
+  <!-- <div class="dish-options">	
 	  	<span cart-btn dish="dish" type="'food'" ></span>
-	  </div>
+	  </div> -->
 	  <ul class="props">
-	  	<li class="fisrt"><label>Preço</label>{{dish.PRA_Preco | currency:curSymbol.symbol}}</li>
+	  	<li class="first"><label>Preço</label>{{dish.PRA_Preco | currency:curSymbol.symbol}}</li>
 	  	<li class="second"><label>Rendimento</label><span ng-if="dish.PRA_Rendimento == 1 || dish.PRA_Rendimento == 0">{{dish.PRA_Peso}} {{dish.MED_Sigla}}</span>
 	   	<span ng-if="dish.PRA_Rendimento > 1">Serve {{dish.PRA_Rendimento}} Pessoas ({{dish.PRA_Peso}}{{dish.MED_Sigla}})</span></li>
-	  	<li class="third"><label>Estimativa</label>10~20 min</li>
+	  	<li class="third"><label>Preparo</label>10~20 min</li>
 	  	<li class="fourth"><label>Preço</label></li>
 	  </ul>
 	 <div class="separator"><span>Mais informações</span></div>
 	  <div class="item item-footer">	   
 		<div class="dish-content padding" ng-bind-html="dish.PRA_Descricao">
 	</div>
+	<small class="padding">Atualização: {{dish.PRA_DataAtualizacao | date:"dd/MM/yyyy 'às' H:mm'h' " }}</small>
 	  </div>
 	</div>
-	
-	<div class="dish-content padding"><small>Ultima atualização: {{dish.PRA_DataAtualizacao | date:"MM/dd/yyyy 'às' H:mm'h' " }}</small>
-	</div>	
+
 </ion-content>
 </ion-view>

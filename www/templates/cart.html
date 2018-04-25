@@ -1,12 +1,13 @@
 <ion-view view-title="{{estabelecimento}}" class="">
 <ion-nav-buttons side="right">
-  <button ng-if="cartItems.length > 0" ui-sref="app.checkout" class="button button-clear button-icon ion-card"></button>
+  <button ng-if="cartItems.length > 0" ng-click="FecharPedido()" class="button button-clear button-icon ion-card"></button>
 </ion-nav-buttons>
 <ion-content has-header="false" has-bouncing="false" class="contact-page">
   <div style="text-align:center" class="padding" ng-if="cartItems.length < 1">  <br/>  <br/>
-      <h3>Não existem itens no seu pedido.</h3>
+    <img src="img/icons/emptytray.png">
+      <h3>Nenhum item no seu pedido.</h3>
       <br/>
-      <a ui-sref="app.dishitems" class="button button-block button-assertive checkout-btn button-with-icon ion-android-list" ui-sref-opts="{reload: true, notify: true}"> Ir para o cardápio</a>
+      <a ui-sref="app.dishitems" class="button button-block button-positive checkout-btn button-with-icon ion-android-list" ui-sref-opts="{reload: true, notify: true}"> Ir para o cardápio</a>
     </div> 
 <div class="list cart-list" ng-if="cartItems.length >= 1">
 

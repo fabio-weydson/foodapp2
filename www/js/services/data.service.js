@@ -16,52 +16,11 @@ app
 		  if (!CacheFactory.get('appCache')) {
 		    appCache = CacheFactory('appCache');
 		  }
-	function _slideView () {
-		var dfd = $q.defer();
-		var url = appConfig.apiEndPoint+'foods/sliders';
-		$http.get(url)
-		.success(function(data){
-			dfd.resolve(data);			
-		})
-		.error(function(data){					
-			dfd.reject(data);
-		});
-		return dfd.promise;		
-	}
 
-	function _offerView () {
-		var dfd = $q.defer();
-		var url = appConfig.apiEndPoint+'offers';
-		$http.get(url)
-		.success(function(data){
-			dfd.resolve(data);			
-		})
-		.error(function(data){					
-					dfd.reject(data);
-		});
-		return dfd.promise;		
-	}
-	
 
 	function _dishDetails (id) {
 		var dfd = $q.defer();
 		var url = appConfig.apiEndPoint+'getCardapios/?id_cardapio='+id;
-		$http.get(url)
-		.success(function(data){
-			dfd.resolve(data);			
-		})
-		.error(function(data){					
-					dfd.reject(data);
-		});
-		return dfd.promise;		
-	}
-
-	function _estabelecimento (id) {
-		if(!id) {
-			id = "";
-		}
-		var dfd = $q.defer();
-		var url = appConfig.apiEndPoint+'getEstabelecimentos/'+id;
 		$http.get(url)
 		.success(function(data){
 			dfd.resolve(data);			
@@ -85,9 +44,7 @@ app
 		return dfd.promise;		
 	}
 
-	function _dishItems () {
-		 // Check to make sure the cache doesn't already exist
-	
+	function _dishItems () {	
 		var dfd = $q.defer();
 		var url = appConfig.apiEndPoint+'getCardapios/?id_empresa=1';
 		$http.get(url)
@@ -114,61 +71,7 @@ app
 		return dfd.promise;		
 	}
 
-	function _offerItems () {
-		var dfd = $q.defer();
-		var url = appConfig.apiEndPoint+'offers';
-		
-		$http.get(url)
-		.success(function(data){
-			dfd.resolve(data);			
-		})
-		.error(function(data){					
-					dfd.reject(data);
-		});
-		return dfd.promise;		
-	}
-	function _offerDetails (id) {
-		var dfd = $q.defer();
-		var url = appConfig.apiEndPoint+'offers/'+id;
-		
-		$http.get(url)
-		.success(function(data){
-			dfd.resolve(data);			
-		})
-		.error(function(data){					
-					dfd.reject(data);
-		});
-		return dfd.promise;		
-	}
 
-	function _dishLike (id, flag) {
-		var dfd = $q.defer();
-		var url = appConfig.apiEndPoint + 'foods/';
-		url += (flag) ? 'like/' : 'dislike/';
-		url += id;
-
-		$http.get(url)
-			.success(function(data){
-				dfd.resolve(data);
-			})
-			.error(function(data){
-				dfd.reject(data);
-			});
-		return dfd.promise;
-	}
-
-	function _specials () {
-		var dfd = $q.defer();
-		var url = appConfig.apiEndPoint+'foods/specials';
-		$http.get(url)
-		.success(function(data){
-			dfd.resolve(data);			
-		})
-		.error(function(data){					
-					dfd.reject(data);
-		});
-		return dfd.promise;		
-	}
 
 	function _bookTable (data) {
 
@@ -229,50 +132,15 @@ app
 		});
 		return dfd.promise;		
 	}
-	function _getCategories (id) {
-		var url = appConfig.apiEndPoint+'categories/'+id;
-		var dfd = $q.defer();
-		
-		$http.get(url)
-		.success(function(data){
-			dfd.resolve(data);
-		})
-		.error(function(data){
-					dfd.reject(data);
-		});
-		return dfd.promise;		
-	}
-
-	function _dishFilter (data) {
-		var dfd = $q.defer();
-		var url = appConfig.apiEndPoint+'categories/cats';
-		$http.post(url,data)
-		.success(function(data){
-			dfd.resolve(data);
-		})
-		.error(function(data){
-				dfd.reject(data);
-		});
-		return dfd.promise;		
-	}
-
-	function _contact (data) {
-		var dfd = $q.defer();
-		var url = appConfig.apiEndPoint+'getEstabelecimentos/1';
-		$http.post(url,data)
-		.success(function(data){
-			dfd.resolve(data);
-		})
-		.error(function(data){
-				dfd.reject(data);
-		});
-		return dfd.promise;		
-	}
 
 
-	function _settings (data) {
+
+	function _estabelecimento (id_estabelecimento) {
 		var dfd = $q.defer();
-		var url = appConfig.apiEndPoint+'getEstabelecimentos/1';
+		if(!id_estabelecimento) {
+			id_estabelecimento = localStorage.getItem('id_estabelecimento');
+		} 
+		var url = appConfig.apiEndPoint+'getEstabelecimentos/'+id_estabelecimento;
 		$http.get(url)
 		.success(function(data){
 			dfd.resolve(data);
@@ -283,9 +151,9 @@ app
 		return dfd.promise;			
 	}
 
-	function _cliente (data) {
+	function _statusPagamento(idpedido) {
 		var dfd = $q.defer();
-		var url = appConfig.apiEndPoint+'getCliente/?id_cliente=1';
+		var url = 'http://easyresto.esy.es/pagamento/statusPagamento/'+idpedido;
 		$http.get(url)
 		.success(function(data){
 			dfd.resolve(data);
@@ -296,75 +164,49 @@ app
 		return dfd.promise;			
 	}
 
-
-
-	function _packages () {
+	function _registraPagamento (data) {
 		var dfd = $q.defer();
-		var url = appConfig.apiEndPoint+'packages';
-		$http.get(url)
+		var url = 'http://easyresto.esy.es/pagamento/registraPagamento';
+		$http.post(url, data, {
+		    headers : {
+		        'Content-Type' : 'multipart/form-data-encoded'
+		}})
 		.success(function(data){
 			dfd.resolve(data);
 		})
 		.error(function(data){
-				dfd.reject(data);
+			dfd.reject(data);
 		});
 		return dfd.promise;		
 	}
 
-	function _package (id) {
-		var dfd = $q.defer();
-		var url = appConfig.apiEndPoint+'packages/'+id;
-		$http.get(url)
-		.success(function(data){
-			dfd.resolve(data);
-		})
-		.error(function(data){
-				dfd.reject(data);
-		});
-		return dfd.promise;		
-	}
+
+
 
 
 	return {
-		 slideView : _slideView,
-		 offerView : _offerView,
-		 dishLike : _dishLike,
-		 specials : _specials,
 		 dishDetails : _dishDetails,
 		 dishItems : _dishItems,
 		 estabelecimento : _estabelecimento,
 		 pageDetails : _pageDetails,
-		 offerItems : _offerItems,
-		 offerDetails : _offerDetails,
 		 bookTable : _bookTable,
 		 requestOrder : _requestOrder,
 		 login : _login,
 		 dishCategories : _dishCategories,
-		 getCategories : _getCategories,
-		 dishFilter : _dishFilter,
-		 contact : _contact,
-		 cliente : _cliente,
-		 settings : _settings,
 		 pedidos : _pedidos,
-		 packages: _packages,
-		 package : _package
+		 statusPagamento : _statusPagamento,
+		 registraPagamento : _registraPagamento,
 	};
 
 }])
 .service('settings', ['$http', '$q', 'appConfig', 'curSymbol', function($http, $q, appConfig, curSymbol){
 	function _roSettigns() {
 		var dfd = $q.defer();
-		var url = appConfig.apiEndPoint+'getEstabelecimentos/1';
+		var id_estabelecimento = localStorage.getItem('id_estabelecimento');
+		var url = appConfig.apiEndPoint+'getEstabelecimentos/'+id_estabelecimento;
 		$http.get(url)
 		.success(function(d){
-			// if (d.data[0].currencytype==='Real') {
-			// 	d.data[0].currencytype = 'R$';
-			// }
-			// d.data[0].currencytype = d.data[0].currencytype + ' ';		
-			// curSymbol.symbol = d.data[0].currencytype;
-			// curSymbol.estabelecimento = 'sdsdsdsd';
 			return d;
-			
 		})
 		.error(function(d){
 			dfd.reject(d);

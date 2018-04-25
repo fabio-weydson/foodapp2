@@ -26,7 +26,7 @@ app
 		//settings.roSettigns($scope.contact);
 		//$scope.contact = dataservice.contact();
 		$scope.infos = {};
-		dataservice.settings().then(function(d){
+		dataservice.estabelecimento().then(function(d){
 			 $scope.infos = d.empresa;
 		});
 

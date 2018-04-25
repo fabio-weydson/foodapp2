@@ -4,47 +4,57 @@
   </button>
   <cartt-btn></cartt-btn>
 </ion-nav-buttons>
-<ion-content has-bouncing="true" ng-init="search = ''" has-header="true" has-bouncing="true" class="dish-list   has-header">
+<ion-content has-bouncing="false" ng-init="search = ''" has-header="true" has-bouncing="true" class="dish-list   has-header">
+
+  <ion-refresher on-refresh="doRefresh()">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
 <div class="item search-box">
 			<input type="text" placeholder="Buscar/Filtrar" ng-model="search" />
 			<button class="button button-clear icon ion-android-search"></button>
 		</div>
 <div class="list cats" 
-			ng-repeat="cat in cats" >
-			<div class="item-cat">{{cat.CATP_Nome}}</div>
-	<div class="list card dish-item item-icon-right animated fadeInUp" 
-			ng-repeat="dish in dishes | filter :{PRA_Nome:search} | filter:{field:{'dish.PRA_CategoriaPrato':  1}}:true"
-			ng-class="{hascart : hasCart[dish.PRA_CodigoPrato]}" >
-			<!-- <div class="item-cat">{{categoria_titulo(dish.PRA_CategoriaPrato)}}</div>
-		 -->
-		<div class="item-title">  
-			<a ui-sref="app.dishdetails({dishid:dish.PRA_CodigoPrato})">{{dish.PRA_Nome}} 
-	   		<span class="cuisine" ng-if="dish.PRA_Rendimento == 1 || dish.PRA_Rendimento == 0">{{dish.PRA_Peso}}{{dish.MED_Sigla}}</span>
-	   		<span class="cuisine" ng-if="dish.PRA_Rendimento > 1">Serve {{dish.PRA_Rendimento}} Pessoas ({{dish.PRA_Peso}} {{dish.MED_Sigla}})
-	   		</span></a>
-	   		<div class="item-footer">
-	   			<span class="item-price">{{dish.PRA_Preco | currency:curSymbol.symbol2}}</span>
-	   			<div class="item-options">
-	   				<span cart-btn dish="dish" type="'food'" ></span>
-	   			</div>
-	   		</div>
-	  </div>
+			ng-repeat="cat in cats" ng-if="cat.Pratos.length">
+			<div class="item-cat" >{{cat.CATP_Nome}}</div>
+			<div class="list card dish-item item-icon-right animated fadeInUp" 
+					ng-repeat="dish in cat.Pratos | filter :{PRA_Nome:search} "
+					ng-class="{hascart : hasCart[dish.PRA_CodigoPrato]}" >
+					<!-- <div class="item-cat">{{categoria_titulo(dish.PRA_CategoriaPrato)}}</div>
+				 -->
+				<div class="item-title">  
+					<a ui-sref="app.dishdetails({dishid:dish.PRA_CodigoPrato})">{{dish.PRA_Nome}} 
+			   		<span class="cuisine" ng-if="dish.PRA_Rendimento == 1 || dish.PRA_Rendimento == 0">{{dish.PRA_Peso}}{{dish.MED_Sigla}}</span>
+			   		<span class="cuisine" ng-if="dish.PRA_Rendimento > 1">Serve {{dish.PRA_Rendimento}} Pessoas ({{dish.PRA_Peso}} {{dish.MED_Sigla}})
+			   		</span></a>
+			   		<div class="item-footer">
+			   			<span class="item-price">{{dish.PRA_Preco | currency:curSymbol.symbol2}}</span>
+			   			<div class="item-options">
+			   				<span cart-btn dish="dish" type="'food'" ></span>
+			   			</div>
+			   		</div>
+			  </div>
 
-	 <div class="item item-image" ng-if="dish.Imagens">
-	  	<a ui-sref="app.dishdetails({dishid:dish.id})">
-	    <img class="item-image-full" ng-src="{{getImage(dish.Imagens.PRAI_Imagem)}}">
-	    </a>
-	  </div> 
-	  <!-- <div class="item item-footer">	   
-	   <div class="item-meta">
-	    <span class="item-price">{{dish.PRA_Preco | currency:curSymbol.symbol2}}</span>
-	  <span class="item-likes">Curtidas: {{dish.likes}}</span> 
-	   </div>-->
-	 <!--  <div class="item-options">	   	
-	  	<span cart-btn dish="dish" type="'food'" ></span>
-	  </div>
-	  </div>	 -->
-	    <i class="icon ion-ios-arrow-right"></i>  
-	</div></div>
+			 <div class="item item-image" ng-if="dish.PRAI_Imagem">
+			  	<a ui-sref="app.dishdetails({dishid:dish.PRA_CodigoPrato})">
+			    <img class="item-image-full" ng-src="{{getImage(dish.PRAI_Imagem)}}">
+			    </a>
+			  </div> 
+			  <!-- <div class="item item-footer">	   
+			   <div class="item-meta">
+			    <span class="item-price">{{dish.PRA_Preco | currency:curSymbol.symbol2}}</span>
+			  <span class="item-likes">Curtidas: {{dish.likes}}</span> 
+			   </div>-->
+			 <!--  <div class="item-options">	   	
+			  	<span cart-btn dish="dish" type="'food'" ></span>
+			  </div>
+			  </div>	 -->
+			    <i class="icon ion-ios-arrow-right"></i>  
+			</div></div>
 </ion-content>
 </ion-view>

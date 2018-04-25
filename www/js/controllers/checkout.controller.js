@@ -25,27 +25,24 @@ app
 		$scope.desejoRegistrar = false;
 		$scope.desejoLogar = true;
 		//
-		if(typeof analytics !== 'undefined') {
-			window.analytics.trackView('checkoutCtrl');
-		}
 
 		$scope.checkout = {};
 		$scope.$on('$ionicView.enter',function(){
 			$scope.cartItems = FCcart.getCartItems();
 			$scope.totalAmount = FCcart.getTotal();			
 			$scope.checkout.id_estabelecimento = localStorage.getItem('id_estabelecimento');
-			// $scope.checkout.name = localStorage.getItem('username');
 			$scope.checkout.cupon = localStorage.getItem('cupponCode');
-	     $scope.checkout.price = $scope.totalAmount;
-	     $scope.checkout.package_ids = [];
-	     $scope.checkout.food_ids = [];
-	     angular.forEach($scope.cartItems, function(item){
-	     	if (item.type==='food') {
-	     	 $scope.checkout.food_ids.push({'id':item.id,'qty':item.qty});
-	     	}else {
-	     		$scope.checkout.package_ids.push({'id':item.id,'qty':item.qty});
-	     	}
-	     });
+		    $scope.checkout.price = $scope.totalAmount;
+		    $scope.checkout.package_ids = [];
+		    $scope.checkout.food_ids = [];
+		    
+		    angular.forEach($scope.cartItems, function(item){
+		     	if (item.type==='food') {
+		     	 $scope.checkout.food_ids.push({'id':item.id,'qty':item.qty});
+		     	}else {
+		     		$scope.checkout.package_ids.push({'id':item.id,'qty':item.qty});
+		     	}
+		    });
 	     $ionicLoading.hide();
 		});
 

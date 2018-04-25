@@ -6,7 +6,7 @@
     </description>
   <author email="fabioweydson@gmail.com" href="">
         Fabio Weydson
-    </author>
+  </author>
   <content src="index.html"/>
   <access origin="*"/>
   <access launch-external="yes" origin="tel:*"/>
