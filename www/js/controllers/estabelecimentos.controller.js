@@ -16,7 +16,7 @@ function(
 	_
 	){
 	$scope.imageroot = appConfig.imgserver;
-	dataservice.estabelecimento()
+	dataservice.estabelecimento(null)
 
 	.then(function(d){
 		$scope.estabelecimentos = d.empresa;

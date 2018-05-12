@@ -138,9 +138,12 @@ app
 	function _estabelecimento (id_estabelecimento) {
 		var dfd = $q.defer();
 		if(!id_estabelecimento) {
-			id_estabelecimento = localStorage.getItem('id_estabelecimento');
-		} 
-		var url = appConfig.apiEndPoint+'getEstabelecimentos/'+id_estabelecimento;
+			// id_estabelecimento = localStorage.getItem('id_estabelecimento');
+			var url = appConfig.apiEndPoint+'getEstabelecimentos';
+		} else {
+			var url = appConfig.apiEndPoint+'getEstabelecimentos/'+id_estabelecimento;
+		}
+		
 		$http.get(url)
 		.success(function(data){
 			dfd.resolve(data);
